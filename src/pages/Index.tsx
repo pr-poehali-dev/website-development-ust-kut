@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
 
 export default function Index() {
   const [calculatorValues, setCalculatorValues] = useState({
@@ -19,6 +20,7 @@ export default function Index() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const calculatePrice = () => {
     const basePrice = 30000;
@@ -295,7 +297,8 @@ export default function Index() {
             ].map((service, index) => (
               <Card 
                 key={index} 
-                className="group hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                className="group hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 cursor-pointer"
+                onClick={() => service.title === 'Разработка сайтов' && navigate('/development')}
               >
                 <CardHeader>
                   <Icon 
