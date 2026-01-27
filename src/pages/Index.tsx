@@ -71,9 +71,9 @@ export default function Index() {
             <a href="#reviews" onClick={(e) => smoothScroll(e, '#reviews')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
               Отзывы
             </a>
-            <a href="#blog" onClick={(e) => smoothScroll(e, '#blog')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
+            <span onClick={() => navigate('/blog')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
               Блог
-            </a>
+            </span>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button className="bg-primary hover:bg-primary/90">Связаться</Button>
