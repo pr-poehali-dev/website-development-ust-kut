@@ -51,9 +51,9 @@ export default function Index() {
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Icon name="Rocket" className="text-primary" size={32} />
+            <Icon name="Sparkles" className="text-primary" size={32} />
             <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              WebStudio
+              Элегия
             </span>
           </div>
           <div className="hidden md:flex items-center gap-8">
@@ -174,7 +174,7 @@ export default function Index() {
             <div className="animate-slide-up">
               <h2 className="text-4xl font-bold mb-6">О нашем агентстве</h2>
               <p className="text-foreground/80 mb-4 leading-relaxed">
-                WebStudio — премиальное веб-агентство полного цикла в Усть-Куте. 
+                Элегия — премиальное веб-агентство полного цикла в Усть-Куте. 
                 Мы специализируемся на разработке эксклюзивных сайтов, 
                 комплексном SEO-продвижении и цифровом маркетинге.
               </p>
@@ -530,7 +530,7 @@ export default function Index() {
                     <Icon name="Mail" className="text-accent" size={24} />
                     <div>
                       <div className="text-sm text-foreground/60">Email</div>
-                      <div className="font-medium">info@webstudio.ru</div>
+                      <div className="font-medium">info@elegia.ru</div>
                     </div>
                   </div>
                 </div>
@@ -545,8 +545,8 @@ export default function Index() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <Icon name="Rocket" className="text-primary" size={28} />
-                <span className="text-xl font-bold">WebStudio</span>
+                <Icon name="Sparkles" className="text-primary" size={28} />
+                <span className="text-xl font-bold">Элегия</span>
               </div>
               <p className="text-sm text-foreground/60">
                 Премиальная разработка сайтов и SEO-продвижение в Усть-Куте
@@ -575,12 +575,12 @@ export default function Index() {
               <ul className="space-y-2 text-sm text-foreground/70">
                 <li>г. Усть-Кут</li>
                 <li>+7 (999) 123-45-67</li>
-                <li>info@webstudio.ru</li>
+                <li>info@elegia.ru</li>
               </ul>
             </div>
           </div>
           <div className="pt-8 border-t border-border text-center text-sm text-foreground/60">
-            © 2026 WebStudio. Все права защищены.
+            © 2026 Элегия. Все права защищены.
           </div>
         </div>
       </footer>
