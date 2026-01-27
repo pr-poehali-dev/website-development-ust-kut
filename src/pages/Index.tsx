@@ -5,7 +5,10 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Slider } from '@/components/ui/slider';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Icon from '@/components/ui/icon';
+import { useToast } from '@/hooks/use-toast';
 
 export default function Index() {
   const [calculatorValues, setCalculatorValues] = useState({
@@ -13,6 +16,9 @@ export default function Index() {
     features: [5],
     design: [5]
   });
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { toast } = useToast();
 
   const calculatePrice = () => {
     const basePrice = 30000;
@@ -20,6 +26,24 @@ export default function Index() {
     const featurePrice = calculatorValues.features[0] * 3000;
     const designPrice = calculatorValues.design[0] * 2000;
     return basePrice + pagePrice + featurePrice + designPrice;
+  };
+
+  const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.querySelector(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setMobileMenuOpen(false);
+    }
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: 'Заявка отправлена!',
+      description: 'Мы свяжемся с вами в ближайшее время.',
+    });
+    setIsDialogOpen(false);
   };
 
   return (
@@ -33,23 +57,83 @@ export default function Index() {
             </span>
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#services" className="text-foreground/80 hover:text-primary transition-colors">
+            <a href="#services" onClick={(e) => smoothScroll(e, '#services')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
               Услуги
             </a>
-            <a href="#portfolio" className="text-foreground/80 hover:text-primary transition-colors">
+            <a href="#portfolio" onClick={(e) => smoothScroll(e, '#portfolio')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
               Портфолио
             </a>
-            <a href="#calculator" className="text-foreground/80 hover:text-primary transition-colors">
+            <a href="#calculator" onClick={(e) => smoothScroll(e, '#calculator')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
               Калькулятор
             </a>
-            <a href="#reviews" className="text-foreground/80 hover:text-primary transition-colors">
+            <a href="#reviews" onClick={(e) => smoothScroll(e, '#reviews')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
               Отзывы
             </a>
-            <a href="#blog" className="text-foreground/80 hover:text-primary transition-colors">
+            <a href="#blog" onClick={(e) => smoothScroll(e, '#blog')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
               Блог
             </a>
-            <Button className="bg-primary hover:bg-primary/90">Связаться</Button>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="bg-primary hover:bg-primary/90">Связаться</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Оставьте заявку</DialogTitle>
+                  <DialogDescription>
+                    Заполните форму, и мы свяжемся с вами в течение часа
+                  </DialogDescription>
+                </DialogHeader>
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Ваше имя</label>
+                    <Input required placeholder="Иван Иванов" />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Телефон</label>
+                    <Input required type="tel" placeholder="+7 (999) 123-45-67" />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Email</label>
+                    <Input required type="email" placeholder="ivan@example.com" />
+                  </div>
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                    Отправить заявку
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
           </div>
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="ghost" size="icon">
+                <Icon name="Menu" size={24} />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-64">
+              <div className="flex flex-col gap-6 mt-8">
+                <a href="#services" onClick={(e) => smoothScroll(e, '#services')} className="text-lg hover:text-primary transition-colors">
+                  Услуги
+                </a>
+                <a href="#portfolio" onClick={(e) => smoothScroll(e, '#portfolio')} className="text-lg hover:text-primary transition-colors">
+                  Портфолио
+                </a>
+                <a href="#calculator" onClick={(e) => smoothScroll(e, '#calculator')} className="text-lg hover:text-primary transition-colors">
+                  Калькулятор
+                </a>
+                <a href="#reviews" onClick={(e) => smoothScroll(e, '#reviews')} className="text-lg hover:text-primary transition-colors">
+                  Отзывы
+                </a>
+                <a href="#blog" onClick={(e) => smoothScroll(e, '#blog')} className="text-lg hover:text-primary transition-colors">
+                  Блог
+                </a>
+                <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button className="bg-primary hover:bg-primary/90 w-full">Связаться</Button>
+                  </DialogTrigger>
+                </Dialog>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </nav>
 
@@ -70,10 +154,14 @@ export default function Index() {
             для бизнеса в Усть-Куте и по всей России
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
-              Заказать проект
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 border-accent text-accent hover:bg-accent/10">
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                  Заказать проект
+                </Button>
+              </DialogTrigger>
+            </Dialog>
+            <Button size="lg" variant="outline" className="text-lg px-8 border-accent text-accent hover:bg-accent/10" onClick={(e) => smoothScroll(e as any, '#portfolio')}>
               Наше портфолио
             </Button>
           </div>
@@ -276,9 +364,13 @@ export default function Index() {
                     {calculatePrice().toLocaleString('ru-RU')} ₽
                   </span>
                 </div>
-                <Button className="w-full mt-6 bg-primary hover:bg-primary/90" size="lg">
-                  Получить точный расчёт
-                </Button>
+                <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button className="w-full mt-6 bg-primary hover:bg-primary/90" size="lg">
+                      Получить точный расчёт
+                    </Button>
+                  </DialogTrigger>
+                </Dialog>
               </div>
             </CardContent>
           </Card>
@@ -401,18 +493,18 @@ export default function Index() {
           </div>
           <Card className="border-primary/20">
             <CardContent className="pt-6">
-              <form className="space-y-6">
+              <form onSubmit={handleFormSubmit} className="space-y-6">
                 <div>
                   <label className="text-sm font-medium mb-2 block">Ваше имя</label>
-                  <Input placeholder="Иван Иванов" />
+                  <Input required placeholder="Иван Иванов" />
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-2 block">Email</label>
-                  <Input type="email" placeholder="ivan@example.com" />
+                  <Input required type="email" placeholder="ivan@example.com" />
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-2 block">Телефон</label>
-                  <Input type="tel" placeholder="+7 (999) 123-45-67" />
+                  <Input required type="tel" placeholder="+7 (999) 123-45-67" />
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-2 block">Сообщение</label>
@@ -421,7 +513,7 @@ export default function Index() {
                     rows={5}
                   />
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90" size="lg">
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90" size="lg">
                   Отправить заявку
                 </Button>
               </form>
