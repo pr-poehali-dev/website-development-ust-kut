@@ -146,13 +146,44 @@ export default function Portfolio() {
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: 'Заявка отправлена!',
-      description: 'Мы свяжемся с вами в ближайшее время.',
-    });
-    setIsDialogOpen(false);
+    const formData = new FormData(e.target as HTMLFormElement);
+    
+    try {
+      const response = await fetch('https://functions.poehali.dev/facfc1c0-72cc-4f8e-8c21-113d5964b377', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'request',
+          name: formData.get('name'),
+          phone: formData.get('phone'),
+          email: formData.get('email')
+        })
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok) {
+        toast({
+          title: 'Заявка отправлена!',
+          description: 'Мы свяжемся с вами в ближайшее время.',
+        });
+        setIsDialogOpen(false);
+      } else {
+        toast({
+          title: 'Ошибка',
+          description: result.error || 'Не удалось отправить заявку',
+          variant: 'destructive'
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Ошибка',
+        description: 'Проблема с подключением к серверу',
+        variant: 'destructive'
+      });
+    }
   };
 
   const filteredProjects = selectedCategory === 'Все проекты' 
@@ -187,15 +218,15 @@ export default function Portfolio() {
                 <form onSubmit={handleFormSubmit} className="space-y-4">
                   <div>
                     <label className="text-sm font-medium mb-2 block">Ваше имя</label>
-                    <Input required placeholder="Иван Иванов" />
+                    <Input name="name" required placeholder="Иван Иванов" />
                   </div>
                   <div>
                     <label className="text-sm font-medium mb-2 block">Телефон</label>
-                    <Input required type="tel" placeholder="+7 (999) 123-45-67" />
+                    <Input name="phone" required type="tel" placeholder="+7 (999) 123-45-67" />
                   </div>
                   <div>
                     <label className="text-sm font-medium mb-2 block">Email</label>
-                    <Input required type="email" placeholder="ivan@example.com" />
+                    <Input name="email" required type="email" placeholder="ivan@example.com" />
                   </div>
                   <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                     Отправить заявку
