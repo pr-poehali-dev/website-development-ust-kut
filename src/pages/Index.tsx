@@ -62,9 +62,9 @@ export default function Index() {
             <a href="#services" onClick={(e) => smoothScroll(e, '#services')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
               Услуги
             </a>
-            <a href="#portfolio" onClick={(e) => smoothScroll(e, '#portfolio')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
+            <span onClick={() => navigate('/portfolio')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
               Портфолио
-            </a>
+            </span>
             <a href="#calculator" onClick={(e) => smoothScroll(e, '#calculator')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
               Калькулятор
             </a>
