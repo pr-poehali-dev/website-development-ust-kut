@@ -138,32 +138,82 @@ export default function Index() {
       </nav>
 
       <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto text-center animate-fade-in">
-          <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
-            Веб-разработка в Усть-Куте
-          </Badge>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Создаём сайты,
-            <br />
-            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-              которые продают
-            </span>
-          </h1>
-          <p className="text-xl text-foreground/70 mb-8 max-w-2xl mx-auto">
-            Премиальная разработка сайтов, SEO-продвижение и цифровой маркетинг 
-            для бизнеса в Усть-Куте и по всей России
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
-                  Заказать проект
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="text-center md:text-left animate-fade-in">
+              <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
+                Веб-разработка в Усть-Куте
+              </Badge>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Создаём сайты,
+                <br />
+                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                  которые продают
+                </span>
+              </h1>
+              <p className="text-xl text-foreground/70 mb-8">
+                Премиальная разработка сайтов, SEO-продвижение и цифровой маркетинг 
+                для бизнеса в Усть-Куте и по всей России
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                      Заказать проект
+                    </Button>
+                  </DialogTrigger>
+                </Dialog>
+                <Button size="lg" variant="outline" className="text-lg px-8 border-accent text-accent hover:bg-accent/10" onClick={(e) => smoothScroll(e as any, '#portfolio')}>
+                  Наше портфолио
                 </Button>
-              </DialogTrigger>
-            </Dialog>
-            <Button size="lg" variant="outline" className="text-lg px-8 border-accent text-accent hover:bg-accent/10" onClick={(e) => smoothScroll(e as any, '#portfolio')}>
-              Наше портфолио
-            </Button>
+              </div>
+            </div>
+            
+            <div className="relative animate-slide-up">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 blur-3xl"></div>
+              <div className="relative">
+                <div className="bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/50 rounded-2xl p-8 shadow-2xl">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="flex gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-primary/60"></div>
+                      <div className="w-3 h-3 rounded-full bg-accent/60"></div>
+                      <div className="w-3 h-3 rounded-full bg-foreground/20"></div>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="h-4 bg-primary/20 rounded w-3/4"></div>
+                    <div className="h-4 bg-accent/20 rounded w-full"></div>
+                    <div className="h-4 bg-primary/20 rounded w-5/6"></div>
+                    <div className="h-32 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg mt-4 flex items-center justify-center">
+                      <Icon name="Laptop" className="text-primary/40" size={64} />
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 mt-4">
+                      <div className="h-16 bg-accent/10 rounded"></div>
+                      <div className="h-16 bg-primary/10 rounded"></div>
+                      <div className="h-16 bg-accent/10 rounded"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-sm border border-border/50 rounded-xl p-4 shadow-xl w-32">
+                  <div className="flex items-center gap-1 mb-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent/60"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary/60"></div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="h-2 bg-primary/20 rounded w-full"></div>
+                    <div className="h-2 bg-accent/20 rounded w-4/5"></div>
+                    <div className="h-16 bg-gradient-to-br from-accent/10 to-primary/10 rounded-lg flex items-center justify-center mt-2">
+                      <Icon name="Smartphone" className="text-accent/40" size={32} />
+                    </div>
+                    <div className="grid grid-cols-2 gap-1 mt-2">
+                      <div className="h-6 bg-primary/10 rounded"></div>
+                      <div className="h-6 bg-accent/10 rounded"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
