@@ -277,28 +277,32 @@ export default function Index() {
               {
                 icon: 'Code',
                 title: 'Разработка сайтов',
-                description: 'Создание современных сайтов на React, WordPress и других платформах'
+                description: 'Создание современных сайтов на React, WordPress и других платформах',
+                link: '/development'
               },
               {
                 icon: 'TrendingUp',
                 title: 'SEO-продвижение',
-                description: 'Комплексное продвижение в поисковых системах Яндекс и Google'
+                description: 'Комплексное продвижение в поисковых системах Яндекс и Google',
+                link: '/seo'
               },
               {
                 icon: 'Palette',
                 title: 'Веб-дизайн',
-                description: 'Эксклюзивный дизайн, который выделит ваш бренд среди конкурентов'
+                description: 'Эксклюзивный дизайн, который выделит ваш бренд среди конкурентов',
+                link: '/design'
               },
               {
                 icon: 'Megaphone',
                 title: 'Цифровой маркетинг',
-                description: 'Контекстная реклама, SMM и email-маркетинг для роста продаж'
+                description: 'Контекстная реклама, SMM и email-маркетинг для роста продаж',
+                link: '/marketing'
               }
             ].map((service, index) => (
               <Card 
                 key={index} 
                 className="group hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 cursor-pointer"
-                onClick={() => service.title === 'Разработка сайтов' && navigate('/development')}
+                onClick={() => service.link && navigate(service.link)}
               >
                 <CardHeader>
                   <Icon 
