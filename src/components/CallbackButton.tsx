@@ -53,12 +53,12 @@ export default function CallbackButton() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 left-6 z-50 group"
+        className="fixed bottom-24 right-6 z-50 group"
         aria-label="Заказать обратный звонок"
       >
         <div className="relative">
-          <div className="absolute inset-0 bg-accent rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse" />
-          <div className="relative w-14 h-14 bg-accent rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transform hover:scale-110 transition-all duration-300">
+          <div className="absolute inset-0 bg-green-500 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse" />
+          <div className="relative w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transform hover:scale-110 transition-all duration-300">
             <Icon name="Phone" className="text-white" size={24} />
           </div>
         </div>
