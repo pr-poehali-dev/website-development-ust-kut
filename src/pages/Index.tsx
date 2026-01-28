@@ -163,7 +163,7 @@ export default function Index() {
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/ad88edee-174d-428d-8f2f-14b7f45fb7ed.png" alt="Элегия" className="h-12" />
+            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/3e363ff2-4f8b-4f00-a7ce-75460e851e6e.png" alt="Элегия" className="h-16" />
           </div>
           <div className="hidden md:flex items-center gap-8">
             <a href="#services" onClick={(e) => smoothScroll(e, '#services')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
