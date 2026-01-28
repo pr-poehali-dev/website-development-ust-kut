@@ -296,7 +296,7 @@ function PortfolioContent() {
               <Card 
                 key={project.id}
                 className="group overflow-hidden hover:border-primary transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-primary/20"
-                onClick={() => project.slug ? navigate(`/portfolio/${project.slug}`) : setSelectedProject(project)}
+                onClick={() => navigate(`/portfolio/${project.slug}`)}
               >
                 <div className={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center text-7xl relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
