@@ -413,9 +413,8 @@ function BlogContent() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Icon name="Sparkles" className="text-primary" size={28} />
-                <span className="text-xl font-bold">Элегия</span>
+              <div className="flex items-center mb-4">
+                <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/3e363ff2-4f8b-4f00-a7ce-75460e851e6e.png" alt="Элегия" className="h-10" />
               </div>
               <p className="text-sm text-foreground/60">
                 Премиальная разработка сайтов и SEO-продвижение в Усть-Куте
