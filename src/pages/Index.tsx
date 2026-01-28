@@ -197,21 +197,21 @@ export default function Index() {
       company: 'ООО "ТехноМаркет"',
       rating: 5,
       text: 'Отличная работа! Сайт получился современным и функциональным. Команда профессионально подошла к проекту.',
-      avatar: '👩‍💼'
+      avatar: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/c15ea360-eeb2-4a9d-9f39-fad4d3aead6d.jpg'
     },
     {
       name: 'Михаил Сидоров',
       company: 'СтройГрад',
       rating: 5,
       text: 'Благодарю за качественную работу над корпоративным сайтом. Увеличили поток заявок в 2 раза!',
-      avatar: '👨‍💼'
+      avatar: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/ebde9473-07ff-4fb4-993c-eab6df77130b.jpg'
     },
     {
       name: 'Елена Иванова',
       company: 'Speak Up School',
       rating: 5,
       text: 'Сделали лендинг быстро и качественно. Конверсия превзошла все ожидания - 18%!',
-      avatar: '👩'
+      avatar: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/cc8a6e81-daf7-4c75-8ce7-cb7b313abc3b.jpg'
     }
   ];
 
@@ -352,7 +352,7 @@ export default function Index() {
               <Card key={index} className="hover:border-primary transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="text-4xl">{review.avatar}</div>
+                    <img src={review.avatar} alt={review.name} className="w-16 h-16 rounded-full object-cover" />
                     <div>
                       <CardTitle className="text-lg">{review.name}</CardTitle>
                       <CardDescription>{review.company}</CardDescription>
