@@ -688,14 +688,14 @@ export default function Index() {
                     <Icon name="Phone" className="text-accent" size={24} />
                     <div>
                       <div className="text-sm text-foreground/60">Телефон</div>
-                      <div className="font-medium">+7 (999) 123-45-67</div>
+                      <a href="tel:+79039885627" className="font-medium hover:text-primary transition-colors">+7 (903) 988-56-27</a>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Icon name="Mail" className="text-accent" size={24} />
                     <div>
                       <div className="text-sm text-foreground/60">Email</div>
-                      <div className="font-medium">info@elegia.ru</div>
+                      <a href="mailto:elegy38@yandex.ru" className="font-medium hover:text-primary transition-colors">elegy38@yandex.ru</a>
                     </div>
                   </div>
                 </div>
@@ -738,8 +738,8 @@ export default function Index() {
               <h3 className="font-semibold mb-4">Контакты</h3>
               <ul className="space-y-2 text-sm text-foreground/70">
                 <li>г. Усть-Кут</li>
-                <li>+7 (999) 123-45-67</li>
-                <li>info@elegia.ru</li>
+                <li><a href="tel:+79039885627" className="hover:text-primary transition-colors">+7 (903) 988-56-27</a></li>
+                <li><a href="mailto:elegy38@yandex.ru" className="hover:text-primary transition-colors">elegy38@yandex.ru</a></li>
               </ul>
             </div>
           </div>
