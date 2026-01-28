@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import VkButton from '@/components/VkButton';
 import CallbackButton from '@/components/CallbackButton';
+import MobileHint from '@/components/MobileHint';
 
 const projects = [
   {
@@ -146,6 +147,7 @@ export default function Portfolio() {
     <>
       <VkButton />
       <CallbackButton />
+      <MobileHint />
       <PortfolioContent />
     </>
   );
