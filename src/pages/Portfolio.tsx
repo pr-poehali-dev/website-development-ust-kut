@@ -8,6 +8,7 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import VkButton from '@/components/VkButton';
+import CallbackButton from '@/components/CallbackButton';
 
 const projects = [
   {
@@ -144,6 +145,7 @@ export default function Portfolio() {
   return (
     <>
       <VkButton />
+      <CallbackButton />
       <PortfolioContent />
     </>
   );

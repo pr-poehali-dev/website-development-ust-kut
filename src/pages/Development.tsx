@@ -8,11 +8,13 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import VkButton from '@/components/VkButton';
+import CallbackButton from '@/components/CallbackButton';
 
 export default function Development() {
   return (
     <>
       <VkButton />
+      <CallbackButton />
       <DevelopmentContent />
     </>
   );
