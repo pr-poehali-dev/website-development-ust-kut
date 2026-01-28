@@ -58,8 +58,8 @@ export default function CallbackButton() {
       >
         <div className="relative">
           <div className="absolute inset-0 bg-green-500 rounded-full blur-xl opacity-50 group-hover:opacity-100 transition-all duration-500 animate-pulse group-hover:blur-2xl" />
-          <div className="relative w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transform hover:scale-110 hover:rotate-12 transition-all duration-300 drop-shadow-2xl">
-            <Icon name="Phone" className="text-white" size={28} />
+          <div className="relative w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 group-hover:duration-500 drop-shadow-2xl">
+            <Icon name="Phone" className="text-white" size={32} />
           </div>
         </div>
       </button>
