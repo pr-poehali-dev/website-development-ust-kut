@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import Icon from '@/components/ui/icon';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,6 +26,14 @@ export default function Header({
 }: HeaderProps) {
   const navigate = useNavigate();
 
+  const services = [
+    { name: 'Разработка сайтов', path: '/development', icon: 'Code' },
+    { name: 'SEO-продвижение', path: '/seo', icon: 'TrendingUp' },
+    { name: 'Веб-дизайн', path: '/design', icon: 'Palette' },
+    { name: 'Цифровой маркетинг', path: '/marketing', icon: 'Megaphone' },
+    { name: 'Вывод на маркетплейсы', path: '/marketplaces', icon: 'ShoppingBag' }
+  ];
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -32,9 +41,24 @@ export default function Header({
           <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/3e363ff2-4f8b-4f00-a7ce-75460e851e6e.png" alt="Элегия" className="h-16" />
         </div>
         <div className="hidden md:flex items-center gap-8">
-          <a href="#services" onClick={(e) => smoothScroll(e, '#services')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
-            Услуги
-          </a>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-foreground/80 hover:text-primary transition-colors cursor-pointer flex items-center gap-1">
+              Услуги
+              <Icon name="ChevronDown" size={16} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-56">
+              {services.map((service) => (
+                <DropdownMenuItem 
+                  key={service.path}
+                  onClick={() => navigate(service.path)}
+                  className="cursor-pointer"
+                >
+                  <Icon name={service.icon as any} size={16} className="mr-2" />
+                  {service.name}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
           <span onClick={() => navigate('/portfolio')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
             Портфолио
           </span>
@@ -86,9 +110,19 @@ export default function Header({
           </SheetTrigger>
           <SheetContent side="right">
             <div className="flex flex-col gap-6 mt-8">
-              <a href="#services" onClick={(e) => smoothScroll(e, '#services')} className="text-lg text-foreground/80 hover:text-primary transition-colors">
-                Услуги
-              </a>
+              <div className="flex flex-col gap-3">
+                <div className="text-lg font-semibold text-foreground/90 mb-2">Услуги</div>
+                {services.map((service) => (
+                  <span 
+                    key={service.path}
+                    onClick={() => { navigate(service.path); setMobileMenuOpen(false); }} 
+                    className="text-base text-foreground/70 hover:text-primary transition-colors cursor-pointer pl-4 flex items-center gap-2"
+                  >
+                    <Icon name={service.icon as any} size={16} />
+                    {service.name}
+                  </span>
+                ))}
+              </div>
               <span onClick={() => { navigate('/portfolio'); setMobileMenuOpen(false); }} className="text-lg text-foreground/80 hover:text-primary transition-colors cursor-pointer">
                 Портфолио
               </span>
