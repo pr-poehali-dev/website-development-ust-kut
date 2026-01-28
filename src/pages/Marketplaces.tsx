@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -71,6 +72,108 @@ function MarketplacesContent() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Вывод на маркетплейсы Wildberries, Ozon | Элегия Усть-Кут</title>
+        <meta name="description" content="Запуск и продвижение на маркетплейсах Wildberries, Ozon, Яндекс.Маркет. Регистрация, создание карточек товаров, настройка рекламы. От 40 000 ₽/мес" />
+        <meta name="keywords" content="вывод на маркетплейсы, wildberries, ozon, яндекс маркет, карточки товаров, продвижение маркетплейс, реклама wildberries, усть-кут" />
+        <link rel="canonical" href="https://elegiya-web.ru/marketplaces" />
+        
+        <meta property="og:title" content="Вывод на маркетплейсы Wildberries, Ozon | Элегия" />
+        <meta property="og:description" content="Полный цикл запуска и продвижения на маркетплейсах. Регистрация магазина, создание карточек товаров, настройка рекламы, аналитика. Тарифы от 40 000 ₽/мес" />
+        <meta property="og:url" content="https://elegiya-web.ru/marketplaces" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/5f5ec519-4d59-4e2e-8cee-92ece664a9fb.jpg" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Вывод бизнеса на маркетплейсы",
+            "name": "Запуск и продвижение на маркетплейсах",
+            "description": "Полный цикл запуска и продвижения бизнеса на Wildberries, Ozon, Яндекс.Маркет и других маркетплейсах",
+            "provider": {
+              "@type": "Organization",
+              "name": "Элегия",
+              "url": "https://elegiya-web.ru",
+              "telephone": "+7 (903) 988-56-27",
+              "email": "elegy38@yandex.ru",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Усть-Кут",
+                "addressRegion": "Иркутская область",
+                "addressCountry": "RU"
+              }
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Россия"
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Тариф Старт",
+                "description": "Для запуска на одной площадке",
+                "price": "40000",
+                "priceCurrency": "RUB",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "40000",
+                  "priceCurrency": "RUB",
+                  "referenceQuantity": {
+                    "@type": "QuantitativeValue",
+                    "value": "1",
+                    "unitCode": "MON"
+                  }
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Тариф Рост",
+                "description": "Для активных продаж на 2-3 площадках",
+                "price": "70000",
+                "priceCurrency": "RUB"
+              },
+              {
+                "@type": "Offer",
+                "name": "Тариф Максимум",
+                "description": "Полное ведение магазина на всех маркетплейсах",
+                "price": "120000",
+                "priceCurrency": "RUB"
+              }
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Услуги вывода на маркетплейсы",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Регистрация и настройка магазина",
+                    "description": "Регистрация на Wildberries, Ozon, Яндекс.Маркет, настройка личного кабинета, подключение оплаты и доставки"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Создание карточек товаров",
+                    "description": "Профессиональная фотосъемка, написание продающих описаний, заполнение характеристик"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Реклама на маркетплейсах",
+                    "description": "Настройка и ведение рекламных кампаний на площадках"
+                  }
+                }
+              ]
+            }
+          })}
+        </script>
+      </Helmet>
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
