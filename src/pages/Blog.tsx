@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
+import VkButton from '@/components/VkButton';
 
 const articles = [
   {
@@ -122,6 +123,15 @@ const articles = [
 const categories = ['Все статьи', 'E-commerce', 'SEO', 'Веб-дизайн', 'Разработка', 'Маркетинг'];
 
 export default function Blog() {
+  return (
+    <>
+      <VkButton />
+      <BlogContent />
+    </>
+  );
+}
+
+function BlogContent() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('Все статьи');
   const [selectedArticle, setSelectedArticle] = useState<typeof articles[0] | null>(null);

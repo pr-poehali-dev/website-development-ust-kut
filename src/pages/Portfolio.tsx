@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
+import VkButton from '@/components/VkButton';
 
 const projects = [
   {
@@ -140,6 +141,15 @@ const projects = [
 const categories = ['Все проекты', 'E-commerce', 'Бизнес', 'Landing', 'Портал', 'Медицина', 'HoReCa', 'Образование'];
 
 export default function Portfolio() {
+  return (
+    <>
+      <VkButton />
+      <PortfolioContent />
+    </>
+  );
+}
+
+function PortfolioContent() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('Все проекты');
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);

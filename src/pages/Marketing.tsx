@@ -7,8 +7,18 @@ import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
+import VkButton from '@/components/VkButton';
 
 export default function Marketing() {
+  return (
+    <>
+      <VkButton />
+      <MarketingContent />
+    </>
+  );
+}
+
+function MarketingContent() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();

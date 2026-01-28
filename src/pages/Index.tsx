@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
+import VkButton from '@/components/VkButton';
 
 export default function Index() {
   const [calculatorValues, setCalculatorValues] = useState({
@@ -160,6 +161,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
+      <VkButton />
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
