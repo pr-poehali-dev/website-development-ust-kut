@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -71,6 +72,76 @@ function SEOContent() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>SEO-продвижение сайтов в ТОП Яндекс и Google | Элегия Усть-Кут</title>
+        <meta name="description" content="Комплексное SEO-продвижение сайтов в Яндекс и Google. Технический аудит, семантика, ссылочное продвижение, контент-маркетинг. Тарифы от 25 000 ₽/мес. +340% рост трафика" />
+        <meta name="keywords" content="seo продвижение, seo усть-кут, продвижение сайта, яндекс топ, google топ, технический аудит, семантическое ядро, ссылочное продвижение" />
+        <link rel="canonical" href="https://elegiya-web.ru/seo" />
+        
+        <meta property="og:title" content="SEO-продвижение сайтов в ТОП | Элегия" />
+        <meta property="og:description" content="Выведем ваш сайт в ТОП Яндекс и Google. Комплексное SEO: аудит, оптимизация, ссылки, контент. Результат +340% трафика" />
+        <meta property="og:url" content="https://elegiya-web.ru/seo" />
+        <meta property="og:type" content="website" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "SEO-продвижение сайтов",
+            "name": "Комплексное SEO-продвижение",
+            "description": "Продвижение сайтов в Яндекс и Google: техническая оптимизация, семантика, контент, ссылочное продвижение",
+            "provider": {
+              "@type": "Organization",
+              "name": "Элегия",
+              "url": "https://elegiya-web.ru",
+              "telephone": "+7 (903) 988-56-27",
+              "email": "elegy38@yandex.ru"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Россия"
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Базовый тариф",
+                "description": "Для небольших сайтов и локального бизнеса",
+                "price": "25000",
+                "priceCurrency": "RUB",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "25000",
+                  "priceCurrency": "RUB",
+                  "referenceQuantity": {
+                    "@type": "QuantitativeValue",
+                    "value": "1",
+                    "unitCode": "MON"
+                  }
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Оптимальный тариф",
+                "description": "Для средних сайтов с конкуренцией",
+                "price": "45000",
+                "priceCurrency": "RUB"
+              },
+              {
+                "@type": "Offer",
+                "name": "Максимальный тариф",
+                "description": "Для крупных проектов и высокой конкуренции",
+                "price": "80000",
+                "priceCurrency": "RUB"
+              }
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "47"
+            }
+          })}
+        </script>
+      </Helmet>
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -71,6 +72,76 @@ function MarketingContent() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Цифровой маркетинг Усть-Кут | Контекстная реклама | Элегия</title>
+        <meta name="description" content="Комплексный цифровой маркетинг в Усть-Куте: контекстная реклама Яндекс.Директ/Google Ads, SMM, таргетированная реклама, email-маркетинг. Привлечение клиентов и рост продаж" />
+        <meta name="keywords" content="цифровой маркетинг усть-кут, контекстная реклама, яндекс директ, google ads, smm, таргет, таргетированная реклама, email маркетинг, продвижение в соцсетях" />
+        <link rel="canonical" href="https://elegiya-web.ru/marketing" />
+        
+        <meta property="og:title" content="Цифровой маркетинг и контекстная реклама | Элегия" />
+        <meta property="og:description" content="Полный цикл digital-маркетинга: контекстная реклама, SMM, таргет, email-маркетинг. Привлекаем клиентов и увеличиваем продажи" />
+        <meta property="og:url" content="https://elegiya-web.ru/marketing" />
+        <meta property="og:type" content="website" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Цифровой маркетинг",
+            "name": "Комплексный digital-маркетинг",
+            "description": "Контекстная реклама Яндекс.Директ и Google Ads, SMM-продвижение, таргетированная реклама, email-маркетинг",
+            "provider": {
+              "@type": "Organization",
+              "name": "Элегия",
+              "url": "https://elegiya-web.ru",
+              "telephone": "+7 (903) 988-56-27",
+              "email": "elegy38@yandex.ru"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Россия"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Услуги цифрового маркетинга",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Контекстная реклама",
+                    "description": "Настройка и ведение рекламы в Яндекс.Директ и Google Ads"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "SMM-продвижение",
+                    "description": "Продвижение бизнеса в социальных сетях"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Таргетированная реклама",
+                    "description": "Реклама в ВКонтакте, Телеграм, MyTarget"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Email-маркетинг",
+                    "description": "Рассылки и автоматизация продаж"
+                  }
+                }
+              ]
+            }
+          })}
+        </script>
+      </Helmet>
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>

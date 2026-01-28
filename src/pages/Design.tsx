@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -71,6 +72,61 @@ function DesignContent() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Веб-дизайн Усть-Кут | UI/UX дизайн сайтов | Элегия</title>
+        <meta name="description" content="Профессиональный веб-дизайн сайтов в Усть-Куте: UI/UX дизайн, брендинг, фирстиль, логотипы. Современный дизайн, адаптивность, прототипирование. От 30 000 ₽" />
+        <meta name="keywords" content="веб дизайн усть-кут, ui ux дизайн, дизайн сайта, брендинг, фирменный стиль, логотип, figma, прототип, адаптивный дизайн" />
+        <link rel="canonical" href="https://elegiya-web.ru/design" />
+        
+        <meta property="og:title" content="Веб-дизайн и UI/UX дизайн сайтов | Элегия" />
+        <meta property="og:description" content="Создаем современный дизайн сайтов и приложений. UI/UX, брендинг, фирстиль. Прототипирование, адаптивная верстка. От 30 000 ₽" />
+        <meta property="og:url" content="https://elegiya-web.ru/design" />
+        <meta property="og:type" content="website" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Веб-дизайн",
+            "name": "UI/UX дизайн сайтов и приложений",
+            "description": "Профессиональный веб-дизайн: создание уникального дизайна сайтов, приложений, брендинг, фирменный стиль",
+            "provider": {
+              "@type": "Organization",
+              "name": "Элегия",
+              "url": "https://elegiya-web.ru",
+              "telephone": "+7 (903) 988-56-27",
+              "email": "elegy38@yandex.ru"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Россия"
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Дизайн лендинга",
+                "description": "Дизайн одностраничного сайта с прототипом",
+                "price": "30000",
+                "priceCurrency": "RUB"
+              },
+              {
+                "@type": "Offer",
+                "name": "Дизайн многостраничного сайта",
+                "description": "Полноценный дизайн с UI-китом и адаптивами",
+                "price": "60000",
+                "priceCurrency": "RUB"
+              },
+              {
+                "@type": "Offer",
+                "name": "Фирменный стиль",
+                "description": "Разработка фирстиля с логотипом и брендбуком",
+                "price": "50000",
+                "priceCurrency": "RUB"
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -71,6 +72,61 @@ function DevelopmentContent() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Разработка сайтов Усть-Кут | Создание сайтов под ключ | Элегия</title>
+        <meta name="description" content="Разработка сайтов любой сложности в Усть-Куте: лендинги от 35 000 ₽, корпоративные сайты, интернет-магазины, веб-порталы. Современный стек технологий, адаптивная верстка, SEO-оптимизация. Гарантия 12 месяцев" />
+        <meta name="keywords" content="разработка сайтов усть-кут, создание сайтов, лендинг, интернет-магазин, корпоративный сайт, react, wordpress, веб-разработка, адаптивная верстка" />
+        <link rel="canonical" href="https://elegiya-web.ru/development" />
+        
+        <meta property="og:title" content="Разработка сайтов в Усть-Куте под ключ | Элегия" />
+        <meta property="og:description" content="Создаем современные сайты: лендинги, корпоративные сайты, интернет-магазины. От 35 000 ₽. React, WordPress, адаптивная верстка, SEO-оптимизация" />
+        <meta property="og:url" content="https://elegiya-web.ru/development" />
+        <meta property="og:type" content="website" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Разработка веб-сайтов",
+            "name": "Разработка сайтов под ключ",
+            "description": "Создание сайтов любой сложности: лендинги, корпоративные сайты, интернет-магазины, веб-порталы на современных технологиях",
+            "provider": {
+              "@type": "Organization",
+              "name": "Элегия",
+              "url": "https://elegiya-web.ru",
+              "telephone": "+7 (903) 988-56-27",
+              "email": "elegy38@yandex.ru"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Россия"
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Лендинг",
+                "description": "Продающие одностраничники с высокой конверсией",
+                "price": "35000",
+                "priceCurrency": "RUB"
+              },
+              {
+                "@type": "Offer",
+                "name": "Корпоративный сайт",
+                "description": "Представительские сайты компаний с CMS",
+                "price": "80000",
+                "priceCurrency": "RUB"
+              },
+              {
+                "@type": "Offer",
+                "name": "Интернет-магазин",
+                "description": "E-commerce с интеграцией платежей и 1С",
+                "price": "150000",
+                "priceCurrency": "RUB"
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
