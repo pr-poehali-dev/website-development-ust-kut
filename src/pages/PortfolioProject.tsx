@@ -141,6 +141,8 @@ const projectsData: Record<string, any> = {
   }
 };
 
+const projectSlugs = ['technomarket', 'stroygrad', 'speakup', 'avtopoisk', 'zdorovie', 'sibirskie-traditsii', 'mastera-rf', 'codeacademy', 'athletezone'];
+
 export default function PortfolioProject() {
   return (
     <>
@@ -160,6 +162,13 @@ function ProjectContent() {
   const { toast } = useToast();
 
   const project = slug ? projectsData[slug] : null;
+  
+  const currentIndex = slug ? projectSlugs.indexOf(slug) : -1;
+  const nextSlug = currentIndex >= 0 && currentIndex < projectSlugs.length - 1 ? projectSlugs[currentIndex + 1] : projectSlugs[0];
+  const prevSlug = currentIndex > 0 ? projectSlugs[currentIndex - 1] : projectSlugs[projectSlugs.length - 1];
+  
+  const nextProject = projectsData[nextSlug];
+  const prevProject = projectsData[prevSlug];
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -373,22 +382,68 @@ function ProjectContent() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-card/30">
-        <div className="container mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Хотите похожий проект?
-          </h2>
-          <p className="text-xl text-foreground/70 mb-8">
-            Мы разработаем индивидуальное решение для вашего бизнеса
-          </p>
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                <Icon name="MessageSquare" className="mr-2" size={20} />
-                Обсудить проект
-              </Button>
-            </DialogTrigger>
-          </Dialog>
+      <section className="py-12 px-4 bg-card/30">
+        <div className="container mx-auto max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <Card 
+              className="group cursor-pointer hover:border-primary transition-all duration-300 hover:shadow-lg"
+              onClick={() => navigate(`/portfolio/${prevSlug}`)}
+            >
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Icon name="ArrowLeft" className="text-accent" size={24} />
+                  <div className="text-sm text-foreground/60">Предыдущий проект</div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className={`w-16 h-16 rounded-lg bg-gradient-to-br ${prevProject.gradient} flex items-center justify-center text-3xl`}>
+                    {prevProject.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold group-hover:text-primary transition-colors">{prevProject.title}</h3>
+                    <p className="text-sm text-foreground/60">{prevProject.category}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card 
+              className="group cursor-pointer hover:border-primary transition-all duration-300 hover:shadow-lg"
+              onClick={() => navigate(`/portfolio/${nextSlug}`)}
+            >
+              <CardContent className="pt-6">
+                <div className="flex items-center justify-end gap-3 mb-4">
+                  <div className="text-sm text-foreground/60">Следующий проект</div>
+                  <Icon name="ArrowRight" className="text-accent" size={24} />
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="flex-1 text-right">
+                    <h3 className="font-semibold group-hover:text-primary transition-colors">{nextProject.title}</h3>
+                    <p className="text-sm text-foreground/60">{nextProject.category}</p>
+                  </div>
+                  <div className={`w-16 h-16 rounded-lg bg-gradient-to-br ${nextProject.gradient} flex items-center justify-center text-3xl`}>
+                    {nextProject.icon}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Хотите похожий проект?
+            </h2>
+            <p className="text-xl text-foreground/70 mb-8">
+              Мы разработаем индивидуальное решение для вашего бизнеса
+            </p>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  <Icon name="MessageSquare" className="mr-2" size={20} />
+                  Обсудить проект
+                </Button>
+              </DialogTrigger>
+            </Dialog>
+          </div>
         </div>
       </section>
 
