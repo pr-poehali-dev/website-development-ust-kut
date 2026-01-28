@@ -116,23 +116,32 @@ function MarketplacesContent() {
 
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
-            <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
-              Вывод на маркетплейсы
-            </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Выводим бизнес на <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">маркетплейсы</span>
-            </h1>
-            <p className="text-xl text-foreground/70 mb-8">
-              Полный цикл запуска и продвижения на Wildberries, Ozon, Яндекс.Маркет и других площадках
-            </p>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
-                  Начать продавать
-                </Button>
-              </DialogTrigger>
-            </Dialog>
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div className="animate-fade-in">
+              <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
+                Вывод на маркетплейсы
+              </Badge>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Выводим бизнес на <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">маркетплейсы</span>
+              </h1>
+              <p className="text-xl text-foreground/70 mb-8">
+                Полный цикл запуска и продвижения на Wildberries, Ozon, Яндекс.Маркет и других площадках
+              </p>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                    Начать продавать
+                  </Button>
+                </DialogTrigger>
+              </Dialog>
+            </div>
+            <div className="animate-fade-in">
+              <img 
+                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/5f5ec519-4d59-4e2e-8cee-92ece664a9fb.jpg" 
+                alt="Маркетплейсы" 
+                className="w-full h-auto rounded-2xl shadow-2xl"
+              />
+            </div>
           </div>
         </div>
       </section>
