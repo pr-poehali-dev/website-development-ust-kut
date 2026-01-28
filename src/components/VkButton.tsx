@@ -8,10 +8,10 @@ export default function VkButton() {
       aria-label="Наша группа ВКонтакте"
     >
       <div className="relative">
-        <div className="absolute inset-0 bg-[#0077FF] rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse" />
-        <div className="relative w-14 h-14 bg-[#0077FF] rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transform hover:scale-110 transition-all duration-300">
+        <div className="absolute inset-0 bg-[#0077FF] rounded-full blur-xl opacity-50 group-hover:opacity-100 transition-all duration-500 animate-pulse group-hover:blur-2xl" />
+        <div className="relative w-14 h-14 bg-gradient-to-br from-[#0077FF] to-[#0055CC] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 group-hover:duration-500">
           <svg
-            className="w-8 h-8 text-white"
+            className="w-8 h-8 text-white transform group-hover:scale-110 transition-transform duration-300"
             viewBox="0 0 48 48"
             fill="currentColor"
           >
