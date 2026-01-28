@@ -8,6 +8,7 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import VkButton from '@/components/VkButton';
+import TelegramButton from '@/components/TelegramButton';
 import CallbackButton from '@/components/CallbackButton';
 import MobileHint from '@/components/MobileHint';
 
@@ -15,6 +16,7 @@ export default function Development() {
   return (
     <>
       <VkButton />
+      <TelegramButton />
       <CallbackButton />
       <MobileHint />
       <DevelopmentContent />

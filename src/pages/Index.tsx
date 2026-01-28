@@ -11,6 +11,7 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import VkButton from '@/components/VkButton';
+import TelegramButton from '@/components/TelegramButton';
 import CallbackButton from '@/components/CallbackButton';
 import MobileHint from '@/components/MobileHint';
 
@@ -164,6 +165,7 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background">
       <VkButton />
+      <TelegramButton />
       <CallbackButton />
       <MobileHint />
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
