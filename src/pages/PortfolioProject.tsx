@@ -1,0 +1,369 @@
+import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import Icon from '@/components/ui/icon';
+import { useToast } from '@/hooks/use-toast';
+import VkButton from '@/components/VkButton';
+import TelegramButton from '@/components/TelegramButton';
+import CallbackButton from '@/components/CallbackButton';
+import MobileHint from '@/components/MobileHint';
+
+const projectsData: Record<string, any> = {
+  'technomarket': {
+    id: 1,
+    title: 'Интернет-магазин электроники TechnoMarket',
+    category: 'E-commerce',
+    icon: '🛒',
+    description: 'Полнофункциональный интернет-магазин с интеграцией 1С, онлайн-оплатой и системой лояльности',
+    fullDescription: 'Разработали современный интернет-магазин электроники с удобной навигацией, быстрым поиском и интеграцией с 1С. Внедрили систему онлайн-оплаты через Stripe и программу лояльности для постоянных клиентов.',
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', '1C'],
+    results: ['+280% конверсия', '15 000+ товаров', '500+ заказов/день'],
+    gradient: 'from-blue-500/20 to-purple-500/20',
+    challenges: ['Интеграция с 1С в реальном времени', 'Оптимизация загрузки каталога из 15000+ товаров', 'Система автоматического расчета доставки'],
+    solutions: ['Реализовали WebSocket для синхронизации остатков', 'Внедрили виртуальную прокрутку и ленивую загрузку', 'Интегрировали API служб доставки СДЭК и Boxberry'],
+    features: ['Онлайн-оплата банковскими картами', 'Программа лояльности с бонусами', 'Сравнение товаров', 'Отложенная покупка', 'Трекинг заказов']
+  },
+  'stroygrad': {
+    id: 2,
+    title: 'Корпоративный сайт строительной компании СтройГрад',
+    category: 'Бизнес',
+    icon: '🏢',
+    description: 'Представительский сайт с каталогом объектов, калькулятором стоимости и CRM-интеграцией',
+    fullDescription: 'Создали премиальный корпоративный сайт для строительной компании с портфолио реализованных проектов, калькулятором стоимости строительства и интеграцией с CRM Битрикс24.',
+    technologies: ['WordPress', 'PHP', 'MySQL', 'Битрикс24'],
+    results: ['+150% заявок', 'ТОП-5 по региону', '85% клиентов из сайта'],
+    gradient: 'from-orange-500/20 to-red-500/20',
+    challenges: ['Презентация сложных строительных проектов', 'Калькулятор с множеством параметров', 'Автоматизация обработки заявок'],
+    solutions: ['3D-туры и дрон-съемка объектов', 'Многошаговый калькулятор с визуализацией', 'Автоматическая передача лидов в CRM'],
+    features: ['Онлайн-калькулятор стоимости', '3D-туры по объектам', 'Каталог готовых проектов', 'Блог о строительстве', 'Интеграция с Битрикс24']
+  },
+  'speakup': {
+    id: 3,
+    title: 'Лендинг онлайн-школы английского Speak Up',
+    category: 'Landing',
+    icon: '🚀',
+    description: 'Продающий лендинг с видео-презентацией, отзывами учеников и системой записи на пробный урок',
+    fullDescription: 'Разработали высококонверсионный лендинг для онлайн-школы английского языка с акцентом на социальные доказательства и простоту записи на пробный урок.',
+    technologies: ['React', 'Tailwind CSS', 'Vite'],
+    results: ['18% конверсия', '400+ заявок/месяц', '2 секунды загрузка'],
+    gradient: 'from-green-500/20 to-emerald-500/20',
+    challenges: ['Высокая конверсия с холодного трафика', 'Быстрая загрузка с видео', 'Доверие к онлайн-образованию'],
+    solutions: ['А/В тестирование 15+ вариантов', 'Ленивая загрузка и оптимизация видео', 'Блок с сертификатами и отзывами учеников'],
+    features: ['Видео-презентация курсов', 'Форма записи на пробный урок', 'Отзывы с фото учеников', 'Калькулятор стоимости обучения', 'Live-чат с менеджером']
+  },
+  'avtopoisk': {
+    id: 4,
+    title: 'Портал объявлений АвтоПоиск',
+    category: 'Портал',
+    icon: '🚗',
+    description: 'Классифайд-портал для продажи авто с личным кабинетом, фильтрами и системой платных объявлений',
+    fullDescription: 'Разработали масштабный портал объявлений по продаже автомобилей с расширенными фильтрами, личным кабинетом продавца и системой монетизации через платные объявления.',
+    technologies: ['Next.js', 'PostgreSQL', 'Redis', 'AWS S3'],
+    results: ['25 000+ объявлений', '100K посещений/месяц', 'Монетизация с 1 месяца'],
+    gradient: 'from-cyan-500/20 to-blue-500/20',
+    challenges: ['Быстрый поиск по 25000+ объявлениям', 'Модерация контента', 'Монетизация портала'],
+    solutions: ['Elasticsearch для полнотекстового поиска', 'Автоматическая модерация + ручная проверка', 'Платные тарифы: выделение, подъем, топ'],
+    features: ['Расширенный поиск с фильтрами', 'Сравнение автомобилей', 'Избранное и сохраненные поиски', 'Статистика просмотров', 'Платные услуги продвижения']
+  }
+};
+
+export default function PortfolioProject() {
+  return (
+    <>
+      <VkButton />
+      <TelegramButton />
+      <CallbackButton />
+      <MobileHint />
+      <ProjectContent />
+    </>
+  );
+}
+
+function ProjectContent() {
+  const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { toast } = useToast();
+
+  const project = slug ? projectsData[slug] : null;
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    
+    try {
+      const response = await fetch('https://functions.poehali.dev/facfc1c0-72cc-4f8e-8c21-113d5964b377', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'request',
+          name: formData.get('name'),
+          phone: formData.get('phone'),
+          email: formData.get('email'),
+          message: `Интересует проект: ${project?.title}`
+        })
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok) {
+        toast({
+          title: 'Заявка отправлена!',
+          description: 'Мы свяжемся с вами в ближайшее время.',
+        });
+        setIsDialogOpen(false);
+      } else {
+        toast({
+          title: 'Ошибка',
+          description: result.error || 'Не удалось отправить заявку',
+          variant: 'destructive'
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Ошибка',
+        description: 'Проблема с подключением к серверу',
+        variant: 'destructive'
+      });
+    }
+  };
+
+  if (!project) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Проект не найден</h1>
+          <Button onClick={() => navigate('/portfolio')}>Вернуться к портфолио</Button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
+            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/3e363ff2-4f8b-4f00-a7ce-75460e851e6e.png" alt="Элегия" className="h-16" />
+          </div>
+          <div className="flex items-center gap-6">
+            <Button variant="ghost" onClick={() => navigate('/portfolio')}>
+              <Icon name="ArrowLeft" className="mr-2" size={18} />
+              К портфолио
+            </Button>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="bg-primary hover:bg-primary/90">Обсудить проект</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Обсудить похожий проект</DialogTitle>
+                  <DialogDescription>
+                    Заполните форму, и мы свяжемся с вами для обсуждения деталей
+                  </DialogDescription>
+                </DialogHeader>
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Ваше имя</label>
+                    <Input name="name" required placeholder="Иван Иванов" />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Телефон</label>
+                    <Input name="phone" required type="tel" placeholder="+7 (999) 123-45-67" />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Email</label>
+                    <Input name="email" required type="email" placeholder="ivan@example.com" />
+                  </div>
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                    Отправить заявку
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </div>
+        </div>
+      </nav>
+
+      <section className="pt-32 pb-12 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <Button variant="ghost" onClick={() => navigate('/portfolio')} className="mb-8">
+            <Icon name="ArrowLeft" className="mr-2" size={18} />
+            Вернуться к портфолио
+          </Button>
+
+          <div className="mb-8">
+            <Badge className="mb-4 bg-accent/10 text-accent border-accent/20">
+              {project.category}
+            </Badge>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              {project.title}
+            </h1>
+            <p className="text-xl text-foreground/70">
+              {project.fullDescription}
+            </p>
+          </div>
+
+          <div className={`aspect-video rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center text-9xl mb-12 shadow-2xl`}>
+            <span>{project.icon}</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 px-4 bg-card/30">
+        <div className="container mx-auto max-w-5xl">
+          <div className="grid md:grid-cols-3 gap-6">
+            {project.results.map((result: string, index: number) => (
+              <Card key={index} className="text-center">
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-primary mb-2">{result.split(' ')[0]}</div>
+                  <div className="text-foreground/70">{result.split(' ').slice(1).join(' ')}</div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-3xl font-bold mb-8">Технологии</h2>
+          <div className="flex flex-wrap gap-3">
+            {project.technologies.map((tech: string, index: number) => (
+              <Badge key={index} variant="outline" className="text-base px-4 py-2">
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 px-4 bg-card/30">
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-3xl font-bold mb-8">Вызовы проекта</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-3 mb-4">
+                  <Icon name="AlertCircle" className="text-accent mt-1" size={24} />
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Проблемы</h3>
+                    <ul className="space-y-2">
+                      {project.challenges.map((challenge: string, index: number) => (
+                        <li key={index} className="text-foreground/70 flex items-start gap-2">
+                          <Icon name="ChevronRight" size={16} className="mt-1 flex-shrink-0" />
+                          <span>{challenge}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-3 mb-4">
+                  <Icon name="CheckCircle" className="text-green-500 mt-1" size={24} />
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Решения</h3>
+                    <ul className="space-y-2">
+                      {project.solutions.map((solution: string, index: number) => (
+                        <li key={index} className="text-foreground/70 flex items-start gap-2">
+                          <Icon name="ChevronRight" size={16} className="mt-1 flex-shrink-0" />
+                          <span>{solution}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-3xl font-bold mb-8">Ключевые возможности</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {project.features.map((feature: string, index: number) => (
+              <Card key={index}>
+                <CardContent className="pt-6 flex items-center gap-3">
+                  <Icon name="Check" className="text-accent flex-shrink-0" size={20} />
+                  <span className="text-foreground/80">{feature}</span>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-card/30">
+        <div className="container mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Хотите похожий проект?
+          </h2>
+          <p className="text-xl text-foreground/70 mb-8">
+            Мы разработаем индивидуальное решение для вашего бизнеса
+          </p>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
+                <Icon name="MessageSquare" className="mr-2" size={20} />
+                Обсудить проект
+              </Button>
+            </DialogTrigger>
+          </Dialog>
+        </div>
+      </section>
+
+      <footer className="py-12 px-4 border-t border-border">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center mb-4">
+                <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/ad88edee-174d-428d-8f2f-14b7f45fb7ed.png" alt="Элегия" className="h-10" />
+              </div>
+              <p className="text-sm text-foreground/60">
+                Премиальная разработка сайтов и SEO-продвижение в Усть-Куте
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">Услуги</h3>
+              <ul className="space-y-2 text-sm text-foreground/70">
+                <li className="cursor-pointer hover:text-primary transition-colors" onClick={() => navigate('/development')}>Разработка сайтов</li>
+                <li className="cursor-pointer hover:text-primary transition-colors" onClick={() => navigate('/seo')}>SEO-продвижение</li>
+                <li className="cursor-pointer hover:text-primary transition-colors" onClick={() => navigate('/design')}>Веб-дизайн</li>
+                <li className="cursor-pointer hover:text-primary transition-colors" onClick={() => navigate('/marketing')}>Цифровой маркетинг</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">Компания</h3>
+              <ul className="space-y-2 text-sm text-foreground/70">
+                <li className="cursor-pointer hover:text-primary transition-colors" onClick={() => navigate('/')}>О нас</li>
+                <li className="cursor-pointer hover:text-primary transition-colors" onClick={() => navigate('/portfolio')}>Портфолио</li>
+                <li className="cursor-pointer hover:text-primary transition-colors" onClick={() => navigate('/blog')}>Блог</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">Контакты</h3>
+              <ul className="space-y-2 text-sm text-foreground/70">
+                <li>г. Усть-Кут</li>
+                <li><a href="tel:+79039885627" className="hover:text-primary transition-colors">+7 (903) 988-56-27</a></li>
+                <li><a href="mailto:elegy38@yandex.ru" className="hover:text-primary transition-colors">elegy38@yandex.ru</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="pt-8 border-t border-border text-center text-sm text-foreground/60">
+            © 2026 Элегия. Все права защищены.
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

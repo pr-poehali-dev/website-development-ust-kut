@@ -15,6 +15,7 @@ import MobileHint from '@/components/MobileHint';
 const projects = [
   {
     id: 1,
+    slug: 'technomarket',
     title: 'Интернет-магазин электроники TechnoMarket',
     category: 'E-commerce',
     icon: '🛒',
@@ -29,6 +30,7 @@ const projects = [
   },
   {
     id: 2,
+    slug: 'stroygrad',
     title: 'Корпоративный сайт строительной компании СтройГрад',
     category: 'Бизнес',
     icon: '🏢',
@@ -43,6 +45,7 @@ const projects = [
   },
   {
     id: 3,
+    slug: 'speakup',
     title: 'Лендинг онлайн-школы английского Speak Up',
     category: 'Landing',
     icon: '🚀',
@@ -57,6 +60,7 @@ const projects = [
   },
   {
     id: 4,
+    slug: 'avtopoisk',
     title: 'Портал объявлений АвтоПоиск',
     category: 'Портал',
     icon: '🚗',
@@ -287,7 +291,7 @@ function PortfolioContent() {
               <Card 
                 key={project.id}
                 className="group overflow-hidden hover:border-primary transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-primary/20"
-                onClick={() => setSelectedProject(project)}
+                onClick={() => project.slug ? navigate(`/portfolio/${project.slug}`) : setSelectedProject(project)}
               >
                 <div className={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center text-7xl relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
