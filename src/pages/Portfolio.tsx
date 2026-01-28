@@ -75,6 +75,7 @@ const projects = [
   },
   {
     id: 5,
+    slug: 'zdorovie',
     title: 'Медицинский центр Здоровье+',
     category: 'Медицина',
     icon: '🏥',
@@ -89,6 +90,7 @@ const projects = [
   },
   {
     id: 6,
+    slug: 'sibirskie-traditsii',
     title: 'Ресторан Сибирские традиции',
     category: 'HoReCa',
     icon: '🍽️',
@@ -103,6 +105,7 @@ const projects = [
   },
   {
     id: 7,
+    slug: 'mastera-rf',
     title: 'Маркетплейс изделий ручной работы Мастера.рф',
     category: 'E-commerce',
     icon: '🎨',
@@ -117,6 +120,7 @@ const projects = [
   },
   {
     id: 8,
+    slug: 'codeacademy',
     title: 'Образовательная платформа CodeAcademy',
     category: 'Образование',
     icon: '📚',
@@ -131,6 +135,7 @@ const projects = [
   },
   {
     id: 9,
+    slug: 'athletezone',
     title: 'Фитнес-клуб AthleteZone',
     category: 'Бизнес',
     icon: '💪',
