@@ -4,7 +4,7 @@ export default function TelegramButton() {
       href="https://t.me/elegycreative"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-28 z-50 group"
+      className="fixed bottom-28 right-6 z-50 group"
       aria-label="Наш канал в Telegram"
     >
       <div className="relative">
