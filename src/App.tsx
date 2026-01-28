@@ -9,6 +9,7 @@ import Development from "./pages/Development";
 import SEO from "./pages/SEO";
 import Design from "./pages/Design";
 import Marketing from "./pages/Marketing";
+import Marketplaces from "./pages/Marketplaces";
 import Portfolio from "./pages/Portfolio";
 import PortfolioProject from "./pages/PortfolioProject";
 import Blog from "./pages/Blog";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/seo" element={<SEO />} />
           <Route path="/design" element={<Design />} />
           <Route path="/marketing" element={<Marketing />} />
+          <Route path="/marketplaces" element={<Marketplaces />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/portfolio/:slug" element={<PortfolioProject />} />
           <Route path="/blog" element={<Blog />} />

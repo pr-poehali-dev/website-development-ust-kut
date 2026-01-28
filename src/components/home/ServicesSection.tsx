@@ -39,6 +39,14 @@ export default function ServicesSection() {
       features: ['Контекстная реклама', 'SMM-продвижение', 'Email-маркетинг'],
       gradient: 'from-orange-500/20 to-red-500/20',
       path: '/marketing'
+    },
+    {
+      icon: 'ShoppingBag',
+      title: 'Вывод на маркетплейсы',
+      description: 'Запуск и продвижение на Wildberries, Ozon, Яндекс.Маркет',
+      features: ['Регистрация магазина', 'Карточки товаров', 'Реклама и аналитика'],
+      gradient: 'from-cyan-500/20 to-blue-500/20',
+      path: '/marketplaces'
     }
   ];
 
@@ -52,7 +60,7 @@ export default function ServicesSection() {
             Полный спектр услуг для развития вашего бизнеса в интернете
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <Card key={index} className={`bg-gradient-to-br ${service.gradient} border-border/50 hover:border-primary/50 transition-all duration-300 group hover:shadow-lg`}>
               <CardHeader>
