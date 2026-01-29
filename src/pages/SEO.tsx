@@ -200,7 +200,7 @@ function SEOContent() {
               </p>
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8">
                     Получить аудит сайта
                   </Button>
                 </DialogTrigger>
@@ -450,7 +450,7 @@ function SEOContent() {
         <div className="container mx-auto">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6">Получите бесплатный аудит</h2>
-            <p className="text-xl text-foreground/70 mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
               Проанализируем ваш сайт и подготовим рекомендации по продвижению
             </p>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>

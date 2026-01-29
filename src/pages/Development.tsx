@@ -170,28 +170,28 @@ function DevelopmentContent() {
         </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-4">
+      <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4">
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center max-w-6xl mx-auto">
             <div className="animate-fade-in">
-              <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
+              <Badge className="mb-4 sm:mb-6 bg-accent/10 text-accent border-accent/20">
                 Разработка сайтов
               </Badge>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
                 Создаём <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">веб-сайты</span>,<br />которые работают на вас
               </h1>
-              <p className="text-xl text-foreground/70 mb-8">
+              <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
                 От лендингов до сложных веб-платформ — разрабатываем сайты любой сложности с фокусом на результат
               </p>
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8">
                     Обсудить проект
                   </Button>
                 </DialogTrigger>
               </Dialog>
             </div>
-            <div className="animate-fade-in flex justify-center items-center">
+            <div className="animate-fade-in flex justify-center items-center hidden lg:flex">
               <img 
                 src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/cfd534c9-b225-47fa-bd2b-39296aca86dd.png" 
                 alt="Разработка веб-приложений HTML CSS JavaScript" 
@@ -202,11 +202,11 @@ function DevelopmentContent() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-card/50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 bg-card/50">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Типы сайтов, которые мы создаём</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 md:mb-12 text-center">Типы сайтов, которые мы создаём</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
               {[
                 {
                   icon: 'Store',

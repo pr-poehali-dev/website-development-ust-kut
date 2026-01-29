@@ -53,28 +53,28 @@ export default function ServicesSection() {
   return (
     <section id="services" className="py-20 px-4 bg-card/30">
       <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <Badge className="mb-4 bg-accent/10 text-accent border-accent/20">Наши услуги</Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Что мы предлагаем</h2>
-          <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12">
+          <Badge className="mb-3 sm:mb-4 bg-accent/10 text-accent border-accent/20">Наши услуги</Badge>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Что мы предлагаем</h2>
+          <p className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto px-4">
             Полный спектр услуг для развития вашего бизнеса в интернете
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {services.slice(0, 3).map((service, index) => (
             <Card key={index} className={`bg-gradient-to-br ${service.gradient} border-border/50 hover:border-primary/50 transition-all duration-300 group hover:shadow-lg animate-card-appear delay-${(index + 1) * 100} flex flex-col`}>
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Icon name={service.icon as any} className="text-primary" size={24} />
                 </div>
-                <CardTitle className="text-2xl">{service.title}</CardTitle>
-                <CardDescription className="text-base">{service.description}</CardDescription>
+                <CardTitle className="text-xl sm:text-2xl">{service.title}</CardTitle>
+                <CardDescription className="text-sm sm:text-base">{service.description}</CardDescription>
               </CardHeader>
               <CardContent className="flex-1 flex flex-col">
                 <ul className="space-y-2 mb-4 flex-1">
                   {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-foreground/80">
-                      <Icon name="Check" className="text-accent" size={16} />
+                    <li key={i} className="flex items-center gap-2 text-sm sm:text-base text-foreground/80">
+                      <Icon name="Check" className="text-accent flex-shrink-0" size={16} />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -91,21 +91,21 @@ export default function ServicesSection() {
             </Card>
           ))}
         </div>
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto mt-4 sm:mt-6">
           {services.slice(3).map((service, index) => (
             <Card key={index + 3} className={`bg-gradient-to-br ${service.gradient} border-border/50 hover:border-primary/50 transition-all duration-300 group hover:shadow-lg animate-card-appear delay-${(index + 4) * 100} flex flex-col`}>
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Icon name={service.icon as any} className="text-primary" size={24} />
                 </div>
-                <CardTitle className="text-2xl">{service.title}</CardTitle>
-                <CardDescription className="text-base">{service.description}</CardDescription>
+                <CardTitle className="text-xl sm:text-2xl">{service.title}</CardTitle>
+                <CardDescription className="text-sm sm:text-base">{service.description}</CardDescription>
               </CardHeader>
               <CardContent className="flex-1 flex flex-col">
                 <ul className="space-y-2 mb-4 flex-1">
                   {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-foreground/80">
-                      <Icon name="Check" className="text-accent" size={16} />
+                    <li key={i} className="flex items-center gap-2 text-sm sm:text-base text-foreground/80">
+                      <Icon name="Check" className="text-accent flex-shrink-0" size={16} />
                       <span>{feature}</span>
                     </li>
                   ))}
