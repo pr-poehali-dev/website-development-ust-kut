@@ -62,7 +62,7 @@ export default function ServicesSection() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => (
-            <Card key={index} className={`bg-gradient-to-br ${service.gradient} border-border/50 hover:border-primary/50 transition-all duration-300 group hover:shadow-lg`}>
+            <Card key={index} className={`bg-gradient-to-br ${service.gradient} border-border/50 hover:border-primary/50 transition-all duration-300 group hover:shadow-lg animate-card-appear delay-${(index + 1) * 100}`}>
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Icon name={service.icon as any} className="text-primary" size={24} />
