@@ -172,23 +172,32 @@ function DevelopmentContent() {
 
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
-            <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
-              Разработка сайтов
-            </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Создаём <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">веб-сайты</span>,<br />которые работают на вас
-            </h1>
-            <p className="text-xl text-foreground/70 mb-8">
-              От лендингов до сложных веб-платформ — разрабатываем сайты любой сложности с фокусом на результат
-            </p>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
-                  Обсудить проект
-                </Button>
-              </DialogTrigger>
-            </Dialog>
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div className="animate-fade-in">
+              <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
+                Разработка сайтов
+              </Badge>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Создаём <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">веб-сайты</span>,<br />которые работают на вас
+              </h1>
+              <p className="text-xl text-foreground/70 mb-8">
+                От лендингов до сложных веб-платформ — разрабатываем сайты любой сложности с фокусом на результат
+              </p>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                    Обсудить проект
+                  </Button>
+                </DialogTrigger>
+              </Dialog>
+            </div>
+            <div className="animate-fade-in">
+              <img 
+                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/c92a5a07-4f90-4954-8823-2fd852e3eb45.jpg" 
+                alt="Разработка веб-приложений и мобильных приложений" 
+                className="w-full h-auto rounded-lg shadow-2xl"
+              />
+            </div>
           </div>
         </div>
       </section>
