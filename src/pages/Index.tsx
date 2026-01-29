@@ -48,6 +48,11 @@ export default function Index() {
       const result = await response.json();
       
       if (response.ok) {
+        // Отправка цели в Яндекс.Метрику
+        if (typeof window !== 'undefined' && (window as any).ym) {
+          (window as any).ym(106521597, 'reachGoal', 'contact_form');
+        }
+        
         toast({
           title: 'Сообщение отправлено!',
           description: 'Мы ответим вам в течение 24 часов.',
@@ -86,6 +91,11 @@ export default function Index() {
       const result = await response.json();
       
       if (response.ok) {
+        // Отправка цели в Яндекс.Метрику
+        if (typeof window !== 'undefined' && (window as any).ym) {
+          (window as any).ym(106521597, 'reachGoal', 'newsletter_subscribe');
+        }
+        
         toast({
           title: 'Подписка оформлена!',
           description: 'Теперь вы будете получать наши новости.',
@@ -143,6 +153,11 @@ export default function Index() {
       const result = await response.json();
       
       if (response.ok) {
+        // Отправка цели в Яндекс.Метрику
+        if (typeof window !== 'undefined' && (window as any).ym) {
+          (window as any).ym(106521597, 'reachGoal', 'header_request');
+        }
+        
         toast({
           title: 'Заявка отправлена!',
           description: 'Мы свяжемся с вами в ближайшее время.',

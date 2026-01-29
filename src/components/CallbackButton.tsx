@@ -27,6 +27,11 @@ export default function CallbackButton() {
       const result = await response.json();
       
       if (response.ok) {
+        // Отправка цели в Яндекс.Метрику
+        if (typeof window !== 'undefined' && (window as any).ym) {
+          (window as any).ym(106521597, 'reachGoal', 'callback_request');
+        }
+        
         toast({
           title: 'Заявка принята!',
           description: 'Мы перезвоним вам в течение 15 минут.',
