@@ -236,7 +236,7 @@ function DevelopmentContent() {
                   price: 'от 100 000 ₽'
                 }
               ].map((type, index) => (
-                <Card key={index} className="group hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/20">
+                <Card key={index} className={`group hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <Icon name={type.icon} className="text-accent group-hover:text-primary transition-colors mb-4" size={48} />
                     <CardTitle className="text-xl mb-2">{type.title}</CardTitle>
@@ -269,7 +269,7 @@ function DevelopmentContent() {
                 { name: 'AWS', icon: 'Cloud', description: 'Облачная инфраструктура' },
                 { name: 'Docker', icon: 'Package', description: 'Контейнеризация' }
               ].map((tech, index) => (
-                <Card key={index} className="text-center hover:border-accent transition-colors">
+                <Card key={index} className={`text-center hover:border-accent transition-colors animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <Icon name={tech.icon} className="text-accent mx-auto mb-2" size={40} />
                     <CardTitle className="text-lg">{tech.name}</CardTitle>
@@ -319,7 +319,7 @@ function DevelopmentContent() {
                   duration: '2-3 дня'
                 }
               ].map((process, index) => (
-                <Card key={index} className="hover:border-primary transition-colors">
+                <Card key={index} className={`hover:border-primary transition-colors animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <div className="flex items-start gap-6">
                       <div className="text-6xl font-bold text-primary/20">{process.step}</div>

@@ -230,7 +230,7 @@ function DesignContent() {
                   description: 'Обновление устаревшего дизайна с сохранением узнаваемости бренда'
                 }
               ].map((service, index) => (
-                <Card key={index} className="hover:border-primary transition-all duration-300">
+                <Card key={index} className={`hover:border-primary transition-all duration-300 animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <Icon name={service.icon} className="text-accent mb-4" size={48} />
                     <CardTitle className="text-xl">{service.title}</CardTitle>
@@ -274,7 +274,7 @@ function DesignContent() {
                   description: 'Создаём полноценные UI-kit с компонентами, стилями и правилами для масштабируемости проекта.'
                 }
               ].map((approach, index) => (
-                <Card key={index} className="hover:border-accent transition-colors">
+                <Card key={index} className={`hover:border-accent transition-colors animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <Icon name={approach.icon} className="text-accent mb-3" size={40} />
                     <CardTitle className="text-xl mb-2">{approach.title}</CardTitle>
@@ -332,7 +332,7 @@ function DesignContent() {
                   duration: '1-2 дня'
                 }
               ].map((process, index) => (
-                <Card key={index} className="hover:border-primary transition-colors">
+                <Card key={index} className={`hover:border-primary transition-colors animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <div className="flex items-start gap-6">
                       <div className="text-6xl font-bold text-primary/20">{process.step}</div>

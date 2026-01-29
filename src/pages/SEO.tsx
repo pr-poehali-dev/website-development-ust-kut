@@ -245,7 +245,7 @@ function SEOContent() {
                   description: 'Улучшаем юзабилити, добавляем отзывы, сертификаты, улучшаем поведенческие факторы'
                 }
               ].map((service, index) => (
-                <Card key={index} className="hover:border-primary transition-all duration-300">
+                <Card key={index} className={`hover:border-primary transition-all duration-300 animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <Icon name={service.icon} className="text-accent mb-4" size={48} />
                     <CardTitle className="text-xl">{service.title}</CardTitle>
@@ -311,7 +311,7 @@ function SEOContent() {
               ].map((plan, index) => (
                 <Card 
                   key={index} 
-                  className={`relative ${plan.popular ? 'border-primary shadow-lg shadow-primary/20' : ''}`}
+                  className={`relative ${plan.popular ? 'border-primary shadow-lg shadow-primary/20' : ''} animate-card-appear delay-${(index + 1) * 100}`}
                 >
                   {plan.popular && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
