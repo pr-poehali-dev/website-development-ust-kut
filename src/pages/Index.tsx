@@ -260,8 +260,8 @@ export default function Index() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {projects.map((project) => (
-              <Card key={project.id} className="overflow-hidden hover:border-primary transition-all duration-300 group cursor-pointer" onClick={() => navigate('/portfolio')}>
+            {projects.map((project, index) => (
+              <Card key={project.id} className={`overflow-hidden hover:border-primary transition-all duration-300 group cursor-pointer animate-card-appear delay-${(index + 1) * 100}`} onClick={() => navigate('/portfolio')}>
                 <div className={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center text-6xl`}>
                   <span>{project.icon}</span>
                 </div>
@@ -364,7 +364,7 @@ export default function Index() {
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {reviews.map((review, index) => (
-              <Card key={index} className="hover:border-primary transition-all duration-300">
+              <Card key={index} className={`hover:border-primary transition-all duration-300 animate-card-appear delay-${(index + 1) * 100}`}>
                 <CardHeader>
                   <div className="flex items-center gap-4 mb-4">
                     <img src={review.avatar} alt={review.name} className="w-16 h-16 rounded-full object-cover" />
