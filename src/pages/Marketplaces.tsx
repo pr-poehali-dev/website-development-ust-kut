@@ -82,7 +82,7 @@ function MarketplacesContent() {
         <meta property="og:description" content="Полный цикл запуска и продвижения на маркетплейсах. Регистрация магазина, создание карточек товаров, настройка рекламы, аналитика. Тарифы от 40 000 ₽/мес" />
         <meta property="og:url" content="https://elegiya-web.ru/marketplaces" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/5f5ec519-4d59-4e2e-8cee-92ece664a9fb.jpg" />
+        <meta property="og:image" content="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/dee9cd02-b518-4ea1-9a6c-8e82b1815400.png" />
         
         <script type="application/ld+json">
           {JSON.stringify({
