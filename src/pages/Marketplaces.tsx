@@ -240,8 +240,8 @@ function MarketplacesContent() {
             </div>
             <div className="animate-fade-in">
               <img 
-                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/5f5ec519-4d59-4e2e-8cee-92ece664a9fb.jpg" 
-                alt="Маркетплейсы" 
+                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/e21d4288-cce4-495e-844c-45766ea98bbe.jpg" 
+                alt="Маркетплейсы Wildberries, Ozon" 
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
             </div>
