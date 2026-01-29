@@ -193,9 +193,9 @@ function DevelopmentContent() {
             </div>
             <div className="animate-fade-in">
               <img 
-                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/c92a5a07-4f90-4954-8823-2fd852e3eb45.jpg" 
-                alt="Разработка веб-приложений и мобильных приложений" 
-                className="w-full h-auto rounded-lg shadow-2xl"
+                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/598cd55f-5da0-4ed6-aac6-bdbcf95c1075.png" 
+                alt="Разработка веб-приложений HTML CSS JavaScript" 
+                className="w-full h-auto"
               />
             </div>
           </div>
