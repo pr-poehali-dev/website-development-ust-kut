@@ -187,23 +187,32 @@ function MarketingContent() {
 
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
-            <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
-              Цифровой маркетинг
-            </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Привлекаем клиентов через <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">интернет</span>
-            </h1>
-            <p className="text-xl text-foreground/70 mb-8">
-              Комплексное продвижение в digital: контекстная реклама, SMM, email-маркетинг и таргет
-            </p>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
-                  Запустить рекламу
-                </Button>
-              </DialogTrigger>
-            </Dialog>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8 animate-fade-in">
+              <Badge className="bg-accent/10 text-accent border-accent/20">
+                Цифровой маркетинг
+              </Badge>
+              <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+                Привлекаем клиентов через <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">интернет</span>
+              </h1>
+              <p className="text-xl text-foreground/70">
+                Комплексное продвижение в digital: контекстная реклама, SMM, email-маркетинг и таргет
+              </p>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                    Запустить рекламу
+                  </Button>
+                </DialogTrigger>
+              </Dialog>
+            </div>
+            <div className="relative animate-scale-in">
+              <img 
+                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/477296aa-8dfc-4ac1-b0e3-18f9c387e6e9.png" 
+                alt="Цифровой маркетинг и аналитика" 
+                className="w-full h-auto drop-shadow-2xl"
+              />
+            </div>
           </div>
         </div>
       </section>
