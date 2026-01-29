@@ -238,11 +238,11 @@ function MarketplacesContent() {
                 </DialogTrigger>
               </Dialog>
             </div>
-            <div className="animate-fade-in">
+            <div className="animate-scale-in">
               <img 
                 src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/dee9cd02-b518-4ea1-9a6c-8e82b1815400.png" 
                 alt="Маркетплейсы Wildberries, Ozon" 
-                className="w-full h-auto rounded-2xl shadow-2xl"
+                className="w-full h-auto rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
