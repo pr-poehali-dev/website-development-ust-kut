@@ -280,7 +280,7 @@ function MarketplacesContent() {
                   color: 'text-orange-500'
                 }
               ].map((platform, index) => (
-                <Card key={index} className="text-center hover:border-primary transition-all duration-300">
+                <Card key={index} className={`text-center hover:border-primary transition-all duration-300 animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <Icon name={platform.icon} className={`${platform.color} mx-auto mb-4`} size={56} />
                     <CardTitle className="text-xl">{platform.name}</CardTitle>
@@ -330,7 +330,7 @@ function MarketplacesContent() {
                   description: 'Мониторинг продаж, анализ юнит-экономики, конкурентный анализ, регулярные отчёты'
                 }
               ].map((service, index) => (
-                <Card key={index} className="hover:border-primary transition-all duration-300">
+                <Card key={index} className={`hover:border-primary transition-all duration-300 animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <Icon name={service.icon} className="text-accent mb-4" size={48} />
                     <CardTitle className="text-xl">{service.title}</CardTitle>
