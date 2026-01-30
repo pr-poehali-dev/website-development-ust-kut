@@ -1,11 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#EC4899;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#FBB040;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <rect width="100" height="100" rx="20" fill="url(#grad)"/>
-  <text x="50" y="72" font-family="Georgia, serif" font-size="56" font-weight="bold" fill="white" text-anchor="middle">Э</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
+  <image width="32" height="32" xlink:href="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/574d3050-8b5b-4ad1-a4da-cc22321247ae.png"/>
 </svg>
