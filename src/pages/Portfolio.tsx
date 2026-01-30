@@ -50,7 +50,7 @@ const projects = [
     title: 'Лендинг онлайн-школы английского Speak Up',
     category: 'Landing',
     icon: '🚀',
-    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/c97572e5-4cdd-4907-a2f8-f943af25e02d.jpg',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/49b1fa27-649d-4d45-ae14-9bd126509554.png',
     description: 'Продающий лендинг с видео-презентацией, отзывами учеников и системой записи на пробный урок',
     technologies: ['React', 'Tailwind CSS'],
     results: [
