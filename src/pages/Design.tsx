@@ -173,7 +173,7 @@ function DesignContent() {
                 <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
                   Веб-дизайн
                 </Badge>
-                <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 whitespace-nowrap">
                   Дизайн, который <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">продаёт</span>
                 </h1>
                 <p className="text-xl text-foreground/70 mb-8">
