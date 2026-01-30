@@ -82,7 +82,7 @@ const projects = [
     title: 'Медицинский центр Здоровье+',
     category: 'Медицина',
     icon: '🏥',
-    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/2c23255d-43a5-442f-9bff-37b25ba48933.jpg',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/827cb6cb-c305-4f02-a9da-64c3a5ddbc3b.jpg',
     description: 'Сайт клиники с онлайн-записью к врачам, личным кабинетом пациента и интеграцией с МИС',
     technologies: ['React', 'Node.js', 'PostgreSQL'],
     results: [
