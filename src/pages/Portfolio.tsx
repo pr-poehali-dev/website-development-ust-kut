@@ -129,7 +129,7 @@ const projects = [
     title: 'Образовательная платформа CodeAcademy',
     category: 'Образование',
     icon: '📚',
-    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/4f9a3b70-a7e7-4cd5-b2c4-1520332c46f8.jpg',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/7256dcb9-6d48-46ff-b412-6f8b6c41b1ee.jpg',
     description: 'LMS-система с видеокурсами, тестами, сертификатами и системой менторства',
     technologies: ['React', 'Node.js', 'AWS'],
     results: [
