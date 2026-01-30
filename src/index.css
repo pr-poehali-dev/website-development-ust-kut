@@ -64,6 +64,13 @@
   h5,
   h6 {
     font-family: "Montserrat", sans-serif;
+    @apply break-words overflow-wrap-anywhere;
+  }
+
+  p,
+  span,
+  div {
+    @apply break-words;
   }
 }
 
