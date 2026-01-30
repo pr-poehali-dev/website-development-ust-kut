@@ -191,6 +191,7 @@ export default function Index() {
       title: 'Корпоративный сайт СтройКомпани',
       category: 'Бизнес',
       icon: '🏢',
+      image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/9748ced2-4fb7-48ed-a1cb-37559a136828.jpg',
       description: 'Представительский сайт с каталогом объектов',
       gradient: 'from-orange-500/20 to-red-500/20'
     },
@@ -199,6 +200,7 @@ export default function Index() {
       title: 'Лендинг онлайн-школы',
       category: 'Landing',
       icon: '🚀',
+      image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/49b1fa27-649d-4d45-ae14-9bd126509554.png',
       description: 'Продающая страница с высокой конверсией',
       gradient: 'from-green-500/20 to-emerald-500/20'
     }
