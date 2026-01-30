@@ -358,10 +358,10 @@ export default function Index() {
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {reviews.map((review, index) => (
-              <Card key={index} className={`hover:border-primary transition-all duration-300 animate-card-appear delay-${(index + 1) * 100}`}>
+              <Card key={index} className={`hover:border-primary transition-all duration-300 animate-card-appear delay-${(index + 1) * 100} group hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1`}>
                 <CardHeader>
                   <div className="flex items-center gap-4 mb-4">
-                    <img src={review.avatar} alt={review.name} className="w-16 h-16 rounded-full object-cover" />
+                    <img src={review.avatar} alt={review.name} className="w-16 h-16 rounded-full object-cover transition-transform duration-300 group-hover:scale-110" />
                     <div>
                       <CardTitle className="text-lg">{review.name}</CardTitle>
                       <CardDescription>{review.company}</CardDescription>
