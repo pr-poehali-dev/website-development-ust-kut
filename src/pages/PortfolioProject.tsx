@@ -293,15 +293,15 @@ function ProjectContent() {
           </div>
 
           {project.image ? (
-            <div className="aspect-video rounded-xl mb-12 shadow-2xl overflow-hidden">
+            <div className="aspect-video rounded-xl mb-12 shadow-2xl overflow-hidden group">
               <img 
                 src={project.image} 
                 alt={project.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
             </div>
           ) : (
-            <div className={`aspect-video rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center text-9xl mb-12 shadow-2xl`}>
+            <div className={`aspect-video rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center text-9xl mb-12 shadow-2xl transition-transform duration-300 hover:scale-105`}>
               <span>{project.icon}</span>
             </div>
           )}
