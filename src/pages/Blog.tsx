@@ -7,9 +7,7 @@ import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
-import VkButton from '@/components/VkButton';
-import TelegramButton from '@/components/TelegramButton';
-import CallbackButton from '@/components/CallbackButton';
+
 import MobileHint from '@/components/MobileHint';
 
 const articles = [
@@ -128,9 +126,6 @@ const categories = ['Все статьи', 'E-commerce', 'SEO', 'Веб-диза
 export default function Blog() {
   return (
     <>
-      <VkButton />
-      <TelegramButton />
-      <CallbackButton />
       <MobileHint />
       <BlogContent />
     </>

@@ -7,9 +7,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
-import VkButton from '@/components/VkButton';
-import TelegramButton from '@/components/TelegramButton';
-import CallbackButton from '@/components/CallbackButton';
+
 import MobileHint from '@/components/MobileHint';
 
 const projectsData: Record<string, any> = {
@@ -146,9 +144,6 @@ const projectSlugs = ['technomarket', 'stroygrad', 'speakup', 'avtopoisk', 'zdor
 export default function PortfolioProject() {
   return (
     <>
-      <VkButton />
-      <TelegramButton />
-      <CallbackButton />
       <MobileHint />
       <ProjectContent />
     </>

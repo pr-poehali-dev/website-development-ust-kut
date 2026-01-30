@@ -8,9 +8,6 @@ import { Slider } from '@/components/ui/slider';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
-import VkButton from '@/components/VkButton';
-import TelegramButton from '@/components/TelegramButton';
-import CallbackButton from '@/components/CallbackButton';
 import MobileHint from '@/components/MobileHint';
 import Header from '@/components/home/Header';
 import HeroSection from '@/components/home/HeroSection';
@@ -232,9 +229,6 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <VkButton />
-      <TelegramButton />
-      <CallbackButton />
       <MobileHint />
       
       <Header
