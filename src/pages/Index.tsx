@@ -182,6 +182,7 @@ export default function Index() {
       title: 'Интернет-магазин электроники',
       category: 'E-commerce',
       icon: '🛒',
+      image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/dc183883-74db-46d6-a447-5ef5d32bc05b.png',
       description: 'Полнофункциональный магазин с интеграцией 1С',
       gradient: 'from-blue-500/20 to-purple-500/20'
     },
@@ -257,7 +258,11 @@ export default function Index() {
             {projects.map((project, index) => (
               <Card key={project.id} className={`overflow-hidden hover:border-primary transition-all duration-300 group cursor-pointer animate-card-appear delay-${(index + 1) * 100} hover:shadow-lg hover:shadow-primary/20`} onClick={() => navigate('/portfolio')}>
                 <div className={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center text-6xl relative overflow-hidden`}>
-                  <span className="transition-transform duration-500 group-hover:scale-110">{project.icon}</span>
+                  {project.image ? (
+                    <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  ) : (
+                    <span className="transition-transform duration-500 group-hover:scale-110">{project.icon}</span>
+                  )}
                 </div>
                 <CardHeader>
                   <Badge className="w-fit mb-2 bg-accent/10 text-accent border-accent/20">{project.category}</Badge>
