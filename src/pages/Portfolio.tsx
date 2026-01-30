@@ -145,7 +145,7 @@ const projects = [
     title: 'Фитнес-клуб AthleteZone',
     category: 'Бизнес',
     icon: '💪',
-    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/010f1674-c960-434e-b932-6d2afe00bc29.jpg',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/c2b38b1a-efd4-4b47-8184-f5a26535fc99.png',
     description: 'Сайт с онлайн-расписанием, покупкой абонементов и личным кабинетом клиента',
     technologies: ['React', 'Node.js', 'Stripe'],
     results: [
