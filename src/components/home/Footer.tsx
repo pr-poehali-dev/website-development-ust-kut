@@ -13,7 +13,7 @@ export default function Footer() {
               <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/ad88edee-174d-428d-8f2f-14b7f45fb7ed.png" alt="Элегия" className="h-8 sm:h-10" />
             </div>
             <p className="text-xs sm:text-sm text-foreground/60">
-              Премиальная разработка сайтов и SEO-продвижение в Усть-Куте
+              Премиальная разработка сайтов и SEO-продвижение в Иркутске
             </p>
           </div>
           <div>
@@ -38,7 +38,7 @@ export default function Footer() {
             <ul className="space-y-2 text-xs sm:text-sm text-foreground/70">
               <li className="flex items-center gap-2">
                 <Icon name="MapPin" size={16} className="text-accent" />
-                г. Усть-Кут
+                Иркутск, Лермонтова 81/17 офис 1
               </li>
               <li className="flex items-center gap-2">
                 <Icon name="Phone" size={16} className="text-accent" />

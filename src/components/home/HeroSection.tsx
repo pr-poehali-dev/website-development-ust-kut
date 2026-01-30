@@ -16,7 +16,7 @@ export default function HeroSection({ smoothScroll }: HeroSectionProps) {
               Создаём <span className="text-primary">цифровые</span> решения для вашего бизнеса
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-foreground/70">
-              Веб-студия полного цикла в Усть-Куте: от идеи до запуска
+              Веб-студия полного цикла в Иркутске: от идеи до запуска
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8" asChild>
