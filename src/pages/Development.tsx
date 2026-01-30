@@ -294,60 +294,122 @@ function DevelopmentContent() {
 
       <section className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Процесс разработки</h2>
-            <div className="space-y-6">
-              {[
-                {
-                  step: '01',
-                  title: 'Анализ и планирование',
-                  description: 'Изучаем ваш бизнес, конкурентов и целевую аудиторию. Составляем техническое задание и прототип.',
-                  duration: '3-5 дней'
-                },
-                {
-                  step: '02',
-                  title: 'Дизайн',
-                  description: 'Создаём уникальный дизайн, который отражает ваш бренд. Разрабатываем все страницы и адаптивные версии.',
-                  duration: '5-10 дней'
-                },
-                {
-                  step: '03',
-                  title: 'Разработка',
-                  description: 'Верстаем сайт, программируем функционал, интегрируем с внешними сервисами и системами.',
-                  duration: '10-20 дней'
-                },
-                {
-                  step: '04',
-                  title: 'Тестирование',
-                  description: 'Проверяем работу на всех устройствах и браузерах, исправляем ошибки, оптимизируем производительность.',
-                  duration: '2-5 дней'
-                },
-                {
-                  step: '05',
-                  title: 'Запуск и поддержка',
-                  description: 'Размещаем сайт на хостинге, настраиваем аналитику. Обучаем работе с админ-панелью и предоставляем поддержку.',
-                  duration: '2-3 дня'
-                }
-              ].map((process, index) => (
-                <Card key={index} className={`hover:border-primary transition-colors animate-card-appear delay-${(index + 1) * 100}`}>
-                  <CardHeader>
-                    <div className="flex items-start gap-6">
-                      <div className="text-6xl font-bold text-primary/20">{process.step}</div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <CardTitle className="text-2xl">{process.title}</CardTitle>
-                          <Badge variant="outline" className="border-accent/20 text-accent">
-                            {process.duration}
-                          </Badge>
-                        </div>
-                        <CardDescription className="text-foreground/70 text-base">
-                          {process.description}
-                        </CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
-              ))}
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <Badge className="mb-4 bg-accent/10 text-accent border-accent/20">
+                Как мы работаем
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Процесс разработки</h2>
+              <p className="text-lg text-foreground/70">
+                От идеи до запуска за 5 простых шагов
+              </p>
+            </div>
+
+            <div className="relative">
+              {/* Connecting line */}
+              <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-accent/20 to-primary/20 -translate-x-1/2"></div>
+
+              <div className="space-y-12">
+                {[
+                  {
+                    step: '01',
+                    title: 'Анализ и планирование',
+                    description: 'Изучаем ваш бизнес, конкурентов и целевую аудиторию. Составляем техническое задание и прототип сайта.',
+                    icon: 'Search',
+                    duration: '3-5 дней',
+                    align: 'left'
+                  },
+                  {
+                    step: '02',
+                    title: 'Дизайн',
+                    description: 'Создаём уникальный дизайн, который отражает ваш бренд. Разрабатываем все страницы и адаптивные версии.',
+                    icon: 'Palette',
+                    duration: '5-10 дней',
+                    align: 'right'
+                  },
+                  {
+                    step: '03',
+                    title: 'Разработка',
+                    description: 'Верстаем сайт, программируем функционал, интегрируем с внешними сервисами и системами.',
+                    icon: 'Code2',
+                    duration: '10-20 дней',
+                    align: 'left'
+                  },
+                  {
+                    step: '04',
+                    title: 'Тестирование',
+                    description: 'Проверяем работу на всех устройствах и браузерах, исправляем ошибки, оптимизируем производительность.',
+                    icon: 'Bug',
+                    duration: '2-5 дней',
+                    align: 'right'
+                  },
+                  {
+                    step: '05',
+                    title: 'Запуск и поддержка',
+                    description: 'Размещаем сайт на хостинге, настраиваем аналитику. Обучаем работе с админ-панелью и предоставляем поддержку.',
+                    icon: 'Rocket',
+                    duration: '2-3 дня',
+                    align: 'left'
+                  }
+                ].map((process, index) => (
+                  <div key={index} className={`relative lg:grid lg:grid-cols-2 lg:gap-12 animate-fade-in delay-${(index + 1) * 100}`}>
+                    {process.align === 'left' ? (
+                      <>
+                        {/* Content on left */}
+                        <Card className="hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/10">
+                          <CardHeader>
+                            <div className="flex items-center gap-4 mb-4">
+                              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+                                <Icon name={process.icon} className="text-white" size={24} />
+                              </div>
+                              <div className="flex-1">
+                                <div className="text-xs font-semibold text-primary mb-1">ШАГ {process.step}</div>
+                                <CardTitle className="text-xl">{process.title}</CardTitle>
+                              </div>
+                              <Badge variant="outline" className="border-accent/20 text-accent hidden sm:flex">
+                                {process.duration}
+                              </Badge>
+                            </div>
+                            <CardDescription className="text-foreground/70 text-base">
+                              {process.description}
+                            </CardDescription>
+                          </CardHeader>
+                        </Card>
+                        {/* Empty space on right for desktop */}
+                        <div className="hidden lg:block"></div>
+                      </>
+                    ) : (
+                      <>
+                        {/* Empty space on left for desktop */}
+                        <div className="hidden lg:block"></div>
+                        {/* Content on right */}
+                        <Card className="hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/10">
+                          <CardHeader>
+                            <div className="flex items-center gap-4 mb-4">
+                              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+                                <Icon name={process.icon} className="text-white" size={24} />
+                              </div>
+                              <div className="flex-1">
+                                <div className="text-xs font-semibold text-primary mb-1">ШАГ {process.step}</div>
+                                <CardTitle className="text-xl">{process.title}</CardTitle>
+                              </div>
+                              <Badge variant="outline" className="border-accent/20 text-accent hidden sm:flex">
+                                {process.duration}
+                              </Badge>
+                            </div>
+                            <CardDescription className="text-foreground/70 text-base">
+                              {process.description}
+                            </CardDescription>
+                          </CardHeader>
+                        </Card>
+                      </>
+                    )}
+
+                    {/* Center dot for desktop */}
+                    <div className="hidden lg:block absolute left-1/2 top-8 w-4 h-4 bg-primary rounded-full -translate-x-1/2 border-4 border-background z-10"></div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
