@@ -18,6 +18,7 @@ const projects = [
     title: 'Интернет-магазин электроники TechnoMarket',
     category: 'E-commerce',
     icon: '🛒',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/791b2e57-0968-4baf-a1f9-cafb2990919d.jpg',
     description: 'Полнофункциональный интернет-магазин с интеграцией 1С, онлайн-оплатой и системой лояльности',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
     results: [
@@ -33,6 +34,7 @@ const projects = [
     title: 'Корпоративный сайт строительной компании СтройГрад',
     category: 'Бизнес',
     icon: '🏢',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/3a3cd261-17b5-4664-a958-0ec0fd822df4.jpg',
     description: 'Представительский сайт с каталогом объектов, калькулятором стоимости и CRM-интеграцией',
     technologies: ['WordPress', 'PHP', 'MySQL'],
     results: [
@@ -48,6 +50,7 @@ const projects = [
     title: 'Лендинг онлайн-школы английского Speak Up',
     category: 'Landing',
     icon: '🚀',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/c97572e5-4cdd-4907-a2f8-f943af25e02d.jpg',
     description: 'Продающий лендинг с видео-презентацией, отзывами учеников и системой записи на пробный урок',
     technologies: ['React', 'Tailwind CSS'],
     results: [
@@ -63,6 +66,7 @@ const projects = [
     title: 'Портал объявлений АвтоПоиск',
     category: 'Портал',
     icon: '🚗',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/c36cb493-60ed-4e7b-ad3a-096f10b3fc4f.jpg',
     description: 'Классифайд-портал для продажи авто с личным кабинетом, фильтрами и системой платных объявлений',
     technologies: ['Next.js', 'PostgreSQL', 'Redis'],
     results: [
@@ -78,6 +82,7 @@ const projects = [
     title: 'Медицинский центр Здоровье+',
     category: 'Медицина',
     icon: '🏥',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/2c23255d-43a5-442f-9bff-37b25ba48933.jpg',
     description: 'Сайт клиники с онлайн-записью к врачам, личным кабинетом пациента и интеграцией с МИС',
     technologies: ['React', 'Node.js', 'PostgreSQL'],
     results: [
@@ -93,6 +98,7 @@ const projects = [
     title: 'Ресторан Сибирские традиции',
     category: 'HoReCa',
     icon: '🍽️',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/8802728a-2c25-4d97-8db4-cc6dbf81992f.jpg',
     description: 'Сайт с онлайн-бронированием столиков, меню и интеграцией с системой доставки',
     technologies: ['WordPress', 'PHP'],
     results: [
@@ -123,6 +129,7 @@ const projects = [
     title: 'Образовательная платформа CodeAcademy',
     category: 'Образование',
     icon: '📚',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/4f9a3b70-a7e7-4cd5-b2c4-1520332c46f8.jpg',
     description: 'LMS-система с видеокурсами, тестами, сертификатами и системой менторства',
     technologies: ['React', 'Node.js', 'AWS'],
     results: [
@@ -138,6 +145,7 @@ const projects = [
     title: 'Фитнес-клуб AthleteZone',
     category: 'Бизнес',
     icon: '💪',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/010f1674-c960-434e-b932-6d2afe00bc29.jpg',
     description: 'Сайт с онлайн-расписанием, покупкой абонементов и личным кабинетом клиента',
     technologies: ['React', 'Node.js', 'Stripe'],
     results: [
