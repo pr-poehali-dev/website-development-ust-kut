@@ -18,7 +18,7 @@ const projects = [
     title: 'Интернет-магазин электроники TechnoMarket',
     category: 'E-commerce',
     icon: '🛒',
-    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/791b2e57-0968-4baf-a1f9-cafb2990919d.jpg',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/4ad246e1-8249-4953-9ee1-2e9e716661c8.png',
     description: 'Полнофункциональный интернет-магазин с интеграцией 1С, онлайн-оплатой и системой лояльности',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
     results: [
