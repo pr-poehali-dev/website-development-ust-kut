@@ -191,11 +191,11 @@ function DevelopmentContent() {
                 </DialogTrigger>
               </Dialog>
             </div>
-            <div className="animate-fade-in flex justify-center items-center hidden lg:flex">
+            <div className="animate-fade-in flex justify-center items-center">
               <img 
-                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/cfd534c9-b225-47fa-bd2b-39296aca86dd.png" 
-                alt="Разработка веб-приложений HTML CSS JavaScript" 
-                className="w-full max-w-2xl h-auto"
+                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/147741a5-48df-4323-b3b0-79fe8097427b.png" 
+                alt="Адаптивная разработка сайтов - примеры на разных устройствах" 
+                className="w-full max-w-2xl h-auto rounded-2xl shadow-xl"
               />
             </div>
           </div>
