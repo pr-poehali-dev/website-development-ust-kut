@@ -262,16 +262,27 @@ function PortfolioContent() {
 
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
-            <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
-              Портфолио
-            </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Наши <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">проекты</span>
-            </h1>
-            <p className="text-xl text-foreground/70 mb-8">
-              Более 150 успешных проектов в различных сферах бизнеса
-            </p>
+          <div className="max-w-6xl mx-auto mb-16">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="text-center lg:text-left animate-fade-in">
+                <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
+                  Портфолио
+                </Badge>
+                <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                  Наши <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">проекты</span>
+                </h1>
+                <p className="text-xl text-foreground/70 mb-8">
+                  Более 150 успешных проектов в различных сферах бизнеса
+                </p>
+              </div>
+              <div className="animate-fade-in flex justify-center">
+                <img 
+                  src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/147741a5-48df-4323-b3b0-79fe8097427b.png" 
+                  alt="Примеры адаптивной разработки сайтов" 
+                  className="w-full max-w-xl h-auto rounded-2xl shadow-xl"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-wrap justify-center gap-3 mb-12">
