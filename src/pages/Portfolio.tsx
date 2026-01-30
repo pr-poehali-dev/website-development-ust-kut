@@ -66,7 +66,7 @@ const projects = [
     title: 'Портал объявлений АвтоПоиск',
     category: 'Портал',
     icon: '🚗',
-    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/c36cb493-60ed-4e7b-ad3a-096f10b3fc4f.jpg',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/f94cc994-2b77-46aa-b428-f7dc72d1e2eb.jpeg',
     description: 'Классифайд-портал для продажи авто с личным кабинетом, фильтрами и системой платных объявлений',
     technologies: ['Next.js', 'PostgreSQL', 'Redis'],
     results: [
