@@ -167,23 +167,34 @@ function DesignContent() {
 
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
-            <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
-              Веб-дизайн
-            </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Дизайн, который <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">продаёт</span>
-            </h1>
-            <p className="text-xl text-foreground/70 mb-8">
-              Создаём уникальный UI/UX дизайн с фокусом на пользовательский опыт и конверсию
-            </p>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
-                  Заказать дизайн
-                </Button>
-              </DialogTrigger>
-            </Dialog>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+              <div className="text-center lg:text-left animate-fade-in">
+                <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
+                  Веб-дизайн
+                </Badge>
+                <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                  Дизайн, который <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">продаёт</span>
+                </h1>
+                <p className="text-xl text-foreground/70 mb-8">
+                  Создаём уникальный UI/UX дизайн с фокусом на пользовательский опыт и конверсию
+                </p>
+                <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                      Заказать дизайн
+                    </Button>
+                  </DialogTrigger>
+                </Dialog>
+              </div>
+              <div className="animate-fade-in">
+                <img 
+                  src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/a62d3144-2316-49fe-88c3-9fc7fdf7ee12.png" 
+                  alt="Веб-дизайн интерфейсов" 
+                  className="w-full h-auto rounded-lg shadow-2xl"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
