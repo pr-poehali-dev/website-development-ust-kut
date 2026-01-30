@@ -177,8 +177,9 @@ function DevelopmentContent() {
               <Badge className="mb-4 sm:mb-6 bg-accent/10 text-accent border-accent/20">
                 Разработка сайтов
               </Badge>
-              <h1 className="sm:text-4xl md:text-5xl lg:text-6xl font-bold sm:mb-6 leading-tight text-left my-2 text-2xl">
-                Создаём <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">веб-сайты</span>,<br />которые работают на вас
+              <h1 className="sm:text-4xl md:text-5xl lg:text-6xl sm:mb-6 leading-tight text-left font-bold mx-0 my-2 text-2xl">
+                Создаём <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+веб-сайты</span>,<br />которые работают на вас
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
                 От лендингов до сложных веб-платформ — разрабатываем сайты любой сложности с фокусом на результат
