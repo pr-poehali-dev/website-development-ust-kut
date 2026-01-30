@@ -34,7 +34,7 @@ const projects = [
     title: 'Корпоративный сайт строительной компании СтройГрад',
     category: 'Бизнес',
     icon: '🏢',
-    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/3a3cd261-17b5-4664-a958-0ec0fd822df4.jpg',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/9748ced2-4fb7-48ed-a1cb-37559a136828.jpg',
     description: 'Представительский сайт с каталогом объектов, калькулятором стоимости и CRM-интеграцией',
     technologies: ['WordPress', 'PHP', 'MySQL'],
     results: [
