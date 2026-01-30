@@ -255,9 +255,9 @@ export default function Index() {
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             {projects.map((project, index) => (
-              <Card key={project.id} className={`overflow-hidden hover:border-primary transition-all duration-300 group cursor-pointer animate-card-appear delay-${(index + 1) * 100}`} onClick={() => navigate('/portfolio')}>
-                <div className={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center text-6xl`}>
-                  <span>{project.icon}</span>
+              <Card key={project.id} className={`overflow-hidden hover:border-primary transition-all duration-300 group cursor-pointer animate-card-appear delay-${(index + 1) * 100} hover:shadow-lg hover:shadow-primary/20`} onClick={() => navigate('/portfolio')}>
+                <div className={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center text-6xl relative overflow-hidden`}>
+                  <span className="transition-transform duration-500 group-hover:scale-110">{project.icon}</span>
                 </div>
                 <CardHeader>
                   <Badge className="w-fit mb-2 bg-accent/10 text-accent border-accent/20">{project.category}</Badge>
