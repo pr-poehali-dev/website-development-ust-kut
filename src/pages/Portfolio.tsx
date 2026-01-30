@@ -107,7 +107,7 @@ const projects = [
     slug: 'mastera-rf',
     title: 'Маркетплейс изделий ручной работы Мастера.рф',
     category: 'E-commerce',
-    icon: '🎨',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/ad28e558-46ba-49fb-a673-9c31cae2536f.jpg',
     description: 'Платформа для продажи hand-made товаров с личными магазинами продавцов и эскроу-счетами',
     technologies: ['Next.js', 'Stripe', 'PostgreSQL'],
     results: [
@@ -307,7 +307,11 @@ function PortfolioContent() {
               >
                 <div className={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center text-7xl relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <span className="relative z-10">{project.icon}</span>
+                  {project.image ? (
+                    <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover" />
+                  ) : (
+                    <span className="relative z-10">{project.icon}</span>
+                  )}
                 </div>
                 <CardHeader>
                   <Badge className="w-fit mb-2 bg-accent/10 text-accent border-accent/20">
