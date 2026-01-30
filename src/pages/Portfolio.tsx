@@ -98,7 +98,7 @@ const projects = [
     title: 'Ресторан Сибирские традиции',
     category: 'HoReCa',
     icon: '🍽️',
-    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/files/8802728a-2c25-4d97-8db4-cc6dbf81992f.jpg',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/0f8bd6a9-3a1c-484b-9929-3c830c52e104.jpeg',
     description: 'Сайт с онлайн-бронированием столиков, меню и интеграцией с системой доставки',
     technologies: ['WordPress', 'PHP'],
     results: [
