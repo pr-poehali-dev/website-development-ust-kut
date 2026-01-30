@@ -14,9 +14,10 @@ import Footer from '@/components/home/Footer';
 const projectsData: Record<string, any> = {
   'technomarket': {
     id: 1,
-    title: 'Интернет-магазин электроники TechnoMarket',
+    title: 'Интернет-магазин одежды Garderob',
     category: 'E-commerce',
     icon: '🛒',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/dc183883-74db-46d6-a447-5ef5d32bc05b.png',
     description: 'Полнофункциональный интернет-магазин с интеграцией 1С, онлайн-оплатой и системой лояльности',
     fullDescription: 'Разработали современный интернет-магазин электроники с удобной навигацией, быстрым поиском и интеграцией с 1С. Внедрили систему онлайн-оплаты через Stripe и программу лояльности для постоянных клиентов.',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', '1C'],
@@ -31,6 +32,7 @@ const projectsData: Record<string, any> = {
     title: 'Корпоративный сайт строительной компании СтройГрад',
     category: 'Бизнес',
     icon: '🏢',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/9748ced2-4fb7-48ed-a1cb-37559a136828.jpg',
     description: 'Представительский сайт с каталогом объектов, калькулятором стоимости и CRM-интеграцией',
     fullDescription: 'Создали премиальный корпоративный сайт для строительной компании с портфолио реализованных проектов, калькулятором стоимости строительства и интеграцией с CRM Битрикс24.',
     technologies: ['WordPress', 'PHP', 'MySQL', 'Битрикс24'],
@@ -45,6 +47,7 @@ const projectsData: Record<string, any> = {
     title: 'Лендинг онлайн-школы английского Speak Up',
     category: 'Landing',
     icon: '🚀',
+    image: 'https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/49b1fa27-649d-4d45-ae14-9bd126509554.png',
     description: 'Продающий лендинг с видео-презентацией, отзывами учеников и системой записи на пробный урок',
     fullDescription: 'Разработали высококонверсионный лендинг для онлайн-школы английского языка с акцентом на социальные доказательства и простоту записи на пробный урок.',
     technologies: ['React', 'Tailwind CSS', 'Vite'],
@@ -283,9 +286,19 @@ function ProjectContent() {
             </p>
           </div>
 
-          <div className={`aspect-video rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center text-9xl mb-12 shadow-2xl`}>
-            <span>{project.icon}</span>
-          </div>
+          {project.image ? (
+            <div className="aspect-video rounded-xl mb-12 shadow-2xl overflow-hidden">
+              <img 
+                src={project.image} 
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : (
+            <div className={`aspect-video rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center text-9xl mb-12 shadow-2xl`}>
+              <span>{project.icon}</span>
+            </div>
+          )}
         </div>
       </section>
 
