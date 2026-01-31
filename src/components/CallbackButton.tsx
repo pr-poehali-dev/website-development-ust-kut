@@ -33,8 +33,9 @@ export default function CallbackButton() {
         }
         
         toast({
-          title: 'Заявка принята!',
-          description: 'Мы перезвоним вам в течение 15 минут.',
+          title: '🎉 Заявка успешно отправлена!',
+          description: 'Спасибо! Мы перезвоним вам в течение 15 минут.',
+          className: 'border-green-500 bg-green-50 text-green-900',
         });
         setIsOpen(false);
         (e.target as HTMLFormElement).reset();
