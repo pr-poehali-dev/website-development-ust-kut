@@ -12,6 +12,7 @@ import MobileHint from '@/components/MobileHint';
 import Header from '@/components/home/Header';
 import HeroSection from '@/components/home/HeroSection';
 import ServicesSection from '@/components/home/ServicesSection';
+import TelegramPosts from '@/components/home/TelegramPosts';
 import Footer from '@/components/home/Footer';
 
 export default function Index() {
@@ -356,6 +357,8 @@ export default function Index() {
           </Card>
         </div>
       </section>
+
+      <TelegramPosts />
 
       <section id="reviews" className="py-20 px-4">
         <div className="container mx-auto">

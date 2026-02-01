@@ -1,0 +1,27 @@
+{
+  "tests": [
+    {
+      "name": "Get Telegram posts - success",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "channel": "elegycreative",
+        "posts": "array",
+        "total": "number"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get Telegram posts with limit",
+      "method": "GET",
+      "path": "/?limit=3",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "channel": "elegycreative",
+        "total": "number"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
