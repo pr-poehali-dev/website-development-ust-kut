@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
+import { useTilt } from '@/hooks/useTilt';
 
 import MobileHint from '@/components/MobileHint';
 import Footer from '@/components/home/Footer';
@@ -188,6 +189,17 @@ function PortfolioContent() {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
+  
+  const tiltRef1 = useTilt<HTMLDivElement>();
+  const tiltRef2 = useTilt<HTMLDivElement>();
+  const tiltRef3 = useTilt<HTMLDivElement>();
+  const tiltRef4 = useTilt<HTMLDivElement>();
+  const tiltRef5 = useTilt<HTMLDivElement>();
+  const tiltRef6 = useTilt<HTMLDivElement>();
+  const tiltRef7 = useTilt<HTMLDivElement>();
+  const tiltRef8 = useTilt<HTMLDivElement>();
+  const tiltRef9 = useTilt<HTMLDivElement>();
+  const tiltRefs = [tiltRef1, tiltRef2, tiltRef3, tiltRef4, tiltRef5, tiltRef6, tiltRef7, tiltRef8, tiltRef9];
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -321,10 +333,11 @@ function PortfolioContent() {
       <section className="pb-20 px-4">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, index) => (
               <Card 
                 key={project.id}
-                className="group overflow-hidden hover:border-primary transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-primary/20"
+                ref={tiltRefs[projects.indexOf(project)]}
+                className="group overflow-hidden hover:border-primary transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-primary/20"
                 onClick={() => navigate(`/portfolio/${project.slug}`)}
               >
                 <div className={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center text-7xl relative overflow-hidden`}>

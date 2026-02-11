@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useTilt } from '@/hooks/useTilt';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -32,6 +33,18 @@ export default function Index() {
   const reviewsRef = useScrollReveal();
   const contactRef = useScrollReveal();
   const newsletterRef = useScrollReveal();
+  
+  const projectTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
+  
+  const reviewTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -282,7 +295,7 @@ export default function Index() {
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             {projects.map((project, index) => (
-              <Card key={project.id} className={`overflow-hidden hover:border-primary transition-all duration-300 group cursor-pointer animate-card-appear delay-${(index + 1) * 100} hover:shadow-lg hover:shadow-primary/20`} onClick={() => navigate('/portfolio')}>
+              <Card key={project.id} ref={projectTiltRefs[index]} className={`overflow-hidden hover:border-primary transition-shadow duration-300 group cursor-pointer animate-card-appear delay-${(index + 1) * 100} hover:shadow-lg hover:shadow-primary/20`} onClick={() => navigate('/portfolio')}>
                 <div className={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center text-6xl relative overflow-hidden`}>
                   {project.image ? (
                     <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
@@ -401,7 +414,7 @@ export default function Index() {
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {reviews.map((review, index) => (
-              <Card key={index} className={`gradient-border backdrop-blur-glass transition-all duration-300 animate-card-appear delay-${(index + 1) * 100} group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-mid-1))]/20 hover:scale-105`}>
+              <Card key={index} ref={reviewTiltRefs[index]} className={`gradient-border backdrop-blur-glass transition-shadow duration-300 animate-card-appear delay-${(index + 1) * 100} group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-mid-1))]/20 overflow-hidden`}>
                 <CardHeader>
                   <div className="flex items-center gap-4 mb-4">
                     <div className="relative">

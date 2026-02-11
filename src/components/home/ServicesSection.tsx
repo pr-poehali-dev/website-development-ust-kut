@@ -4,10 +4,18 @@ import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { useNavigate } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useTilt } from '@/hooks/useTilt';
 
 export default function ServicesSection() {
   const navigate = useNavigate();
   const sectionRef = useScrollReveal();
+  const tiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
 
   const services = [
     {
@@ -69,7 +77,7 @@ export default function ServicesSection() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {services.slice(0, 3).map((service, index) => (
-            <Card key={index} className={`gradient-border backdrop-blur-glass hover:scale-105 transition-all duration-300 group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 1) * 100} flex flex-col`}>
+            <Card key={index} ref={tiltRefs[index]} className={`gradient-border backdrop-blur-glass transition-shadow duration-300 group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 1) * 100} flex flex-col overflow-hidden`}>
               <CardHeader>
                 <div className="w-12 h-12 bg-gradient-to-br from-[hsl(var(--gradient-start))]/20 to-[hsl(var(--gradient-mid-1))]/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all">
                   <Icon name={service.icon} className="gradient-text" size={24} />
@@ -100,7 +108,7 @@ export default function ServicesSection() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto mt-4 sm:mt-6">
           {services.slice(3).map((service, index) => (
-            <Card key={index + 3} className={`gradient-border backdrop-blur-glass hover:scale-105 transition-all duration-300 group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 4) * 100} flex flex-col`}>
+            <Card key={index + 3} ref={tiltRefs[index + 3]} className={`gradient-border backdrop-blur-glass transition-shadow duration-300 group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 4) * 100} flex flex-col overflow-hidden`}>
               <CardHeader>
                 <div className="w-12 h-12 bg-gradient-to-br from-[hsl(var(--gradient-start))]/20 to-[hsl(var(--gradient-mid-1))]/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all">
                   <Icon name={service.icon} className="gradient-text" size={24} />
