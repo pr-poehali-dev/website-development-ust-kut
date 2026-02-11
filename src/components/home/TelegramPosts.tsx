@@ -61,11 +61,14 @@ export default function TelegramPosts() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Наши новости
+    <section className="py-20 relative overflow-hidden">
+      <div className="absolute top-0 left-1/3 w-96 h-96 bg-[hsl(var(--gradient-end))]/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-[hsl(var(--gradient-start))]/5 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-12 animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="gradient-text">Наши новости</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Следите за нашими работами и новостями в Telegram-канале
@@ -98,10 +101,10 @@ export default function TelegramPosts() {
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {posts.map((post) => (
+              {posts.map((post, index) => (
                 <Card 
                   key={post.id} 
-                  className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-muted hover:border-primary/50"
+                  className={`group gradient-border backdrop-blur-glass hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 1) * 100} overflow-hidden`}
                 >
                   {post.image && (
                     <div className="relative overflow-hidden bg-muted aspect-video">
@@ -110,7 +113,7 @@ export default function TelegramPosts() {
                         alt=""
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--gradient-start))]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   )}
                   
@@ -131,7 +134,7 @@ export default function TelegramPosts() {
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="w-full group/btn"
+                      className="w-full group/btn hover:bg-gradient-to-r hover:from-[hsl(var(--gradient-start))]/10 hover:to-[hsl(var(--gradient-mid-1))]/10"
                       asChild
                     >
                       <a 
@@ -149,7 +152,7 @@ export default function TelegramPosts() {
             </div>
 
             <div className="text-center mt-12">
-              <Button size="lg" asChild>
+              <Button size="lg" className="bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-mid-1))] hover:opacity-90 transition-opacity shadow-lg shadow-[hsl(var(--gradient-start))]/30" asChild>
                 <a href="https://t.me/elegycreative" target="_blank" rel="noopener noreferrer">
                   <Icon name="Send" size={18} className="mr-2" />
                   Подписаться на канал

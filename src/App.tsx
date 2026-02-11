@@ -1,4 +1,10 @@
 import { useEffect } from "react";
+
+declare global {
+  interface Window {
+    ym?: (id: number, method: string, ...args: unknown[]) => void;
+  }
+}
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -23,8 +29,8 @@ function useYandexMetrika() {
 
   useEffect(() => {
     // Send pageview to Yandex.Metrika on route change
-    if (typeof window !== 'undefined' && (window as any).ym) {
-      (window as any).ym(106521597, 'hit', location.pathname + location.search);
+    if (typeof window !== 'undefined' && window.ym) {
+      window.ym(106521597, 'hit', location.pathname + location.search);
     }
   }, [location]);
 }

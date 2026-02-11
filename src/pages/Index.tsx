@@ -48,8 +48,8 @@ export default function Index() {
       
       if (response.ok) {
         // Отправка цели в Яндекс.Метрику
-        if (typeof window !== 'undefined' && (window as any).ym) {
-          (window as any).ym(106521597, 'reachGoal', 'contact_form');
+        if (typeof window !== 'undefined' && window.ym) {
+          window.ym(106521597, 'reachGoal', 'contact_form');
         }
         
         toast({
@@ -92,8 +92,8 @@ export default function Index() {
       
       if (response.ok) {
         // Отправка цели в Яндекс.Метрику
-        if (typeof window !== 'undefined' && (window as any).ym) {
-          (window as any).ym(106521597, 'reachGoal', 'newsletter_subscribe');
+        if (typeof window !== 'undefined' && window.ym) {
+          window.ym(106521597, 'reachGoal', 'newsletter_subscribe');
         }
         
         toast({
@@ -155,8 +155,8 @@ export default function Index() {
       
       if (response.ok) {
         // Отправка цели в Яндекс.Метрику
-        if (typeof window !== 'undefined' && (window as any).ym) {
-          (window as any).ym(106521597, 'reachGoal', 'header_request');
+        if (typeof window !== 'undefined' && window.ym) {
+          window.ym(106521597, 'reachGoal', 'header_request');
         }
         
         toast({
@@ -301,16 +301,21 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="calculator" className="py-20 px-4 bg-card/30">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-accent/10 text-accent border-accent/20">Калькулятор</Badge>
+      <section id="calculator" className="py-20 px-4 relative overflow-hidden">
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-[hsl(var(--gradient-start))]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[hsl(var(--gradient-mid-2))]/10 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto max-w-4xl relative z-10">
+          <div className="text-center mb-12 animate-fade-in">
+            <Badge className="mb-4 backdrop-blur-glass border-[hsl(var(--gradient-start))]">
+              <span className="gradient-text">Калькулятор</span>
+            </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Рассчитайте стоимость</h2>
-            <p className="text-xl text-foreground/70">
+            <p className="text-xl text-muted-foreground">
               Примерная стоимость вашего проекта
             </p>
           </div>
-          <Card className="p-8">
+          <Card className="p-8 gradient-border backdrop-blur-glass animate-scale-in">
             <div className="space-y-8">
               <div>
                 <div className="flex justify-between mb-3">
@@ -354,15 +359,15 @@ export default function Index() {
                   className="w-full"
                 />
               </div>
-              <div className="pt-6 border-t border-border">
+              <div className="pt-6 border-t border-[hsl(var(--border))]">
                 <div className="flex justify-between items-center mb-6">
                   <span className="text-2xl font-semibold">Примерная стоимость:</span>
-                  <span className="text-4xl font-bold text-primary">{calculatePrice().toLocaleString('ru-RU')} ₽</span>
+                  <span className="text-4xl font-bold gradient-text">{calculatePrice().toLocaleString('ru-RU')} ₽</span>
                 </div>
-                <p className="text-sm text-foreground/60 mb-6">
+                <p className="text-sm text-muted-foreground mb-6">
                   * Это примерный расчет. Точная стоимость определяется после обсуждения проекта.
                 </p>
-                <Button size="lg" className="w-full bg-primary hover:bg-primary/90" onClick={() => setIsDialogOpen(true)}>
+                <Button size="lg" className="w-full bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-mid-1))] hover:opacity-90 transition-opacity shadow-lg shadow-[hsl(var(--gradient-start))]/30" onClick={() => setIsDialogOpen(true)}>
                   <Icon name="MessageSquare" className="mr-2" size={20} />
                   Получить точный расчет
                 </Button>
@@ -374,21 +379,29 @@ export default function Index() {
 
       <TelegramPosts />
 
-      <section id="reviews" className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-accent/10 text-accent border-accent/20">Отзывы</Badge>
+      <section id="reviews" className="py-20 px-4 relative overflow-hidden">
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[hsl(var(--gradient-mid-1))]/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[hsl(var(--gradient-end))]/5 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto relative z-10">
+          <div className="text-center mb-12 animate-fade-in">
+            <Badge className="mb-4 backdrop-blur-glass border-[hsl(var(--gradient-mid-1))]">
+              <span className="gradient-text">Отзывы</span>
+            </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Что говорят клиенты</h2>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Отзывы компаний, которые доверили нам свои проекты
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {reviews.map((review, index) => (
-              <Card key={index} className={`hover:border-primary transition-all duration-300 animate-card-appear delay-${(index + 1) * 100} group hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1`}>
+              <Card key={index} className={`gradient-border backdrop-blur-glass transition-all duration-300 animate-card-appear delay-${(index + 1) * 100} group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-mid-1))]/20 hover:scale-105`}>
                 <CardHeader>
                   <div className="flex items-center gap-4 mb-4">
-                    <img src={review.avatar} alt={review.name} className="w-16 h-16 rounded-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-mid-1))] rounded-full blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                      <img src={review.avatar} alt={review.name} className="relative w-16 h-16 rounded-full object-cover transition-transform duration-300 group-hover:scale-110 border-2 border-[hsl(var(--border))]" />
+                    </div>
                     <div>
                       <CardTitle className="text-lg">{review.name}</CardTitle>
                       <CardDescription>{review.company}</CardDescription>
@@ -396,12 +409,12 @@ export default function Index() {
                   </div>
                   <div className="flex gap-1">
                     {Array.from({ length: review.rating }).map((_, i) => (
-                      <Icon key={i} name="Star" className="text-yellow-500 fill-yellow-500" size={16} />
+                      <Icon key={i} name="Star" className="text-[hsl(var(--gradient-start))] fill-[hsl(var(--gradient-start))]" size={16} />
                     ))}
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-foreground/80">{review.text}</p>
+                  <p className="text-muted-foreground">{review.text}</p>
                 </CardContent>
               </Card>
             ))}
