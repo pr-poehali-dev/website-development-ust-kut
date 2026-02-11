@@ -380,9 +380,13 @@ function MarketplacesContent() {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full" variant={plan.popular ? 'default' : 'outline'} onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}>
-                      Выбрать тариф
-                    </Button>
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                      <DialogTrigger asChild>
+                        <Button className="w-full" variant={plan.popular ? 'default' : 'outline'}>
+                          Выбрать тариф
+                        </Button>
+                      </DialogTrigger>
+                    </Dialog>
                   </CardContent>
                 </Card>
                 </div>
