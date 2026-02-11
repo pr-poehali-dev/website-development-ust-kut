@@ -174,13 +174,9 @@ function DevelopmentContent() {
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8">
                 От лендингов до сложных веб-платформ — разрабатываем сайты любой сложности с фокусом на результат
               </p>
-              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button size="lg" className="gradient-button button-hover-effect text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30">
-                    Обсудить проект
-                  </Button>
-                </DialogTrigger>
-              </Dialog>
+              <Button size="lg" className="gradient-button button-hover-effect text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30" onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}>
+                Обсудить проект
+              </Button>
             </div>
             <div className="animate-fade-in flex justify-center items-center">
               <div className="relative">
@@ -452,13 +448,9 @@ function DevelopmentContent() {
             <p className="text-xl text-foreground/70 mb-8">
               Оставьте заявку, и мы свяжемся с вами в течение часа для обсуждения деталей
             </p>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-12">
-                  Начать проект
-                </Button>
-              </DialogTrigger>
-            </Dialog>
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-12" onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}>
+              Начать проект
+            </Button>
           </div>
         </div>
       </section>

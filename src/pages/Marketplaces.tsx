@@ -190,13 +190,9 @@ function MarketplacesContent() {
               <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-8">
                 Полный цикл запуска и продвижения на Wildberries, Ozon, Яндекс.Маркет и других площадках
               </p>
-              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8">
-                    Начать продавать
-                  </Button>
-                </DialogTrigger>
-              </Dialog>
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8" onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}>
+                Начать продавать
+              </Button>
             </div>
             <div className="animate-scale-in">
               <img 
@@ -435,13 +431,9 @@ function MarketplacesContent() {
             <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
               Оставьте заявку, и мы проведём бесплатную консультацию по запуску вашего бизнеса
             </p>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-8 sm:px-12">
-                  Получить консультацию
-                </Button>
-              </DialogTrigger>
-            </Dialog>
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-8 sm:px-12" onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}>
+              Получить консультацию
+            </Button>
           </div>
         </div>
       </section>
