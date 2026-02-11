@@ -19,9 +19,13 @@ export default function HeroSection({ smoothScroll }: HeroSectionProps) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
+    const mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+
     const particles: Array<{
       x: number;
       y: number;
+      baseX: number;
+      baseY: number;
       vx: number;
       vy: number;
       size: number;
@@ -36,9 +40,13 @@ export default function HeroSection({ smoothScroll }: HeroSectionProps) {
     ];
 
     for (let i = 0; i < 50; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
       particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
+        x,
+        y,
+        baseX: x,
+        baseY: y,
         vx: (Math.random() - 0.5) * 0.5,
         vy: (Math.random() - 0.5) * 0.5,
         size: Math.random() * 3 + 1,
@@ -52,11 +60,25 @@ export default function HeroSection({ smoothScroll }: HeroSectionProps) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
+        p.baseX += p.vx;
+        p.baseY += p.vy;
 
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        if (p.baseX < 0 || p.baseX > canvas.width) p.vx *= -1;
+        if (p.baseY < 0 || p.baseY > canvas.height) p.vy *= -1;
+
+        const dx = mouse.x - p.baseX;
+        const dy = mouse.y - p.baseY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const maxDistance = 200;
+
+        if (distance < maxDistance) {
+          const force = (maxDistance - distance) / maxDistance;
+          p.x = p.baseX + dx * force * 0.1;
+          p.y = p.baseY + dy * force * 0.1;
+        } else {
+          p.x = p.baseX;
+          p.y = p.baseY;
+        }
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -86,14 +108,22 @@ export default function HeroSection({ smoothScroll }: HeroSectionProps) {
 
     animate();
 
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    };
+
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
+    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', handleResize);
 
     return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
