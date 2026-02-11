@@ -163,15 +163,18 @@ function MarketingContent() {
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" alt="Элегия" className="h-12 sm:h-14 md:h-16" />
+            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" alt="Элегия" className="h-10 sm:h-12 md:h-14" />
           </div>
-          <div className="flex items-center gap-6">
-            <Button variant="ghost" onClick={() => navigate('/')}>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Button variant="ghost" onClick={() => navigate('/')} size="sm" className="hidden sm:flex">
               На главную
+            </Button>
+            <Button variant="ghost" onClick={() => navigate('/')} size="icon" className="sm:hidden">
+              <Icon name="Home" size={20} />
             </Button>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <Button className="bg-primary hover:bg-primary/90">Связаться</Button>
+                <Button className="bg-primary hover:bg-primary/90" size="sm">Связаться</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
                 <DialogHeader>
@@ -210,15 +213,15 @@ function MarketingContent() {
               <Badge className="bg-accent/10 text-accent border-accent/20">
                 Цифровой маркетинг
               </Badge>
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Привлекаем клиентов через <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">интернет</span>
               </h1>
-              <p className="text-xl text-foreground/70">
+              <p className="text-base sm:text-lg md:text-xl text-foreground/70">
                 Комплексное продвижение в digital: контекстная реклама, SMM, email-маркетинг и таргет
               </p>
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8">
                     Запустить рекламу
                   </Button>
                 </DialogTrigger>
@@ -238,7 +241,7 @@ function MarketingContent() {
       <section className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Наши услуги</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">Наши услуги</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 {
@@ -294,7 +297,7 @@ function MarketingContent() {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Почему с нами выгодно</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">Почему с нами выгодно</h2>
             <div className="grid md:grid-cols-2 gap-8">
               {[
                 {
@@ -336,7 +339,7 @@ function MarketingContent() {
       <section className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Как мы работаем</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">Как мы работаем</h2>
             <div className="space-y-6">
               {[
                 {
@@ -372,11 +375,11 @@ function MarketingContent() {
               ].map((process, index) => (
                 <Card key={index} className={`hover:border-primary transition-colors animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
-                    <div className="flex items-start gap-6">
-                      <div className="text-6xl font-bold text-primary/20">{process.step}</div>
-                      <div className="flex-1">
-                        <CardTitle className="text-2xl mb-2">{process.title}</CardTitle>
-                        <CardDescription className="text-foreground/70 text-base">
+                    <div className="flex items-start gap-4 sm:gap-6">
+                      <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary/20 flex-shrink-0">{process.step}</div>
+                      <div className="flex-1 min-w-0">
+                        <CardTitle className="text-lg sm:text-xl md:text-2xl mb-2">{process.title}</CardTitle>
+                        <CardDescription className="text-foreground/70 text-sm sm:text-base">
                           {process.description}
                         </CardDescription>
                       </div>
@@ -392,32 +395,32 @@ function MarketingContent() {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 text-center">Результаты наших клиентов</h2>
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center">Результаты наших клиентов</h2>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
               <Card className="border-primary/20 text-center">
                 <CardHeader>
-                  <div className="text-5xl font-bold text-primary mb-2">-52%</div>
-                  <CardTitle className="text-lg font-normal text-foreground/80">Снижение стоимости лида</CardTitle>
+                  <div className="text-4xl sm:text-5xl font-bold text-primary mb-2">-52%</div>
+                  <CardTitle className="text-base sm:text-lg font-normal text-foreground/80">Снижение стоимости лида</CardTitle>
                 </CardHeader>
-                <CardContent className="text-foreground/60 text-sm">
+                <CardContent className="text-foreground/60 text-xs sm:text-sm">
                   За 3 месяца работы с контекстной рекламой
                 </CardContent>
               </Card>
               <Card className="border-accent/20 text-center">
                 <CardHeader>
-                  <div className="text-5xl font-bold text-accent mb-2">+430%</div>
-                  <CardTitle className="text-lg font-normal text-foreground/80">Рост продаж через соцсети</CardTitle>
+                  <div className="text-4xl sm:text-5xl font-bold text-accent mb-2">+430%</div>
+                  <CardTitle className="text-base sm:text-lg font-normal text-foreground/80">Рост продаж через соцсети</CardTitle>
                 </CardHeader>
-                <CardContent className="text-foreground/60 text-sm">
+                <CardContent className="text-foreground/60 text-xs sm:text-sm">
                   После запуска комплексного SMM
                 </CardContent>
               </Card>
               <Card className="border-primary/20 text-center">
                 <CardHeader>
-                  <div className="text-5xl font-bold text-primary mb-2">340%</div>
-                  <CardTitle className="text-lg font-normal text-foreground/80">Средний ROMI</CardTitle>
+                  <div className="text-4xl sm:text-5xl font-bold text-primary mb-2">340%</div>
+                  <CardTitle className="text-base sm:text-lg font-normal text-foreground/80">Средний ROMI</CardTitle>
                 </CardHeader>
-                <CardContent className="text-foreground/60 text-sm">
+                <CardContent className="text-foreground/60 text-xs sm:text-sm">
                   Окупаемость рекламных инвестиций
                 </CardContent>
               </Card>
@@ -429,7 +432,7 @@ function MarketingContent() {
       <section className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Тарифы</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">Тарифы</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
@@ -516,13 +519,13 @@ function MarketingContent() {
       <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10">
         <div className="container mx-auto">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Готовы начать привлекать клиентов?</h2>
-            <p className="text-xl text-foreground/70 mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Готовы начать привлекать клиентов?</h2>
+            <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
               Запустим первую рекламную кампанию за 3 дня и покажем результат
             </p>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-12">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-8 sm:px-12">
                   Запустить рекламу
                 </Button>
               </DialogTrigger>
