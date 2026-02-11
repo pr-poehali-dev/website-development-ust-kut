@@ -95,7 +95,7 @@ export default function Header({
                   <label className="text-sm font-medium mb-2 block">Email</label>
                   <Input name="email" required type="email" placeholder="ivan@example.com" />
                 </div>
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                <Button type="submit" className="w-full bg-primary button-hover-effect">
                   Отправить заявку
                 </Button>
               </form>
@@ -159,7 +159,7 @@ export default function Header({
                       <label className="text-sm font-medium mb-2 block">Email</label>
                       <Input name="email" required type="email" placeholder="ivan@example.com" />
                     </div>
-                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                    <Button type="submit" className="w-full bg-primary button-hover-effect">
                       Отправить заявку
                     </Button>
                   </form>

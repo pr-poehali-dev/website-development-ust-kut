@@ -200,7 +200,7 @@ function DesignContent() {
                 </p>
                 <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                   <DialogTrigger asChild>
-                    <Button size="lg" className="bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-mid-1))] hover:opacity-90 transition-opacity text-lg px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30">
+                    <Button size="lg" className="gradient-button button-hover-effect text-lg px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30">
                       Заказать дизайн
                     </Button>
                   </DialogTrigger>

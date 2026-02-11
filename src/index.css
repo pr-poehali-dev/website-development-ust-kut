@@ -305,4 +305,210 @@
       transform: translateY(0) scale(1);
     }
   }
+
+  @keyframes buttonPulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 hsla(var(--gradient-start), 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 8px hsla(var(--gradient-start), 0);
+    }
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .button-hover-effect {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .button-hover-effect::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      hsla(var(--gradient-start), 0.3),
+      transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .button-hover-effect:hover::before {
+    transform: translateX(100%);
+  }
+
+  .button-hover-effect:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px hsla(var(--gradient-start), 0.4);
+  }
+
+  .button-hover-effect:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px hsla(var(--gradient-start), 0.3);
+  }
+
+  .gradient-button {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-start)),
+      hsl(var(--gradient-mid-1)),
+      hsl(var(--gradient-mid-2))
+    );
+    background-size: 200% 200%;
+    transition: all 0.4s ease;
+  }
+
+  .gradient-button:hover {
+    background-position: 100% 0;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  .outline-button-hover {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .outline-button-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px hsla(var(--gradient-start), 0.2);
+    background: linear-gradient(
+      135deg,
+      hsla(var(--gradient-start), 0.1),
+      hsla(var(--gradient-mid-1), 0.1)
+    );
+  }
+
+  .outline-button-hover:active {
+    transform: translateY(0);
+  }
+}
+
+@layer components {
+  button[class*="bg-gradient-to"],
+  a[class*="bg-gradient-to"] {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  button[class*="bg-gradient-to"]::before,
+  a[class*="bg-gradient-to"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      hsla(var(--gradient-mid-1), 0.4),
+      transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    z-index: 0;
+  }
+
+  button[class*="bg-gradient-to"]:hover::before,
+  a[class*="bg-gradient-to"]:hover::before {
+    transform: translateX(100%);
+  }
+
+  button[class*="bg-gradient-to"]:hover,
+  a[class*="bg-gradient-to"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px hsla(var(--gradient-start), 0.5);
+  }
+
+  button[class*="bg-gradient-to"]:active,
+  a[class*="bg-gradient-to"]:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px hsla(var(--gradient-start), 0.4);
+  }
+
+  button[class*="bg-gradient-to"] > *,
+  a[class*="bg-gradient-to"] > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  button[class*="bg-primary"]:not([class*="bg-gradient"]),
+  a[class*="bg-primary"]:not([class*="bg-gradient"]) {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  button[class*="bg-primary"]:not([class*="bg-gradient"])::after,
+  a[class*="bg-primary"]:not([class*="bg-gradient"])::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      hsla(var(--gradient-mid-1), 0.4),
+      transparent
+    );
+    transform: translate(-50%, -50%);
+    transition:
+      width 0.6s ease,
+      height 0.6s ease;
+    z-index: 0;
+  }
+
+  button[class*="bg-primary"]:not([class*="bg-gradient"]):hover::after,
+  a[class*="bg-primary"]:not([class*="bg-gradient"]):hover::after {
+    width: 300px;
+    height: 300px;
+  }
+
+  button[class*="bg-primary"]:not([class*="bg-gradient"]):hover,
+  a[class*="bg-primary"]:not([class*="bg-gradient"]):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px hsla(var(--primary), 0.5);
+  }
+
+  button[class*="bg-primary"]:not([class*="bg-gradient"]):active,
+  a[class*="bg-primary"]:not([class*="bg-gradient"]):active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px hsla(var(--primary), 0.4);
+  }
+
+  button[class*="bg-primary"] > *,
+  a[class*="bg-primary"] > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  button[class*="border-primary"]:hover,
+  a[class*="border-primary"]:hover,
+  button[class*="variant-outline"]:hover,
+  a[class*="variant-outline"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px hsla(var(--gradient-start), 0.3);
+  }
+
+  button[class*="border-primary"]:active,
+  a[class*="border-primary"]:active,
+  button[class*="variant-outline"]:active,
+  a[class*="variant-outline"]:active {
+    transform: translateY(0);
+  }
 }

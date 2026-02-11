@@ -160,7 +160,7 @@ export default function HeroSection({ smoothScroll }: HeroSectionProps) {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-[hsl(var(--gradient-start))] via-[hsl(var(--gradient-mid-1))] to-[hsl(var(--gradient-mid-2))] hover:opacity-90 transition-opacity text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30" 
+                className="gradient-button button-hover-effect text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30" 
                 asChild
               >
                 <a href="#calculator" onClick={(e) => smoothScroll(e, '#calculator')}>
@@ -171,7 +171,7 @@ export default function HeroSection({ smoothScroll }: HeroSectionProps) {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="text-base sm:text-lg px-6 sm:px-8 border-[hsl(var(--border))] hover:border-[hsl(var(--gradient-start))] hover:text-[hsl(var(--gradient-start))] transition-all" 
+                className="outline-button-hover text-base sm:text-lg px-6 sm:px-8 border-[hsl(var(--border))] hover:border-[hsl(var(--gradient-start))] hover:text-[hsl(var(--gradient-start))]" 
                 asChild
               >
                 <a href="#services" onClick={(e) => smoothScroll(e, '#services')}>

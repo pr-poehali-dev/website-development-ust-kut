@@ -386,7 +386,7 @@ export default function Index() {
                 <p className="text-sm text-muted-foreground mb-6">
                   * Это примерный расчет. Точная стоимость определяется после обсуждения проекта.
                 </p>
-                <Button size="lg" className="w-full bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-mid-1))] hover:opacity-90 transition-opacity shadow-lg shadow-[hsl(var(--gradient-start))]/30" onClick={() => setIsDialogOpen(true)}>
+                <Button size="lg" className="w-full gradient-button button-hover-effect shadow-lg shadow-[hsl(var(--gradient-start))]/30" onClick={() => setIsDialogOpen(true)}>
                   <Icon name="MessageSquare" className="mr-2" size={20} />
                   Получить точный расчет
                 </Button>
