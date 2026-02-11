@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -11,7 +12,23 @@ import { useToast } from '@/hooks/use-toast';
 import MobileHint from '@/components/MobileHint';
 import Footer from '@/components/home/Footer';
 
-const projectsData: Record<string, any> = {
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  icon: string;
+  image: string;
+  description: string;
+  fullDescription: string;
+  technologies: string[];
+  results: string[];
+  gradient: string;
+  challenges: string[];
+  solutions: string[];
+  features: string[];
+}
+
+const projectsData: Record<string, Project> = {
   'technomarket': {
     id: 1,
     title: 'Интернет-магазин одежды Garderob',
@@ -166,6 +183,28 @@ function ProjectContent() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
 
+  const challengeRevealRefs = [
+    useScrollReveal<HTMLDivElement>({ delay: 0 }),
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 })
+  ];
+
+  const featureRevealRefs = [
+    useScrollReveal<HTMLDivElement>({ delay: 0 }),
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 }),
+    useScrollReveal<HTMLDivElement>({ delay: 300 }),
+    useScrollReveal<HTMLDivElement>({ delay: 400 })
+  ];
+
+  const techRevealRefs = [
+    useScrollReveal<HTMLDivElement>({ delay: 0 }),
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 }),
+    useScrollReveal<HTMLDivElement>({ delay: 300 }),
+    useScrollReveal<HTMLDivElement>({ delay: 400 })
+  ];
+
   const project = slug ? projectsData[slug] : null;
   
   const currentIndex = slug ? projectSlugs.indexOf(slug) : -1;
@@ -312,12 +351,14 @@ function ProjectContent() {
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-3 gap-6">
             {project.results.map((result: string, index: number) => (
-              <Card key={index} className="text-center">
-                <CardContent className="pt-6">
-                  <div className="text-3xl font-bold text-primary mb-2">{result.split(' ')[0]}</div>
-                  <div className="text-foreground/70">{result.split(' ').slice(1).join(' ')}</div>
-                </CardContent>
-              </Card>
+              <div key={index} ref={challengeRevealRefs[index]}>
+                <Card className="text-center h-full">
+                  <CardContent className="pt-6">
+                    <div className="text-3xl font-bold text-primary mb-2">{result.split(' ')[0]}</div>
+                    <div className="text-foreground/70">{result.split(' ').slice(1).join(' ')}</div>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -328,9 +369,11 @@ function ProjectContent() {
           <h2 className="text-3xl font-bold mb-8">Технологии</h2>
           <div className="flex flex-wrap gap-3">
             {project.technologies.map((tech: string, index: number) => (
-              <Badge key={index} variant="outline" className="text-base px-4 py-2">
-                {tech}
-              </Badge>
+              <div key={index} ref={techRevealRefs[index % 5]}>
+                <Badge variant="outline" className="text-base px-4 py-2">
+                  {tech}
+                </Badge>
+              </div>
             ))}
           </div>
         </div>
@@ -386,12 +429,14 @@ function ProjectContent() {
           <h2 className="text-3xl font-bold mb-8">Ключевые возможности</h2>
           <div className="grid md:grid-cols-2 gap-4">
             {project.features.map((feature: string, index: number) => (
-              <Card key={index}>
-                <CardContent className="pt-6 flex items-center gap-3">
-                  <Icon name="Check" className="text-accent flex-shrink-0" size={20} />
-                  <span className="text-foreground/80">{feature}</span>
-                </CardContent>
-              </Card>
+              <div key={index} ref={featureRevealRefs[index % 5]}>
+                <Card className="h-full">
+                  <CardContent className="pt-6 flex items-center gap-3">
+                    <Icon name="Check" className="text-accent flex-shrink-0" size={20} />
+                    <span className="text-foreground/80">{feature}</span>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
