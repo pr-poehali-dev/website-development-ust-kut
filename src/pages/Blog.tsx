@@ -2,10 +2,8 @@ import { useState } from 'react';
 import { useTilt } from '@/hooks/useTilt';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Helmet } from 'react-helmet-async';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import Icon from '@/components/ui/icon';
 import { useNavigate } from 'react-router-dom';
 
@@ -303,7 +301,7 @@ function BlogContent() {
                 className="w-full bg-primary hover:bg-primary/90"
                 onClick={() => {
                   setSelectedArticle(null);
-                  window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+                  setIsDialogOpen(true);
                 }}
               >
                 Получить консультацию
