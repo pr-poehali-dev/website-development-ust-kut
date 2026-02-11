@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -162,6 +163,17 @@ const categories = ['Все проекты', 'E-commerce', 'Бизнес', 'Land
 export default function Portfolio() {
   return (
     <>
+      <Helmet>
+        <title>Портфолио работ веб-студии Элегия | Кейсы разработки сайтов</title>
+        <meta name="description" content="Портфолио веб-студии Элегия: реализованные проекты интернет-магазинов, корпоративных сайтов, лендингов. Кейсы с результатами, технологиями и отзывами клиентов" />
+        <meta name="keywords" content="портфолио веб-студии, кейсы разработки сайтов, примеры работ, портфолио сайтов, готовые проекты" />
+        <link rel="canonical" href="https://elegiya-web.ru/portfolio" />
+        
+        <meta property="og:title" content="Портфолио работ веб-студии Элегия | Кейсы и проекты" />
+        <meta property="og:description" content="Примеры реализованных проектов: интернет-магазины, корпоративные сайты, лендинги. Кейсы с результатами и технологиями" />
+        <meta property="og:url" content="https://elegiya-web.ru/portfolio" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <MobileHint />
       <PortfolioContent />
     </>

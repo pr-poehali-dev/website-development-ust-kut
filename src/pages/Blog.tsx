@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -127,6 +128,17 @@ const categories = ['Все статьи', 'E-commerce', 'SEO', 'Веб-диза
 export default function Blog() {
   return (
     <>
+      <Helmet>
+        <title>Блог веб-студии Элегия | Статьи о создании сайтов и продвижении</title>
+        <meta name="description" content="Блог веб-студии Элегия: полезные статьи о разработке сайтов, SEO-продвижении, веб-дизайне, интернет-маркетинге. Тренды, кейсы, практические советы от экспертов" />
+        <meta name="keywords" content="блог о разработке сайтов, seo статьи, веб-дизайн блог, интернет-маркетинг, статьи о сайтах, тренды веб-разработки" />
+        <link rel="canonical" href="https://elegiya-web.ru/blog" />
+        
+        <meta property="og:title" content="Блог веб-студии Элегия | Статьи о веб-разработке и SEO" />
+        <meta property="og:description" content="Полезные статьи о создании сайтов, SEO-продвижении, дизайне и маркетинге. Тренды, кейсы, практические рекомендации" />
+        <meta property="og:url" content="https://elegiya-web.ru/blog" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <MobileHint />
       <BlogContent />
     </>
