@@ -30,6 +30,13 @@ function MarketplacesContent() {
   const { toast } = useToast();
   const navigate = useNavigate();
 
+  const platformTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
+
   const serviceTiltRefs = [
     useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>(),
@@ -43,6 +50,13 @@ function MarketplacesContent() {
     useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>()
+  ];
+
+  const platformRevealRefs = [
+    useScrollReveal<HTMLDivElement>({ delay: 0 }),
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 }),
+    useScrollReveal<HTMLDivElement>({ delay: 300 })
   ];
 
   const serviceRevealRefs = [
@@ -310,8 +324,8 @@ function MarketplacesContent() {
                   color: 'text-orange-500'
                 }
               ].map((platform, index) => (
-                <div key={index} ref={serviceRevealRefs[index % 6]}>
-                  <Card ref={serviceTiltRefs[index % 6]} className="text-center transition-shadow duration-300 overflow-hidden h-full">
+                <div key={index} ref={platformRevealRefs[index]}>
+                  <Card ref={platformTiltRefs[index]} className="text-center transition-shadow duration-300 overflow-hidden h-full">
                     <CardHeader>
                       <Icon name={platform.icon} className={`${platform.color} mx-auto mb-4`} size={56} />
                       <CardTitle className="text-xl">{platform.name}</CardTitle>

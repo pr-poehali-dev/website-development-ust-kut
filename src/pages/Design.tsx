@@ -33,6 +33,9 @@ function DesignContent() {
   const serviceTiltRefs = [
     useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>()
   ];
 
@@ -269,7 +272,7 @@ function DesignContent() {
                 }
               ].map((service, index) => (
                 <div key={index} ref={serviceRevealRefs[index % 3]}>
-                  <Card ref={serviceTiltRefs[index % 3]} className="transition-shadow duration-300 overflow-hidden h-full">
+                  <Card ref={serviceTiltRefs[index]} className="transition-shadow duration-300 overflow-hidden h-full">
                     <CardHeader>
                       <Icon name={service.icon} className="text-accent mb-4" size={48} />
                       <CardTitle className="text-xl">{service.title}</CardTitle>

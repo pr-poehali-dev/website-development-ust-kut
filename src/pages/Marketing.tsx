@@ -34,6 +34,8 @@ function MarketingContent() {
     useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>()
   ];
 
@@ -41,7 +43,9 @@ function MarketingContent() {
     useScrollReveal<HTMLDivElement>({ delay: 0 }),
     useScrollReveal<HTMLDivElement>({ delay: 100 }),
     useScrollReveal<HTMLDivElement>({ delay: 200 }),
-    useScrollReveal<HTMLDivElement>({ delay: 300 })
+    useScrollReveal<HTMLDivElement>({ delay: 300 }),
+    useScrollReveal<HTMLDivElement>({ delay: 400 }),
+    useScrollReveal<HTMLDivElement>({ delay: 500 })
   ];
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -268,8 +272,8 @@ function MarketingContent() {
                   description: 'Разработка ботов для Telegram, ВК, WhatsApp для автоматизации продаж и поддержки'
                 }
               ].map((service, index) => (
-                <div key={index} ref={serviceRevealRefs[index % 4]}>
-                  <Card ref={serviceTiltRefs[index % 4]} className="transition-shadow duration-300 overflow-hidden h-full">
+                <div key={index} ref={serviceRevealRefs[index]}>
+                  <Card ref={serviceTiltRefs[index]} className="transition-shadow duration-300 overflow-hidden h-full">
                     <CardHeader>
                       <Icon name={service.icon} className="text-accent mb-4" size={48} />
                       <CardTitle className="text-xl">{service.title}</CardTitle>

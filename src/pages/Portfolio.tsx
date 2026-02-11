@@ -191,16 +191,17 @@ function PortfolioContent() {
   const { toast } = useToast();
   const navigate = useNavigate();
   
-  const tiltRef1 = useTilt<HTMLDivElement>();
-  const tiltRef2 = useTilt<HTMLDivElement>();
-  const tiltRef3 = useTilt<HTMLDivElement>();
-  const tiltRef4 = useTilt<HTMLDivElement>();
-  const tiltRef5 = useTilt<HTMLDivElement>();
-  const tiltRef6 = useTilt<HTMLDivElement>();
-  const tiltRef7 = useTilt<HTMLDivElement>();
-  const tiltRef8 = useTilt<HTMLDivElement>();
-  const tiltRef9 = useTilt<HTMLDivElement>();
-  const tiltRefs = [tiltRef1, tiltRef2, tiltRef3, tiltRef4, tiltRef5, tiltRef6, tiltRef7, tiltRef8, tiltRef9];
+  const tiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
 
   const revealRefs = [
     useScrollReveal<HTMLDivElement>({ delay: 0 }),
@@ -346,10 +347,12 @@ function PortfolioContent() {
       <section className="pb-20 px-4">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project, index) => (
-              <div key={project.id} ref={revealRefs[projects.indexOf(project) % 9]}>
+            {filteredProjects.map((project, index) => {
+              const projectIndex = projects.indexOf(project);
+              return (
+              <div key={project.id} ref={revealRefs[projectIndex % 9]}>
                 <Card 
-                  ref={tiltRefs[projects.indexOf(project)]}
+                  ref={tiltRefs[projectIndex % 9]}
                   className="group overflow-hidden hover:border-primary transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-primary/20 h-full"
                   onClick={() => navigate(`/portfolio/${project.slug}`)}
                 >
@@ -391,7 +394,8 @@ function PortfolioContent() {
                 </CardContent>
                 </Card>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
