@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
@@ -18,12 +17,15 @@ export default function PageNav({ currentPage }: PageNavProps) {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const services = [
+  const menuItems = [
+    { name: 'Главная', path: '/', icon: 'Home' },
     { name: 'Разработка сайтов', path: '/development', icon: 'Code' },
     { name: 'SEO-продвижение', path: '/seo', icon: 'TrendingUp' },
     { name: 'Веб-дизайн', path: '/design', icon: 'Palette' },
     { name: 'Цифровой маркетинг', path: '/marketing', icon: 'Megaphone' },
-    { name: 'Вывод на маркетплейсы', path: '/marketplaces', icon: 'ShoppingBag' }
+    { name: 'Маркетплейсы', path: '/marketplaces', icon: 'ShoppingBag' },
+    { name: 'Портфолио', path: '/portfolio', icon: 'Briefcase' },
+    { name: 'Блог', path: '/blog', icon: 'BookOpen' }
   ];
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -67,48 +69,24 @@ export default function PageNav({ currentPage }: PageNavProps) {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 backdrop-blur-glass border-b border-[hsl(var(--border))]">
+    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
+        <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
           <img 
             src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" 
             alt="Элегия" 
-            className="h-12 sm:h-14 md:h-16" 
+            className="h-10 sm:h-12 md:h-14" 
           />
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          <DropdownMenu>
-            <DropdownMenuTrigger className="text-muted-foreground hover:text-foreground transition-all cursor-pointer flex items-center gap-1">
-              Услуги
-              <Icon name="ChevronDown" size={16} />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-56">
-              {services.map((service) => (
-                <DropdownMenuItem 
-                  key={service.path}
-                  onClick={() => navigate(service.path)}
-                  className="cursor-pointer"
-                >
-                  <Icon name={service.icon} size={16} className="mr-2" />
-                  {service.name}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <span onClick={() => navigate('/portfolio')} className="text-muted-foreground hover:text-foreground transition-all cursor-pointer">
-            Портфолио
-          </span>
-          <span onClick={() => navigate('/blog')} className="text-muted-foreground hover:text-foreground transition-all cursor-pointer">
-            Блог
-          </span>
-          <span onClick={() => navigate('/')} className="text-muted-foreground hover:text-foreground transition-all cursor-pointer">
-            Главная
-          </span>
+        <div className="hidden md:flex items-center gap-4">
+          <Button variant="ghost" onClick={() => navigate('/')} size="sm">
+            На главную
+          </Button>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-mid-1))] hover:opacity-90 transition-opacity shadow-lg shadow-[hsl(var(--gradient-start))]/20">
+              <Button className="bg-primary hover:bg-primary/90" size="sm">
                 Связаться
               </Button>
             </DialogTrigger>
@@ -132,7 +110,7 @@ export default function PageNav({ currentPage }: PageNavProps) {
                   <label className="text-sm font-medium mb-2 block">Email</label>
                   <Input name="email" required type="email" placeholder="ivan@example.com" />
                 </div>
-                <Button type="submit" className="w-full bg-primary button-hover-effect">
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                   Отправить заявку
                 </Button>
               </form>
@@ -141,69 +119,77 @@ export default function PageNav({ currentPage }: PageNavProps) {
         </div>
 
         {/* Mobile Navigation */}
-        <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Icon name="Menu" size={24} />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right">
-            <div className="flex flex-col gap-6 mt-8">
-              <div className="flex flex-col gap-3">
-                <div className="text-lg font-semibold text-foreground/90 mb-2">Услуги</div>
-                {services.map((service) => (
-                  <span 
-                    key={service.path}
-                    onClick={() => { navigate(service.path); setMobileMenuOpen(false); }} 
-                    className="text-base text-foreground/70 hover:text-primary transition-colors cursor-pointer pl-4 flex items-center gap-2"
-                  >
-                    <Icon name={service.icon} size={16} />
-                    {service.name}
-                  </span>
-                ))}
+        <div className="flex md:hidden items-center gap-2">
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button className="bg-primary hover:bg-primary/90" size="sm">
+                Связаться
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle>Оставьте заявку</DialogTitle>
+                <DialogDescription>
+                  Заполните форму, и мы свяжемся с вами в течение часа
+                </DialogDescription>
+              </DialogHeader>
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Ваше имя</label>
+                  <Input name="name" required placeholder="Иван Иванов" />
+                </div>
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Телефон</label>
+                  <Input name="phone" required type="tel" placeholder="+7 (999) 123-45-67" />
+                </div>
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Email</label>
+                  <Input name="email" required type="email" placeholder="ivan@example.com" />
+                </div>
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                  Отправить заявку
+                </Button>
+              </form>
+            </DialogContent>
+          </Dialog>
+
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Icon name="Menu" size={24} />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <div className="flex flex-col gap-6 mt-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" 
+                    alt="Элегия" 
+                    className="h-10" 
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  {menuItems.map((item) => (
+                    <SheetClose key={item.path} asChild>
+                      <Button
+                        variant={currentPage === item.path ? "default" : "ghost"}
+                        className="w-full justify-start"
+                        onClick={() => {
+                          navigate(item.path);
+                          setMobileMenuOpen(false);
+                        }}
+                      >
+                        <Icon name={item.icon} size={18} className="mr-3" />
+                        {item.name}
+                      </Button>
+                    </SheetClose>
+                  ))}
+                </div>
               </div>
-              <span onClick={() => { navigate('/portfolio'); setMobileMenuOpen(false); }} className="text-lg text-foreground/80 hover:text-primary transition-colors cursor-pointer">
-                Портфолио
-              </span>
-              <span onClick={() => { navigate('/blog'); setMobileMenuOpen(false); }} className="text-lg text-foreground/80 hover:text-primary transition-colors cursor-pointer">
-                Блог
-              </span>
-              <span onClick={() => { navigate('/'); setMobileMenuOpen(false); }} className="text-lg text-foreground/80 hover:text-primary transition-colors cursor-pointer">
-                Главная
-              </span>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button className="bg-primary hover:bg-primary/90 w-full">Связаться</Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Оставьте заявку</DialogTitle>
-                    <DialogDescription>
-                      Заполните форму, и мы свяжемся с вами в течение часа
-                    </DialogDescription>
-                  </DialogHeader>
-                  <form onSubmit={handleFormSubmit} className="space-y-4">
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Ваше имя</label>
-                      <Input name="name" required placeholder="Иван Иванов" />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Телефон</label>
-                      <Input name="phone" required type="tel" placeholder="+7 (999) 123-45-67" />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Email</label>
-                      <Input name="email" required type="email" placeholder="ivan@example.com" />
-                    </div>
-                    <Button type="submit" className="w-full bg-primary button-hover-effect">
-                      Отправить заявку
-                    </Button>
-                  </form>
-                </DialogContent>
-              </Dialog>
-            </div>
-          </SheetContent>
-        </Sheet>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </nav>
   );
