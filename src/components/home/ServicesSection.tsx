@@ -51,10 +51,15 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-20 px-4 bg-card/30">
-      <div className="container mx-auto">
-        <div className="text-center mb-8 sm:mb-12">
-          <Badge className="mb-3 sm:mb-4 bg-accent/10 text-accent border-accent/20">Наши услуги</Badge>
+    <section id="services" className="py-20 px-4 relative overflow-hidden">
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[hsl(var(--gradient-mid-1))]/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[hsl(var(--gradient-mid-2))]/5 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto relative z-10">
+        <div className="text-center mb-8 sm:mb-12 animate-fade-in">
+          <Badge className="mb-3 sm:mb-4 backdrop-blur-glass border-[hsl(var(--gradient-start))]">
+            <span className="gradient-text">Наши услуги</span>
+          </Badge>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Что мы предлагаем</h2>
           <p className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto px-4">
             Полный спектр услуг для развития вашего бизнеса в интернете
@@ -62,10 +67,10 @@ export default function ServicesSection() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {services.slice(0, 3).map((service, index) => (
-            <Card key={index} className={`bg-gradient-to-br ${service.gradient} border-border/50 hover:border-primary/50 transition-all duration-300 group hover:shadow-lg animate-card-appear delay-${(index + 1) * 100} flex flex-col`}>
+            <Card key={index} className={`gradient-border backdrop-blur-glass hover:scale-105 transition-all duration-300 group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 1) * 100} flex flex-col`}>
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Icon name={service.icon as any} className="text-primary" size={24} />
+                <div className="w-12 h-12 bg-gradient-to-br from-[hsl(var(--gradient-start))]/20 to-[hsl(var(--gradient-mid-1))]/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all">
+                  <Icon name={service.icon} className="gradient-text" size={24} />
                 </div>
                 <CardTitle className="text-xl sm:text-2xl">{service.title}</CardTitle>
                 <CardDescription className="text-sm sm:text-base">{service.description}</CardDescription>
@@ -81,11 +86,11 @@ export default function ServicesSection() {
                 </ul>
                 <Button 
                   variant="ghost" 
-                  className="w-full group-hover:bg-primary/10 mt-auto" 
+                  className="w-full group-hover:bg-gradient-to-r group-hover:from-[hsl(var(--gradient-start))]/10 group-hover:to-[hsl(var(--gradient-mid-1))]/10 mt-auto transition-all" 
                   onClick={() => navigate(service.path)}
                 >
                   Подробнее
-                  <Icon name="ArrowRight" className="ml-2" size={16} />
+                  <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
                 </Button>
               </CardContent>
             </Card>
@@ -93,10 +98,10 @@ export default function ServicesSection() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto mt-4 sm:mt-6">
           {services.slice(3).map((service, index) => (
-            <Card key={index + 3} className={`bg-gradient-to-br ${service.gradient} border-border/50 hover:border-primary/50 transition-all duration-300 group hover:shadow-lg animate-card-appear delay-${(index + 4) * 100} flex flex-col`}>
+            <Card key={index + 3} className={`gradient-border backdrop-blur-glass hover:scale-105 transition-all duration-300 group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 4) * 100} flex flex-col`}>
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Icon name={service.icon as any} className="text-primary" size={24} />
+                <div className="w-12 h-12 bg-gradient-to-br from-[hsl(var(--gradient-start))]/20 to-[hsl(var(--gradient-mid-1))]/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all">
+                  <Icon name={service.icon} className="gradient-text" size={24} />
                 </div>
                 <CardTitle className="text-xl sm:text-2xl">{service.title}</CardTitle>
                 <CardDescription className="text-sm sm:text-base">{service.description}</CardDescription>
@@ -112,11 +117,11 @@ export default function ServicesSection() {
                 </ul>
                 <Button 
                   variant="ghost" 
-                  className="w-full group-hover:bg-primary/10 mt-auto" 
+                  className="w-full group-hover:bg-gradient-to-r group-hover:from-[hsl(var(--gradient-start))]/10 group-hover:to-[hsl(var(--gradient-mid-1))]/10 mt-auto transition-all" 
                   onClick={() => navigate(service.path)}
                 >
                   Подробнее
-                  <Icon name="ArrowRight" className="ml-2" size={16} />
+                  <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
                 </Button>
               </CardContent>
             </Card>

@@ -35,14 +35,14 @@ export default function Header({
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 w-full z-50 backdrop-blur-glass border-b border-[hsl(var(--border))]">
       <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" alt="Элегия" className="h-12 sm:h-14 md:h-16" />
         </div>
         <div className="hidden md:flex items-center gap-8">
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-foreground/80 hover:text-primary transition-colors cursor-pointer flex items-center gap-1">
+            <DropdownMenuTrigger className="text-muted-foreground hover:text-foreground transition-all cursor-pointer flex items-center gap-1">
               Услуги
               <Icon name="ChevronDown" size={16} />
             </DropdownMenuTrigger>
@@ -53,27 +53,27 @@ export default function Header({
                   onClick={() => navigate(service.path)}
                   className="cursor-pointer"
                 >
-                  <Icon name={service.icon as any} size={16} className="mr-2" />
+                  <Icon name={service.icon} size={16} className="mr-2" />
                   {service.name}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          <span onClick={() => navigate('/portfolio')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
+          <span onClick={() => navigate('/portfolio')} className="text-muted-foreground hover:text-foreground transition-all cursor-pointer">
             Портфолио
           </span>
-          <a href="#calculator" onClick={(e) => smoothScroll(e, '#calculator')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
+          <a href="#calculator" onClick={(e) => smoothScroll(e, '#calculator')} className="text-muted-foreground hover:text-foreground transition-all cursor-pointer">
             Калькулятор
           </a>
-          <a href="#reviews" onClick={(e) => smoothScroll(e, '#reviews')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
+          <a href="#reviews" onClick={(e) => smoothScroll(e, '#reviews')} className="text-muted-foreground hover:text-foreground transition-all cursor-pointer">
             Отзывы
           </a>
-          <span onClick={() => navigate('/blog')} className="text-foreground/80 hover:text-primary transition-colors cursor-pointer">
+          <span onClick={() => navigate('/blog')} className="text-muted-foreground hover:text-foreground transition-all cursor-pointer">
             Блог
           </span>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-primary hover:bg-primary/90">Связаться</Button>
+              <Button className="bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-mid-1))] hover:opacity-90 transition-opacity shadow-lg shadow-[hsl(var(--gradient-start))]/20">Связаться</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
@@ -118,7 +118,7 @@ export default function Header({
                     onClick={() => { navigate(service.path); setMobileMenuOpen(false); }} 
                     className="text-base text-foreground/70 hover:text-primary transition-colors cursor-pointer pl-4 flex items-center gap-2"
                   >
-                    <Icon name={service.icon as any} size={16} />
+                    <Icon name={service.icon} size={16} />
                     {service.name}
                   </span>
                 ))}
