@@ -244,7 +244,7 @@ function SEOContent() {
               <img 
                 src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/3307251c-c74c-493b-b7f0-2bdc269af8f0.png" 
                 alt="SEO-продвижение сайтов" 
-                className="relative w-full h-auto drop-shadow-2xl"
+                className="relative w-full h-auto drop-shadow-2xl animate-float"
               />
             </div>
           </div>

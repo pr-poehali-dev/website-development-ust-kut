@@ -226,7 +226,7 @@ function DesignContent() {
                 <img 
                   src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/f2809806-f870-4aa1-9b49-16e538bda9c0.png" 
                   alt="Веб-дизайн интерфейсов" 
-                  className="w-full h-auto"
+                  className="w-full h-auto animate-float"
                 />
               </div>
             </div>

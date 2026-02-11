@@ -366,7 +366,7 @@ function ProjectContent() {
             <img 
               src={project.image} 
               alt={project.title}
-              className="w-full h-auto rounded-xl"
+              className="w-full h-auto rounded-xl animate-float"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';

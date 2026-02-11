@@ -323,7 +323,7 @@ function PortfolioContent() {
                 <img 
                   src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/147741a5-48df-4323-b3b0-79fe8097427b.png" 
                   alt="Примеры адаптивной разработки сайтов" 
-                  className="w-full max-w-xl h-auto rounded-2xl shadow-xl"
+                  className="w-full max-w-xl h-auto rounded-2xl shadow-xl animate-float"
                 />
               </div>
             </div>

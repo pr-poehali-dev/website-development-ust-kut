@@ -228,7 +228,7 @@ function MarketingContent() {
               <img 
                 src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/477296aa-8dfc-4ac1-b0e3-18f9c387e6e9.png" 
                 alt="Цифровой маркетинг и аналитика" 
-                className="w-full h-auto drop-shadow-2xl"
+                className="w-full h-auto drop-shadow-2xl animate-float"
               />
             </div>
           </div>

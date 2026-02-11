@@ -272,7 +272,7 @@ function DevelopmentContent() {
                 <img 
                   src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/147741a5-48df-4323-b3b0-79fe8097427b.png" 
                   alt="Адаптивная разработка сайтов - примеры на разных устройствах" 
-                  className="relative w-full max-w-2xl h-auto rounded-2xl shadow-2xl"
+                  className="relative w-full max-w-2xl h-auto rounded-2xl shadow-2xl animate-float"
                 />
               </div>
             </div>
