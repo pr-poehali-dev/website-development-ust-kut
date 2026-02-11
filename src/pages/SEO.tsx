@@ -359,7 +359,7 @@ function SEOContent() {
                 <div key={index} ref={priceRevealRefs[index]}>
                 <Card 
                   ref={priceTiltRefs[index]}
-                  className={`relative overflow-hidden ${plan.popular ? 'border-primary shadow-lg shadow-primary/20' : ''} transition-shadow duration-300 animate-card-appear delay-${(index + 1) * 100}`}
+                  className={`relative ${plan.popular ? 'border-primary shadow-lg shadow-primary/20' : ''} transition-shadow duration-300 overflow-hidden animate-card-appear delay-${(index + 1) * 100}`}
                 >
                   {plan.popular && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
