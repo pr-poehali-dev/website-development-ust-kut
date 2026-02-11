@@ -158,17 +158,20 @@ function DesignContent() {
         </script>
       </Helmet>
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-4 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" alt="Элегия" className="h-12 sm:h-14 md:h-16" />
+            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" alt="Элегия" className="h-10 sm:h-12 md:h-14" />
           </div>
-          <div className="flex items-center gap-6">
-            <Button variant="ghost" onClick={() => navigate('/')}>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Button variant="ghost" onClick={() => navigate('/')} size="sm" className="hidden sm:flex">
               На главную
+            </Button>
+            <Button variant="ghost" onClick={() => navigate('/')} size="icon" className="sm:hidden">
+              <Icon name="Home" size={20} />
             </Button>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <Button className="bg-primary hover:bg-primary/90">Связаться</Button>
+                <Button className="bg-primary hover:bg-primary/90" size="sm">Связаться</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
                 <DialogHeader>
@@ -211,15 +214,15 @@ function DesignContent() {
                 <Badge className="mb-6 backdrop-blur-glass border-[hsl(var(--gradient-start))]">
                   <span className="gradient-text">Веб-дизайн</span>
                 </Badge>
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 whitespace-nowrap">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
                   Дизайн, который <span className="gradient-text">продаёт</span>
                 </h1>
-                <p className="text-xl text-muted-foreground mb-8">
+                <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8">
                   Создаём уникальный UI/UX дизайн с фокусом на пользовательский опыт и конверсию
                 </p>
                 <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                   <DialogTrigger asChild>
-                    <Button size="lg" className="gradient-button button-hover-effect text-lg px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30">
+                    <Button size="lg" className="gradient-button button-hover-effect text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30">
                       Заказать дизайн
                     </Button>
                   </DialogTrigger>
@@ -240,7 +243,7 @@ function DesignContent() {
       <section className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Что мы разрабатываем</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">Что мы разрабатываем</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 {
@@ -296,7 +299,7 @@ function DesignContent() {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Наш подход к дизайну</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">Наш подход к дизайну</h2>
             <div className="grid md:grid-cols-2 gap-8">
               {[
                 {
@@ -338,7 +341,7 @@ function DesignContent() {
       <section className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Процесс создания дизайна</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">Процесс создания дизайна</h2>
             <div className="space-y-6">
               {[
                 {
@@ -380,16 +383,16 @@ function DesignContent() {
               ].map((process, index) => (
                 <Card key={index} className={`hover:border-primary transition-colors animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
-                    <div className="flex items-start gap-6">
-                      <div className="text-6xl font-bold text-primary/20">{process.step}</div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <CardTitle className="text-2xl">{process.title}</CardTitle>
-                          <Badge variant="outline" className="border-accent/20 text-accent">
+                    <div className="flex items-start gap-4 sm:gap-6">
+                      <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary/20 flex-shrink-0">{process.step}</div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                          <CardTitle className="text-lg sm:text-xl md:text-2xl">{process.title}</CardTitle>
+                          <Badge variant="outline" className="border-accent/20 text-accent text-xs self-start sm:self-auto">
                             {process.duration}
                           </Badge>
                         </div>
-                        <CardDescription className="text-foreground/70 text-base">
+                        <CardDescription className="text-foreground/70 text-sm sm:text-base">
                           {process.description}
                         </CardDescription>
                       </div>
@@ -405,7 +408,7 @@ function DesignContent() {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Что вы получите</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">Что вы получите</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 { icon: 'CheckCircle2', text: 'Дизайн всех страниц в Figma' },
@@ -430,13 +433,13 @@ function DesignContent() {
       <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10">
         <div className="container mx-auto">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Начнём работу над вашим дизайном?</h2>
-            <p className="text-xl text-foreground/70 mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Начнём работу над вашим дизайном?</h2>
+            <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
               Оставьте заявку, и мы обсудим ваш проект в деталях
             </p>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-12">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-8 sm:px-12">
                   Заказать дизайн
                 </Button>
               </DialogTrigger>
