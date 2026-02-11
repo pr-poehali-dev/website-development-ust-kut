@@ -3,9 +3,11 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { useNavigate } from 'react-router-dom';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export default function ServicesSection() {
   const navigate = useNavigate();
+  const sectionRef = useScrollReveal();
 
   const services = [
     {
@@ -51,7 +53,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-20 px-4 relative overflow-hidden">
+    <section id="services" className="py-20 px-4 relative overflow-hidden scroll-reveal" ref={sectionRef}>
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[hsl(var(--gradient-mid-1))]/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[hsl(var(--gradient-mid-2))]/5 rounded-full blur-3xl"></div>
       

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -16,6 +17,7 @@ export default function TelegramPosts() {
   const [posts, setPosts] = useState<TelegramPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const sectionRef = useScrollReveal();
 
   useEffect(() => {
     fetchPosts();
@@ -61,7 +63,7 @@ export default function TelegramPosts() {
   }
 
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden scroll-reveal" ref={sectionRef}>
       <div className="absolute top-0 left-1/3 w-96 h-96 bg-[hsl(var(--gradient-end))]/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-[hsl(var(--gradient-start))]/5 rounded-full blur-3xl"></div>
       

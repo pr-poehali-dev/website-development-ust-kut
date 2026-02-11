@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -26,6 +27,11 @@ export default function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const portfolioRef = useScrollReveal();
+  const calculatorRef = useScrollReveal();
+  const reviewsRef = useScrollReveal();
+  const contactRef = useScrollReveal();
+  const newsletterRef = useScrollReveal();
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -265,7 +271,7 @@ export default function Index() {
 
         <ServicesSection />
 
-      <section id="portfolio" className="py-20 px-4">
+      <section id="portfolio" className="py-20 px-4 scroll-reveal" ref={portfolioRef}>
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-accent/10 text-accent border-accent/20">Портфолио</Badge>
@@ -301,7 +307,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="calculator" className="py-20 px-4 relative overflow-hidden">
+      <section id="calculator" className="py-20 px-4 relative overflow-hidden scroll-reveal" ref={calculatorRef}>
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-[hsl(var(--gradient-start))]/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[hsl(var(--gradient-mid-2))]/10 rounded-full blur-3xl"></div>
         
@@ -379,7 +385,7 @@ export default function Index() {
 
       <TelegramPosts />
 
-      <section id="reviews" className="py-20 px-4 relative overflow-hidden">
+      <section id="reviews" className="py-20 px-4 relative overflow-hidden scroll-reveal" ref={reviewsRef}>
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[hsl(var(--gradient-mid-1))]/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[hsl(var(--gradient-end))]/5 rounded-full blur-3xl"></div>
         
@@ -422,7 +428,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-card/30">
+      <section className="py-20 px-4 bg-card/30 scroll-reveal" ref={contactRef}>
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-accent/10 text-accent border-accent/20">Контакты</Badge>
@@ -460,7 +466,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 scroll-reveal" ref={newsletterRef}>
         <div className="container mx-auto max-w-3xl">
           <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
             <CardContent className="p-8 text-center">
