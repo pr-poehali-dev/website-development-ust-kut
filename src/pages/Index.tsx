@@ -17,6 +17,7 @@ import HeroSection from '@/components/home/HeroSection';
 import ServicesSection from '@/components/home/ServicesSection';
 import TelegramPosts from '@/components/home/TelegramPosts';
 import Footer from '@/components/home/Footer';
+import ParticlesBackground from '@/components/ParticlesBackground';
 
 export default function Index() {
   const [calculatorValues, setCalculatorValues] = useState({
@@ -256,6 +257,7 @@ export default function Index() {
 
   return (
     <>
+      <ParticlesBackground />
       <Helmet>
         <title>Элегия — веб-студия в Иркутске | Создание и продвижение сайтов</title>
         <meta name="description" content="Веб-студия Элегия в Иркутске: разработка сайтов, интернет-магазинов, SEO-продвижение, дизайн и маркетинг. Современные решения для вашего бизнеса." />
