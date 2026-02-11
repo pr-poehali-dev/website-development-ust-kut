@@ -221,15 +221,18 @@ function MarketplacesContent() {
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" alt="Элегия" className="h-12 sm:h-14 md:h-16" />
+            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" alt="Элегия" className="h-10 sm:h-12 md:h-14" />
           </div>
-          <div className="flex items-center gap-6">
-            <Button variant="ghost" onClick={() => navigate('/')}>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Button variant="ghost" onClick={() => navigate('/')} size="sm" className="hidden sm:flex">
               На главную
+            </Button>
+            <Button variant="ghost" onClick={() => navigate('/')} size="icon" className="sm:hidden">
+              <Icon name="Home" size={20} />
             </Button>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <Button className="bg-primary hover:bg-primary/90">Связаться</Button>
+                <Button className="bg-primary hover:bg-primary/90" size="sm">Связаться</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
                 <DialogHeader>
@@ -268,15 +271,15 @@ function MarketplacesContent() {
               <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
                 Вывод на маркетплейсы
               </Badge>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Выводим бизнес на <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">маркетплейсы</span>
               </h1>
-              <p className="text-xl text-foreground/70 mb-8">
+              <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-8">
                 Полный цикл запуска и продвижения на Wildberries, Ozon, Яндекс.Маркет и других площадках
               </p>
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8">
                     Начать продавать
                   </Button>
                 </DialogTrigger>
@@ -296,7 +299,7 @@ function MarketplacesContent() {
       <section className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">На каких площадках работаем</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">На каких площадках работаем</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
@@ -342,7 +345,7 @@ function MarketplacesContent() {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Что мы делаем</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">Что мы делаем</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 {
@@ -398,7 +401,7 @@ function MarketplacesContent() {
       <section className="py-20 px-4 bg-card/50">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Тарифы</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">Тарифы</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
@@ -487,7 +490,7 @@ function MarketplacesContent() {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center">Преимущества работы с маркетплейсами</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center">Преимущества работы с маркетплейсами</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 { icon: 'Users', title: 'Готовая аудитория', text: 'Миллионы покупателей уже ищут товары на площадках' },
@@ -515,13 +518,13 @@ function MarketplacesContent() {
       <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10">
         <div className="container mx-auto">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Готовы выйти на маркетплейсы?</h2>
-            <p className="text-xl text-foreground/70 mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Готовы выйти на маркетплейсы?</h2>
+            <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
               Оставьте заявку, и мы проведём бесплатную консультацию по запуску вашего бизнеса
             </p>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-12">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-8 sm:px-12">
                   Получить консультацию
                 </Button>
               </DialogTrigger>
