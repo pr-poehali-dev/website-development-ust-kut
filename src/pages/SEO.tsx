@@ -181,40 +181,46 @@ function SEOContent() {
         </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto">
+      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
+        <div className="absolute top-20 -right-20 w-96 h-96 bg-[hsl(var(--gradient-start))]/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 -left-20 w-96 h-96 bg-[hsl(var(--gradient-mid-2))]/10 rounded-full blur-3xl animate-pulse delay-300"></div>
+        
+        <div className="container mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in">
-              <Badge className="bg-accent/10 text-accent border-accent/20">
-                SEO-продвижение
+              <Badge className="backdrop-blur-glass border-[hsl(var(--gradient-start))]">
+                <span className="gradient-text">SEO-продвижение</span>
               </Badge>
               <h1 className="md:text-6xl font-bold leading-tight text-3xl">
-                Выведем ваш сайт в <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">ТОП</span> поисковых систем
+                Выведем ваш сайт в <span className="gradient-text">ТОП</span> поисковых систем
               </h1>
-              <p className="text-xl text-foreground/70">
+              <p className="text-xl text-muted-foreground">
                 Комплексное SEO-продвижение в Яндекс и Google для роста трафика и увеличения продаж
               </p>
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8">
+                  <Button size="lg" className="bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-mid-1))] hover:opacity-90 transition-opacity text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30">
                     Получить аудит сайта
                   </Button>
                 </DialogTrigger>
               </Dialog>
             </div>
             <div className="relative animate-scale-in">
+              <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--gradient-start))] via-[hsl(var(--gradient-mid-1))] to-[hsl(var(--gradient-mid-2))] opacity-20 blur-3xl rounded-2xl animate-glow"></div>
               <img 
                 src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/3307251c-c74c-493b-b7f0-2bdc269af8f0.png" 
                 alt="SEO-продвижение сайтов" 
-                className="w-full h-auto drop-shadow-2xl"
+                className="relative w-full h-auto drop-shadow-2xl"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-card/50">
-        <div className="container mx-auto">
+      <section className="py-20 px-4 relative overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[hsl(var(--gradient-mid-1))]/5 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto relative z-10">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold mb-12 text-center">Что мы делаем</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -166,46 +166,54 @@ function DevelopmentContent() {
         </div>
       </nav>
 
-      <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4">
-        <div className="container mx-auto">
+      <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 relative overflow-hidden">
+        <div className="absolute top-20 -right-20 w-96 h-96 bg-[hsl(var(--gradient-start))]/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 -left-20 w-96 h-96 bg-[hsl(var(--gradient-mid-2))]/10 rounded-full blur-3xl animate-pulse delay-300"></div>
+        
+        <div className="container mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center max-w-6xl mx-auto">
             <div className="animate-fade-in">
-              <Badge className="mb-4 sm:mb-6 bg-accent/10 text-accent border-accent/20">
-                Разработка сайтов
+              <Badge className="mb-4 sm:mb-6 backdrop-blur-glass border-[hsl(var(--gradient-start))]">
+                <span className="gradient-text">Разработка сайтов</span>
               </Badge>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
                 Создаём{' '}
-                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent whitespace-nowrap">
+                <span className="gradient-text whitespace-nowrap">
                   веб-сайты
                 </span>
                 ,<br />
                 которые работают{' '}
                 <span className="whitespace-nowrap">на вас</span>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8">
                 От лендингов до сложных веб-платформ — разрабатываем сайты любой сложности с фокусом на результат
               </p>
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8">
+                  <Button size="lg" className="bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-mid-1))] hover:opacity-90 transition-opacity text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30">
                     Обсудить проект
                   </Button>
                 </DialogTrigger>
               </Dialog>
             </div>
             <div className="animate-fade-in flex justify-center items-center">
-              <img 
-                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/147741a5-48df-4323-b3b0-79fe8097427b.png" 
-                alt="Адаптивная разработка сайтов - примеры на разных устройствах" 
-                className="w-full max-w-2xl h-auto rounded-2xl shadow-xl"
-              />
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--gradient-start))] via-[hsl(var(--gradient-mid-1))] to-[hsl(var(--gradient-mid-2))] opacity-20 blur-3xl rounded-2xl animate-glow"></div>
+                <img 
+                  src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/147741a5-48df-4323-b3b0-79fe8097427b.png" 
+                  alt="Адаптивная разработка сайтов - примеры на разных устройствах" 
+                  className="relative w-full max-w-2xl h-auto rounded-2xl shadow-2xl"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 md:py-20 px-4 bg-card/50">
-        <div className="container mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 px-4 relative overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[hsl(var(--gradient-mid-1))]/5 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto relative z-10">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 md:mb-12 text-center">Типы сайтов, которые мы создаём</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
@@ -247,14 +255,18 @@ function DevelopmentContent() {
                   price: 'от 100 000 ₽'
                 }
               ].map((type, index) => (
-                <Card key={index} className={`group hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 animate-card-appear delay-${(index + 1) * 100}`}>
+                <Card key={index} className={`gradient-border backdrop-blur-glass group hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
-                    <Icon name={type.icon} className="text-accent group-hover:text-primary transition-colors mb-4" size={48} />
+                    <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--gradient-start))]/20 to-[hsl(var(--gradient-mid-1))]/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all">
+                      <Icon name={type.icon} className="gradient-text" size={32} />
+                    </div>
                     <CardTitle className="text-xl mb-2">{type.title}</CardTitle>
-                    <Badge className="w-fit bg-primary/10 text-primary border-primary/20">{type.price}</Badge>
+                    <Badge className="w-fit backdrop-blur-glass border-[hsl(var(--gradient-start))]">
+                      <span className="gradient-text">{type.price}</span>
+                    </Badge>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-foreground/70">
+                    <CardDescription className="text-muted-foreground">
                       {type.description}
                     </CardDescription>
                   </CardContent>

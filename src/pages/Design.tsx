@@ -166,23 +166,26 @@ function DesignContent() {
         </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto">
+      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
+        <div className="absolute top-20 -right-20 w-96 h-96 bg-[hsl(var(--gradient-start))]/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 -left-20 w-96 h-96 bg-[hsl(var(--gradient-mid-2))]/10 rounded-full blur-3xl animate-pulse delay-300"></div>
+        
+        <div className="container mx-auto relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
               <div className="text-center lg:text-left animate-fade-in">
-                <Badge className="mb-6 bg-accent/10 text-accent border-accent/20">
-                  Веб-дизайн
+                <Badge className="mb-6 backdrop-blur-glass border-[hsl(var(--gradient-start))]">
+                  <span className="gradient-text">Веб-дизайн</span>
                 </Badge>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 whitespace-nowrap">
-                  Дизайн, который <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">продаёт</span>
+                  Дизайн, который <span className="gradient-text">продаёт</span>
                 </h1>
-                <p className="text-xl text-foreground/70 mb-8">
+                <p className="text-xl text-muted-foreground mb-8">
                   Создаём уникальный UI/UX дизайн с фокусом на пользовательский опыт и конверсию
                 </p>
                 <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                   <DialogTrigger asChild>
-                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                    <Button size="lg" className="bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-mid-1))] hover:opacity-90 transition-opacity text-lg px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30">
                       Заказать дизайн
                     </Button>
                   </DialogTrigger>
