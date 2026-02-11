@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -235,21 +236,34 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <MobileHint />
+    <>
+      <Helmet>
+        <title>Элегия — веб-студия в Иркутске | Создание и продвижение сайтов</title>
+        <meta name="description" content="Веб-студия Элегия в Иркутске: разработка сайтов, интернет-магазинов, SEO-продвижение, дизайн и маркетинг. Современные решения для вашего бизнеса." />
+        <meta name="keywords" content="веб-студия иркутск, создание сайтов иркутск, разработка сайтов иркутск, интернет-магазин иркутск, SEO продвижение иркутск, веб-дизайн иркутск, лендинг иркутск, сайт под ключ иркутск, веб разработка иркутская область" />
+        <link rel="canonical" href="https://elegiya-web.ru/" />
+        
+        <meta property="og:title" content="Элегия — веб-студия в Иркутске | Создание и продвижение сайтов" />
+        <meta property="og:description" content="Веб-студия Элегия в Иркутске: разработка сайтов, интернет-магазинов, SEO-продвижение, дизайн и маркетинг. Офис в центре города, работаем с бизнесом по всей Иркутской области." />
+        <meta property="og:url" content="https://elegiya-web.ru/" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       
-      <Header
-        isDialogOpen={isDialogOpen}
-        setIsDialogOpen={setIsDialogOpen}
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOpen={setMobileMenuOpen}
-        smoothScroll={smoothScroll}
-        handleFormSubmit={handleFormSubmit}
-      />
+      <div className="min-h-screen bg-background">
+        <MobileHint />
+        
+        <Header
+          isDialogOpen={isDialogOpen}
+          setIsDialogOpen={setIsDialogOpen}
+          mobileMenuOpen={mobileMenuOpen}
+          setMobileMenuOpen={setMobileMenuOpen}
+          smoothScroll={smoothScroll}
+          handleFormSubmit={handleFormSubmit}
+        />
 
-      <HeroSection smoothScroll={smoothScroll} />
+        <HeroSection smoothScroll={smoothScroll} />
 
-      <ServicesSection />
+        <ServicesSection />
 
       <section id="portfolio" className="py-20 px-4">
         <div className="container mx-auto">
@@ -460,6 +474,7 @@ export default function Index() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 }
