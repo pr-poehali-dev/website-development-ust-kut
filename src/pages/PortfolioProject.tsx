@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useTilt } from '@/hooks/useTilt';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -185,6 +186,34 @@ function ProjectContent() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
 
+  const resultTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
+
+  const challengeTiltRef = useTilt<HTMLDivElement>();
+  const solutionTiltRef = useTilt<HTMLDivElement>();
+
+  const featureTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
+
+  const techTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
+
+  const prevProjectTiltRef = useTilt<HTMLDivElement>();
+  const nextProjectTiltRef = useTilt<HTMLDivElement>();
+
   const challengeRevealRefs = [
     useScrollReveal<HTMLDivElement>({ delay: 0 }),
     useScrollReveal<HTMLDivElement>({ delay: 100 }),
@@ -354,7 +383,7 @@ function ProjectContent() {
           <div className="grid md:grid-cols-3 gap-6">
             {project.results.map((result: string, index: number) => (
               <div key={index} ref={challengeRevealRefs[index]}>
-                <Card className="text-center h-full">
+                <Card ref={resultTiltRefs[index]} className="text-center h-full transition-shadow duration-300 overflow-hidden">
                   <CardContent className="pt-6">
                     <div className="text-3xl font-bold text-primary mb-2">{result.split(' ')[0]}</div>
                     <div className="text-foreground/70">{result.split(' ').slice(1).join(' ')}</div>
@@ -385,7 +414,7 @@ function ProjectContent() {
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-8">Вызовы проекта</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <Card>
+            <Card ref={challengeTiltRef} className="transition-shadow duration-300 overflow-hidden">
               <CardContent className="pt-6">
                 <div className="flex items-start gap-3 mb-4">
                   <Icon name="AlertCircle" className="text-accent mt-1" size={24} />
@@ -404,7 +433,7 @@ function ProjectContent() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card ref={solutionTiltRef} className="transition-shadow duration-300 overflow-hidden">
               <CardContent className="pt-6">
                 <div className="flex items-start gap-3 mb-4">
                   <Icon name="CheckCircle" className="text-green-500 mt-1" size={24} />
@@ -432,7 +461,7 @@ function ProjectContent() {
           <div className="grid md:grid-cols-2 gap-4">
             {project.features.map((feature: string, index: number) => (
               <div key={index} ref={featureRevealRefs[index % 5]}>
-                <Card className="h-full">
+                <Card ref={featureTiltRefs[index % 5]} className="h-full transition-shadow duration-300 overflow-hidden">
                   <CardContent className="pt-6 flex items-center gap-3">
                     <Icon name="Check" className="text-accent flex-shrink-0" size={20} />
                     <span className="text-foreground/80">{feature}</span>
@@ -448,7 +477,8 @@ function ProjectContent() {
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             <Card 
-              className="group cursor-pointer hover:border-primary transition-all duration-300 hover:shadow-lg"
+              ref={prevProjectTiltRef}
+              className="group cursor-pointer hover:border-primary transition-all duration-300 hover:shadow-lg overflow-hidden"
               onClick={() => navigate(`/portfolio/${prevSlug}`)}
             >
               <CardContent className="pt-6">
@@ -469,7 +499,8 @@ function ProjectContent() {
             </Card>
 
             <Card 
-              className="group cursor-pointer hover:border-primary transition-all duration-300 hover:shadow-lg"
+              ref={nextProjectTiltRef}
+              className="group cursor-pointer hover:border-primary transition-all duration-300 hover:shadow-lg overflow-hidden"
               onClick={() => navigate(`/portfolio/${nextSlug}`)}
             >
               <CardContent className="pt-6">
