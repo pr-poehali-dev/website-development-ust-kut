@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTilt } from '@/hooks/useTilt';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -27,6 +28,21 @@ function SEOContent() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
+
+  const serviceTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
+
+  const priceTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -258,7 +274,7 @@ function SEOContent() {
                   description: 'Улучшаем юзабилити, добавляем отзывы, сертификаты, улучшаем поведенческие факторы'
                 }
               ].map((service, index) => (
-                <Card key={index} className={`hover:border-primary transition-all duration-300 animate-card-appear delay-${(index + 1) * 100}`}>
+                <Card key={index} ref={serviceTiltRefs[index]} className={`transition-shadow duration-300 overflow-hidden animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <Icon name={service.icon} className="text-accent mb-4" size={48} />
                     <CardTitle className="text-xl">{service.title}</CardTitle>
@@ -323,8 +339,9 @@ function SEOContent() {
                 }
               ].map((plan, index) => (
                 <Card 
-                  key={index} 
-                  className={`relative ${plan.popular ? 'border-primary shadow-lg shadow-primary/20' : ''} animate-card-appear delay-${(index + 1) * 100}`}
+                  key={index}
+                  ref={priceTiltRefs[index]}
+                  className={`relative overflow-hidden ${plan.popular ? 'border-primary shadow-lg shadow-primary/20' : ''} transition-shadow duration-300 animate-card-appear delay-${(index + 1) * 100}`}
                 >
                   {plan.popular && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">

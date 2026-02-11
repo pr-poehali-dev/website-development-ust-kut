@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTilt } from '@/hooks/useTilt';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -27,6 +28,49 @@ function DevelopmentContent() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
+
+  const serviceTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
+
+  const advantageTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
+
+  const techTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
+
+  const typeTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
+
+  const platformTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -257,7 +301,7 @@ function DevelopmentContent() {
                   price: 'от 100 000 ₽'
                 }
               ].map((type, index) => (
-                <Card key={index} className={`gradient-border backdrop-blur-glass group hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 1) * 100}`}>
+                <Card key={index} ref={typeTiltRefs[index]} className={`gradient-border backdrop-blur-glass group overflow-hidden transition-shadow duration-300 hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--gradient-start))]/20 to-[hsl(var(--gradient-mid-1))]/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all">
                       <Icon name={type.icon} className="gradient-text" size={32} />
@@ -294,7 +338,7 @@ function DevelopmentContent() {
                 { name: 'AWS', icon: 'Cloud', description: 'Облачная инфраструктура' },
                 { name: 'Docker', icon: 'Package', description: 'Контейнеризация' }
               ].map((tech, index) => (
-                <Card key={index} className={`text-center hover:border-accent transition-colors animate-card-appear delay-${(index + 1) * 100}`}>
+                <Card key={index} ref={platformTiltRefs[index]} className={`text-center transition-shadow duration-300 overflow-hidden animate-card-appear delay-${(index + 1) * 100}`}>
                   <CardHeader>
                     <Icon name={tech.icon} className="text-accent mx-auto mb-2" size={40} />
                     <CardTitle className="text-lg">{tech.name}</CardTitle>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTilt } from '@/hooks/useTilt';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -154,6 +155,18 @@ function BlogContent() {
   const { toast } = useToast();
   const navigate = useNavigate();
 
+  const articleTiltRefs = [
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>(),
+    useTilt<HTMLDivElement>()
+  ];
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
@@ -275,10 +288,11 @@ function BlogContent() {
       <section className="pb-20 px-4">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredArticles.map((article) => (
+            {filteredArticles.map((article, index) => (
               <Card 
                 key={article.id}
-                className="group overflow-hidden hover:border-primary transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-primary/20"
+                ref={articleTiltRefs[index]}
+                className="group overflow-hidden transition-shadow duration-300 cursor-pointer"
                 onClick={() => setSelectedArticle(article)}
               >
                 <div className={`aspect-video bg-gradient-to-br ${article.gradient} flex items-center justify-center text-7xl relative overflow-hidden`}>
