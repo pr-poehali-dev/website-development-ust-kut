@@ -47,8 +47,11 @@ function DesignContent() {
 
   const serviceRevealRefs = [
     useScrollReveal<HTMLDivElement>({ delay: 0 }),
-    useScrollReveal<HTMLDivElement>({ delay: 150 }),
-    useScrollReveal<HTMLDivElement>({ delay: 300 })
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 }),
+    useScrollReveal<HTMLDivElement>({ delay: 300 }),
+    useScrollReveal<HTMLDivElement>({ delay: 400 }),
+    useScrollReveal<HTMLDivElement>({ delay: 500 })
   ];
 
   const priceRevealRefs = [
@@ -271,7 +274,7 @@ function DesignContent() {
                   description: 'Обновление устаревшего дизайна с сохранением узнаваемости бренда'
                 }
               ].map((service, index) => (
-                <div key={index} ref={serviceRevealRefs[index % 3]}>
+                <div key={index} ref={serviceRevealRefs[index]}>
                   <Card ref={serviceTiltRefs[index]} className="transition-shadow duration-300 overflow-hidden h-full">
                     <CardHeader>
                       <Icon name={service.icon} className="text-accent mb-4" size={48} />

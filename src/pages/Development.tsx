@@ -77,7 +77,9 @@ function DevelopmentContent() {
     useScrollReveal<HTMLDivElement>({ delay: 0 }),
     useScrollReveal<HTMLDivElement>({ delay: 100 }),
     useScrollReveal<HTMLDivElement>({ delay: 200 }),
-    useScrollReveal<HTMLDivElement>({ delay: 300 })
+    useScrollReveal<HTMLDivElement>({ delay: 300 }),
+    useScrollReveal<HTMLDivElement>({ delay: 400 }),
+    useScrollReveal<HTMLDivElement>({ delay: 500 })
   ];
 
   const advantageRevealRefs = [
@@ -325,7 +327,7 @@ function DevelopmentContent() {
                   price: 'от 100 000 ₽'
                 }
               ].map((type, index) => (
-                <div key={index} ref={serviceRevealRefs[index % 4]}>
+                <div key={index} ref={serviceRevealRefs[index]}>
                   <Card ref={typeTiltRefs[index]} className="gradient-border backdrop-blur-glass group overflow-hidden transition-shadow duration-300 hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 h-full">
                   <CardHeader>
                     <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--gradient-start))]/20 to-[hsl(var(--gradient-mid-1))]/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all">

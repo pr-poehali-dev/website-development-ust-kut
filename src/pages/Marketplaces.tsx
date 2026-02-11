@@ -442,8 +442,8 @@ function MarketplacesContent() {
                   ]
                 }
               ].map((plan, index) => (
+                <div key={index} ref={priceRevealRefs[index]}>
                 <Card 
-                  key={index}
                   ref={priceTiltRefs[index]}
                   className={`relative overflow-hidden ${plan.popular ? 'border-primary shadow-lg shadow-primary/20' : ''} transition-shadow duration-300`}
                 >
@@ -477,6 +477,7 @@ function MarketplacesContent() {
                     </Dialog>
                   </CardContent>
                 </Card>
+                </div>
               ))}
             </div>
           </div>
