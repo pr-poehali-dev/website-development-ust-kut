@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 import MobileHint from '@/components/MobileHint';
 import Footer from '@/components/home/Footer';
+import ParticlesBackground from '@/components/ParticlesBackground';
 
 const projects = [
   {
@@ -174,6 +175,7 @@ export default function Portfolio() {
         <meta property="og:url" content="https://elegiya-web.ru/portfolio" />
         <meta property="og:type" content="website" />
       </Helmet>
+      <ParticlesBackground />
       <MobileHint />
       <PortfolioContent />
     </>

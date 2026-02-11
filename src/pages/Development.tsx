@@ -11,10 +11,12 @@ import { useNavigate } from 'react-router-dom';
 
 import MobileHint from '@/components/MobileHint';
 import Footer from '@/components/home/Footer';
+import ParticlesBackground from '@/components/ParticlesBackground';
 
 export default function Development() {
   return (
     <>
+      <ParticlesBackground />
       <MobileHint />
       <DevelopmentContent />
     </>
