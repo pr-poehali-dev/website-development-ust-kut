@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 
 import MobileHint from '@/components/MobileHint';
 import Footer from '@/components/home/Footer';
+import ParticlesBackground from '@/components/ParticlesBackground';
 
 interface Project {
   id: number;
@@ -171,6 +172,7 @@ const projectSlugs = ['technomarket', 'stroygrad', 'speakup', 'avtopoisk', 'zdor
 export default function PortfolioProject() {
   return (
     <>
+      <ParticlesBackground />
       <MobileHint />
       <ProjectContent />
     </>
