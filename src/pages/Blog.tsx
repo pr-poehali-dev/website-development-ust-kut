@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTilt } from '@/hooks/useTilt';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -167,6 +168,18 @@ function BlogContent() {
     useTilt<HTMLDivElement>()
   ];
 
+  const articleRevealRefs = [
+    useScrollReveal<HTMLDivElement>({ delay: 0 }),
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 }),
+    useScrollReveal<HTMLDivElement>({ delay: 300 }),
+    useScrollReveal<HTMLDivElement>({ delay: 400 }),
+    useScrollReveal<HTMLDivElement>({ delay: 500 }),
+    useScrollReveal<HTMLDivElement>({ delay: 600 }),
+    useScrollReveal<HTMLDivElement>({ delay: 700 }),
+    useScrollReveal<HTMLDivElement>({ delay: 800 })
+  ];
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
@@ -289,12 +302,12 @@ function BlogContent() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredArticles.map((article, index) => (
-              <Card 
-                key={article.id}
-                ref={articleTiltRefs[index]}
-                className="group overflow-hidden transition-shadow duration-300 cursor-pointer"
-                onClick={() => setSelectedArticle(article)}
-              >
+              <div key={article.id} ref={articleRevealRefs[index]}>
+                <Card 
+                  ref={articleTiltRefs[index]}
+                  className="group overflow-hidden transition-shadow duration-300 cursor-pointer h-full"
+                  onClick={() => setSelectedArticle(article)}
+                >
                 <div className={`aspect-video bg-gradient-to-br ${article.gradient} flex items-center justify-center text-7xl relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <span className="relative z-10">{article.icon}</span>
@@ -320,7 +333,8 @@ function BlogContent() {
                     <Icon name="ArrowRight" size={16} className="group-hover:translate-x-1 transition-transform" />
                   </div>
                 </CardContent>
-              </Card>
+                </Card>
+              </div>
             ))}
           </div>
         </div>

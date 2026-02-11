@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTilt } from '@/hooks/useTilt';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -34,6 +35,13 @@ function MarketingContent() {
     useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>()
+  ];
+
+  const serviceRevealRefs = [
+    useScrollReveal<HTMLDivElement>({ delay: 0 }),
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 }),
+    useScrollReveal<HTMLDivElement>({ delay: 300 })
   ];
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -260,17 +268,19 @@ function MarketingContent() {
                   description: 'Разработка ботов для Telegram, ВК, WhatsApp для автоматизации продаж и поддержки'
                 }
               ].map((service, index) => (
-                <Card key={index} ref={serviceTiltRefs[index % 4]} className={`transition-shadow duration-300 overflow-hidden animate-card-appear delay-${(index + 1) * 100}`}>
-                  <CardHeader>
-                    <Icon name={service.icon} className="text-accent mb-4" size={48} />
-                    <CardTitle className="text-xl">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-foreground/70">
-                      {service.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
+                <div key={index} ref={serviceRevealRefs[index % 4]}>
+                  <Card ref={serviceTiltRefs[index % 4]} className="transition-shadow duration-300 overflow-hidden h-full">
+                    <CardHeader>
+                      <Icon name={service.icon} className="text-accent mb-4" size={48} />
+                      <CardTitle className="text-xl">{service.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-foreground/70">
+                        {service.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                </div>
               ))}
             </div>
           </div>

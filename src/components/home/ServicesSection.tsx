@@ -17,6 +17,14 @@ export default function ServicesSection() {
     useTilt<HTMLDivElement>()
   ];
 
+  const revealRefs = [
+    useScrollReveal<HTMLDivElement>({ delay: 0 }),
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 }),
+    useScrollReveal<HTMLDivElement>({ delay: 300 }),
+    useScrollReveal<HTMLDivElement>({ delay: 400 })
+  ];
+
   const services = [
     {
       icon: 'Code',
@@ -77,7 +85,8 @@ export default function ServicesSection() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {services.slice(0, 3).map((service, index) => (
-            <Card key={index} ref={tiltRefs[index]} className={`gradient-border backdrop-blur-glass transition-shadow duration-300 group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 1) * 100} flex flex-col overflow-hidden`}>
+            <div key={index} ref={revealRefs[index]}>
+              <Card ref={tiltRefs[index]} className="gradient-border backdrop-blur-glass transition-shadow duration-300 group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 flex flex-col overflow-hidden h-full">
               <CardHeader>
                 <div className="w-12 h-12 bg-gradient-to-br from-[hsl(var(--gradient-start))]/20 to-[hsl(var(--gradient-mid-1))]/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all">
                   <Icon name={service.icon} className="gradient-text" size={24} />
@@ -103,12 +112,14 @@ export default function ServicesSection() {
                   <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
                 </Button>
               </CardContent>
-            </Card>
+              </Card>
+            </div>
           ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto mt-4 sm:mt-6">
           {services.slice(3).map((service, index) => (
-            <Card key={index + 3} ref={tiltRefs[index + 3]} className={`gradient-border backdrop-blur-glass transition-shadow duration-300 group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 4) * 100} flex flex-col overflow-hidden`}>
+            <div key={index + 3} ref={revealRefs[index + 3]}>
+              <Card ref={tiltRefs[index + 3]} className="gradient-border backdrop-blur-glass transition-shadow duration-300 group hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 flex flex-col overflow-hidden h-full">
               <CardHeader>
                 <div className="w-12 h-12 bg-gradient-to-br from-[hsl(var(--gradient-start))]/20 to-[hsl(var(--gradient-mid-1))]/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all">
                   <Icon name={service.icon} className="gradient-text" size={24} />
@@ -134,7 +145,8 @@ export default function ServicesSection() {
                   <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
                 </Button>
               </CardContent>
-            </Card>
+              </Card>
+            </div>
           ))}
         </div>
       </div>

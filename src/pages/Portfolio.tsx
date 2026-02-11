@@ -9,6 +9,7 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import { useTilt } from '@/hooks/useTilt';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 import MobileHint from '@/components/MobileHint';
 import Footer from '@/components/home/Footer';
@@ -201,6 +202,18 @@ function PortfolioContent() {
   const tiltRef9 = useTilt<HTMLDivElement>();
   const tiltRefs = [tiltRef1, tiltRef2, tiltRef3, tiltRef4, tiltRef5, tiltRef6, tiltRef7, tiltRef8, tiltRef9];
 
+  const revealRefs = [
+    useScrollReveal<HTMLDivElement>({ delay: 0 }),
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 }),
+    useScrollReveal<HTMLDivElement>({ delay: 300 }),
+    useScrollReveal<HTMLDivElement>({ delay: 400 }),
+    useScrollReveal<HTMLDivElement>({ delay: 500 }),
+    useScrollReveal<HTMLDivElement>({ delay: 600 }),
+    useScrollReveal<HTMLDivElement>({ delay: 700 }),
+    useScrollReveal<HTMLDivElement>({ delay: 800 })
+  ];
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
@@ -334,12 +347,12 @@ function PortfolioContent() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project, index) => (
-              <Card 
-                key={project.id}
-                ref={tiltRefs[projects.indexOf(project)]}
-                className="group overflow-hidden hover:border-primary transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-primary/20"
-                onClick={() => navigate(`/portfolio/${project.slug}`)}
-              >
+              <div key={project.id} ref={revealRefs[projects.indexOf(project) % 9]}>
+                <Card 
+                  ref={tiltRefs[projects.indexOf(project)]}
+                  className="group overflow-hidden hover:border-primary transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-primary/20 h-full"
+                  onClick={() => navigate(`/portfolio/${project.slug}`)}
+                >
                 <div className={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center text-7xl relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   {project.image ? (
@@ -376,7 +389,8 @@ function PortfolioContent() {
                     ))}
                   </div>
                 </CardContent>
-              </Card>
+                </Card>
+              </div>
             ))}
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTilt } from '@/hooks/useTilt';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -70,6 +71,29 @@ function DevelopmentContent() {
     useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>(),
     useTilt<HTMLDivElement>()
+  ];
+
+  const serviceRevealRefs = [
+    useScrollReveal<HTMLDivElement>({ delay: 0 }),
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 }),
+    useScrollReveal<HTMLDivElement>({ delay: 300 })
+  ];
+
+  const advantageRevealRefs = [
+    useScrollReveal<HTMLDivElement>({ delay: 0 }),
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 }),
+    useScrollReveal<HTMLDivElement>({ delay: 300 })
+  ];
+
+  const techRevealRefs = [
+    useScrollReveal<HTMLDivElement>({ delay: 0 }),
+    useScrollReveal<HTMLDivElement>({ delay: 100 }),
+    useScrollReveal<HTMLDivElement>({ delay: 200 }),
+    useScrollReveal<HTMLDivElement>({ delay: 300 }),
+    useScrollReveal<HTMLDivElement>({ delay: 400 }),
+    useScrollReveal<HTMLDivElement>({ delay: 500 })
   ];
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -301,7 +325,8 @@ function DevelopmentContent() {
                   price: 'от 100 000 ₽'
                 }
               ].map((type, index) => (
-                <Card key={index} ref={typeTiltRefs[index]} className={`gradient-border backdrop-blur-glass group overflow-hidden transition-shadow duration-300 hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 animate-card-appear delay-${(index + 1) * 100}`}>
+                <div key={index} ref={serviceRevealRefs[index % 4]}>
+                  <Card ref={typeTiltRefs[index]} className="gradient-border backdrop-blur-glass group overflow-hidden transition-shadow duration-300 hover:shadow-2xl hover:shadow-[hsl(var(--gradient-start))]/20 h-full">
                   <CardHeader>
                     <div className="w-16 h-16 bg-gradient-to-br from-[hsl(var(--gradient-start))]/20 to-[hsl(var(--gradient-mid-1))]/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all">
                       <Icon name={type.icon} className="gradient-text" size={32} />
@@ -316,7 +341,8 @@ function DevelopmentContent() {
                       {type.description}
                     </CardDescription>
                   </CardContent>
-                </Card>
+                  </Card>
+                </div>
               ))}
             </div>
           </div>
@@ -338,13 +364,15 @@ function DevelopmentContent() {
                 { name: 'AWS', icon: 'Cloud', description: 'Облачная инфраструктура' },
                 { name: 'Docker', icon: 'Package', description: 'Контейнеризация' }
               ].map((tech, index) => (
-                <Card key={index} ref={platformTiltRefs[index]} className={`text-center transition-shadow duration-300 overflow-hidden animate-card-appear delay-${(index + 1) * 100}`}>
-                  <CardHeader>
-                    <Icon name={tech.icon} className="text-accent mx-auto mb-2" size={40} />
-                    <CardTitle className="text-lg">{tech.name}</CardTitle>
-                    <CardDescription className="text-sm">{tech.description}</CardDescription>
-                  </CardHeader>
-                </Card>
+                <div key={index} ref={techRevealRefs[index % 6]}>
+                  <Card ref={platformTiltRefs[index]} className="text-center transition-shadow duration-300 overflow-hidden h-full">
+                    <CardHeader>
+                      <Icon name={tech.icon} className="text-accent mx-auto mb-2" size={40} />
+                      <CardTitle className="text-lg">{tech.name}</CardTitle>
+                      <CardDescription className="text-sm">{tech.description}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </div>
               ))}
             </div>
           </div>
