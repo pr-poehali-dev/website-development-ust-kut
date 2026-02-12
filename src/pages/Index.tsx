@@ -12,7 +12,7 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import MobileHint from '@/components/MobileHint';
-import UniversalHeader from '@/components/UniversalHeader';
+
 import HeroSection from '@/components/home/HeroSection';
 import ServicesSection from '@/components/home/ServicesSection';
 import TelegramPosts from '@/components/home/TelegramPosts';
@@ -223,7 +223,22 @@ export default function Index() {
       <div className="min-h-screen bg-background">
         <MobileHint />
         
-        <UniversalHeader showHomeLinks={true} onHomeNavClick={handleHomeNavClick} />
+        <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
+          <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
+            <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
+              <img 
+                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" 
+                alt="Элегия" 
+                className="h-10 sm:h-12 md:h-14" 
+              />
+            </div>
+            <div className="flex items-center gap-4">
+              <Button className="bg-primary hover:bg-primary/90">
+                Связаться
+              </Button>
+            </div>
+          </div>
+        </nav>
 
         <HeroSection smoothScroll={handleHomeNavClick} />
 
