@@ -1,14 +1,17 @@
+import { useState } from 'react';
 import { useTilt } from '@/hooks/useTilt';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
+import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 
 import MobileHint from '@/components/MobileHint';
-import UniversalHeader from '@/components/UniversalHeader';
 import Footer from '@/components/home/Footer';
 import ParticlesBackground from '@/components/ParticlesBackground';
 
@@ -23,6 +26,8 @@ export default function Marketing() {
 }
 
 function MarketingContent() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { toast } = useToast();
   const navigate = useNavigate();
 
   const serviceTiltRefs = [
@@ -43,7 +48,45 @@ function MarketingContent() {
     useScrollReveal<HTMLDivElement>({ delay: 500 })
   ];
 
-
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    
+    try {
+      const response = await fetch('https://functions.poehali.dev/facfc1c0-72cc-4f8e-8c21-113d5964b377', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'request',
+          name: formData.get('name'),
+          phone: formData.get('phone'),
+          email: formData.get('email')
+        })
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok) {
+        toast({
+          title: 'Заявка отправлена!',
+          description: 'Мы свяжемся с вами в ближайшее время.',
+        });
+        setIsDialogOpen(false);
+      } else {
+        toast({
+          title: 'Ошибка',
+          description: result.error || 'Не удалось отправить заявку',
+          variant: 'destructive'
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Ошибка',
+        description: 'Проблема с подключением к серверу',
+        variant: 'destructive'
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -117,7 +160,51 @@ function MarketingContent() {
           })}
         </script>
       </Helmet>
-      <UniversalHeader />
+      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
+          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
+            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" alt="Элегия" className="h-10 sm:h-12 md:h-14" />
+          </div>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Button variant="ghost" onClick={() => navigate('/')} size="sm" className="hidden sm:flex">
+              На главную
+            </Button>
+            <Button variant="ghost" onClick={() => navigate('/')} size="icon" className="sm:hidden">
+              <Icon name="Home" size={20} />
+            </Button>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="bg-primary hover:bg-primary/90" size="sm">Связаться</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Оставьте заявку</DialogTitle>
+                  <DialogDescription>
+                    Заполните форму, и мы свяжемся с вами в течение часа
+                  </DialogDescription>
+                </DialogHeader>
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Ваше имя</label>
+                    <Input name="name" required placeholder="Иван Иванов" />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Телефон</label>
+                    <Input name="phone" required type="tel" placeholder="+7 (999) 123-45-67" />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Email</label>
+                    <Input name="email" required type="email" placeholder="ivan@example.com" />
+                  </div>
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                    Отправить заявку
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </div>
+        </div>
+      </nav>
 
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto">
@@ -132,16 +219,13 @@ function MarketingContent() {
               <p className="text-base sm:text-lg md:text-xl text-foreground/70">
                 Комплексное продвижение в digital: контекстная реклама, SMM, email-маркетинг и таргет
               </p>
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8"
-                onClick={() => {
-                  const element = document.querySelector('footer');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Запустить рекламу
-              </Button>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8">
+                    Запустить рекламу
+                  </Button>
+                </DialogTrigger>
+              </Dialog>
             </div>
             <div className="relative animate-scale-in">
               <img 
@@ -417,16 +501,13 @@ function MarketingContent() {
                         </li>
                       ))}
                     </ul>
-                    <Button 
-                      className="w-full" 
-                      variant={plan.popular ? 'default' : 'outline'}
-                      onClick={() => {
-                        const element = document.querySelector('footer');
-                        if (element) element.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                    >
-                      Выбрать тариф
-                    </Button>
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                      <DialogTrigger asChild>
+                        <Button className="w-full" variant={plan.popular ? 'default' : 'outline'}>
+                          Выбрать тариф
+                        </Button>
+                      </DialogTrigger>
+                    </Dialog>
                   </CardContent>
                 </Card>
               ))}
@@ -442,16 +523,13 @@ function MarketingContent() {
             <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
               Запустим первую рекламную кампанию за 3 дня и покажем результат
             </p>
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-8 sm:px-12"
-              onClick={() => {
-                const element = document.querySelector('footer');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Запустить рекламу
-            </Button>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-8 sm:px-12">
+                  Запустить рекламу
+                </Button>
+              </DialogTrigger>
+            </Dialog>
           </div>
         </div>
       </section>

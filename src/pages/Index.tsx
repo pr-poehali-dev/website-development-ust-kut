@@ -12,7 +12,7 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import MobileHint from '@/components/MobileHint';
-
+import Header from '@/components/home/Header';
 import HeroSection from '@/components/home/HeroSection';
 import ServicesSection from '@/components/home/ServicesSection';
 import TelegramPosts from '@/components/home/TelegramPosts';
@@ -25,6 +25,8 @@ export default function Index() {
     features: [5],
     design: [5]
   });
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
   const portfolioRef = useScrollReveal();
@@ -144,10 +146,58 @@ export default function Index() {
     return basePrice + pagePrice + featurePrice + designPrice;
   };
 
-  const handleHomeNavClick = (targetId: string) => {
+  const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
     const element = document.querySelector(targetId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setMobileMenuOpen(false);
+    }
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    
+    try {
+      const response = await fetch('https://functions.poehali.dev/facfc1c0-72cc-4f8e-8c21-113d5964b377', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'request',
+          name: formData.get('name'),
+          phone: formData.get('phone'),
+          email: formData.get('email')
+        })
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok) {
+        // Отправка цели в Яндекс.Метрику
+        if (typeof window !== 'undefined' && window.ym) {
+          window.ym(106521597, 'reachGoal', 'header_request');
+        }
+        
+        toast({
+          title: '🚀 Заявка успешно отправлена!',
+          description: 'Спасибо! Мы свяжемся с вами в ближайшее время.',
+          className: 'border-green-500 bg-green-50 text-green-900',
+        });
+        setIsDialogOpen(false);
+      } else {
+        toast({
+          title: 'Ошибка',
+          description: result.error || 'Не удалось отправить заявку',
+          variant: 'destructive'
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Ошибка',
+        description: 'Проблема с подключением к серверу',
+        variant: 'destructive'
+      });
     }
   };
 
@@ -223,24 +273,16 @@ export default function Index() {
       <div className="min-h-screen bg-background">
         <MobileHint />
         
-        <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
-          <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
-            <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-              <img 
-                src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" 
-                alt="Элегия" 
-                className="h-10 sm:h-12 md:h-14" 
-              />
-            </div>
-            <div className="flex items-center gap-4">
-              <Button className="bg-primary hover:bg-primary/90">
-                Связаться
-              </Button>
-            </div>
-          </div>
-        </nav>
+        <Header
+          isDialogOpen={isDialogOpen}
+          setIsDialogOpen={setIsDialogOpen}
+          mobileMenuOpen={mobileMenuOpen}
+          setMobileMenuOpen={setMobileMenuOpen}
+          smoothScroll={smoothScroll}
+          handleFormSubmit={handleFormSubmit}
+        />
 
-        <HeroSection smoothScroll={handleHomeNavClick} />
+        <HeroSection smoothScroll={smoothScroll} />
 
         <ServicesSection />
 
@@ -346,14 +388,7 @@ export default function Index() {
                 <p className="text-sm text-muted-foreground mb-6">
                   * Это примерный расчет. Точная стоимость определяется после обсуждения проекта.
                 </p>
-                <Button 
-                  size="lg" 
-                  className="w-full gradient-button button-hover-effect shadow-lg shadow-[hsl(var(--gradient-start))]/30"
-                  onClick={() => {
-                    const element = document.querySelector('footer');
-                    if (element) element.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
+                <Button size="lg" className="w-full gradient-button button-hover-effect shadow-lg shadow-[hsl(var(--gradient-start))]/30" onClick={() => setIsDialogOpen(true)}>
                   <Icon name="MessageSquare" className="mr-2" size={20} />
                   Получить точный расчет
                 </Button>

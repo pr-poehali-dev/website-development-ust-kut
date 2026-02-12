@@ -1,14 +1,17 @@
+import { useState } from 'react';
 import { useTilt } from '@/hooks/useTilt';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import Icon from '@/components/ui/icon';
+import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 
 import MobileHint from '@/components/MobileHint';
-import UniversalHeader from '@/components/UniversalHeader';
 import Footer from '@/components/home/Footer';
 import ParticlesBackground from '@/components/ParticlesBackground';
 
@@ -23,6 +26,8 @@ export default function SEO() {
 }
 
 function SEOContent() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { toast } = useToast();
   const navigate = useNavigate();
 
   const serviceTiltRefs = [
@@ -55,7 +60,45 @@ function SEOContent() {
     useScrollReveal<HTMLDivElement>({ delay: 300 })
   ];
 
-
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    
+    try {
+      const response = await fetch('https://functions.poehali.dev/facfc1c0-72cc-4f8e-8c21-113d5964b377', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'request',
+          name: formData.get('name'),
+          phone: formData.get('phone'),
+          email: formData.get('email')
+        })
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok) {
+        toast({
+          title: 'Заявка отправлена!',
+          description: 'Мы свяжемся с вами в ближайшее время.',
+        });
+        setIsDialogOpen(false);
+      } else {
+        toast({
+          title: 'Ошибка',
+          description: result.error || 'Не удалось отправить заявку',
+          variant: 'destructive'
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Ошибка',
+        description: 'Проблема с подключением к серверу',
+        variant: 'destructive'
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -129,7 +172,51 @@ function SEOContent() {
           })}
         </script>
       </Helmet>
-      <UniversalHeader />
+      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
+          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
+            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" alt="Элегия" className="h-10 sm:h-12 md:h-14" />
+          </div>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Button variant="ghost" onClick={() => navigate('/')} size="sm" className="hidden sm:flex">
+              На главную
+            </Button>
+            <Button variant="ghost" onClick={() => navigate('/')} size="icon" className="sm:hidden">
+              <Icon name="Home" size={20} />
+            </Button>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="bg-primary hover:bg-primary/90" size="sm">Связаться</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Оставьте заявку</DialogTitle>
+                  <DialogDescription>
+                    Заполните форму, и мы свяжемся с вами в течение часа
+                  </DialogDescription>
+                </DialogHeader>
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Ваше имя</label>
+                    <Input name="name" required placeholder="Иван Иванов" />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Телефон</label>
+                    <Input name="phone" required type="tel" placeholder="+7 (999) 123-45-67" />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Email</label>
+                    <Input name="email" required type="email" placeholder="ivan@example.com" />
+                  </div>
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                    Отправить заявку
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </div>
+        </div>
+      </nav>
 
       <section className="pt-32 pb-20 px-4 relative overflow-hidden">
         <div className="absolute top-20 -right-20 w-96 h-96 bg-[hsl(var(--gradient-start))]/10 rounded-full blur-3xl animate-pulse"></div>
@@ -147,16 +234,13 @@ function SEOContent() {
               <p className="text-xl text-muted-foreground">
                 Комплексное SEO-продвижение в Яндекс и Google для роста трафика и увеличения продаж
               </p>
-              <Button 
-                size="lg" 
-                className="gradient-button button-hover-effect text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30"
-                onClick={() => {
-                  const element = document.querySelector('footer');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Получить аудит сайта
-              </Button>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="gradient-button button-hover-effect text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30">
+                    Получить аудит сайта
+                  </Button>
+                </DialogTrigger>
+              </Dialog>
             </div>
             <div className="relative animate-scale-in">
               <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--gradient-start))] via-[hsl(var(--gradient-mid-1))] to-[hsl(var(--gradient-mid-2))] opacity-20 blur-3xl rounded-2xl animate-glow"></div>
@@ -301,16 +385,13 @@ function SEOContent() {
                         </li>
                       ))}
                     </ul>
-                    <Button 
-                      className="w-full" 
-                      variant={plan.popular ? 'default' : 'outline'}
-                      onClick={() => {
-                        const element = document.querySelector('footer');
-                        if (element) element.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                    >
-                      Выбрать тариф
-                    </Button>
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                      <DialogTrigger asChild>
+                        <Button className="w-full" variant={plan.popular ? 'default' : 'outline'}>
+                          Выбрать тариф
+                        </Button>
+                      </DialogTrigger>
+                    </Dialog>
                   </CardContent>
                 </Card>
                 </div>
@@ -415,16 +496,13 @@ function SEOContent() {
             <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
               Проанализируем ваш сайт и подготовим рекомендации по продвижению
             </p>
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-lg px-12"
-              onClick={() => {
-                const element = document.querySelector('footer');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Заказать аудит
-            </Button>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-12">
+                  Заказать аудит
+                </Button>
+              </DialogTrigger>
+            </Dialog>
           </div>
         </div>
       </section>
