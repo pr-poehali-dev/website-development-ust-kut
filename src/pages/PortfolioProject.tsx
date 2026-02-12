@@ -5,10 +5,7 @@ import { useTilt } from '@/hooks/useTilt';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
-import { useToast } from '@/hooks/use-toast';
 
 import MobileHint from '@/components/MobileHint';
 import UniversalHeader from '@/components/UniversalHeader';

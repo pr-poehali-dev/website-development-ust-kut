@@ -1,14 +1,10 @@
-import { useState } from 'react';
 import { useTilt } from '@/hooks/useTilt';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import Icon from '@/components/ui/icon';
-import { useToast } from '@/hooks/use-toast';
+
 import { useNavigate } from 'react-router-dom';
 
 import MobileHint from '@/components/MobileHint';
@@ -180,13 +176,16 @@ function DevelopmentContent() {
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8">
                 От лендингов до сложных веб-платформ — разрабатываем сайты любой сложности с фокусом на результат
               </p>
-              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button size="lg" className="gradient-button button-hover-effect text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30">
-                    Обсудить проект
-                  </Button>
-                </DialogTrigger>
-              </Dialog>
+              <Button 
+                size="lg" 
+                className="gradient-button button-hover-effect text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30"
+                onClick={() => {
+                  const element = document.querySelector('footer');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Обсудить проект
+              </Button>
             </div>
             <div className="animate-fade-in flex justify-center items-center">
               <div className="relative">
@@ -458,13 +457,16 @@ function DevelopmentContent() {
             <p className="text-xl text-foreground/70 mb-8">
               Оставьте заявку, и мы свяжемся с вами в течение часа для обсуждения деталей
             </p>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-12">
-                  Начать проект
-                </Button>
-              </DialogTrigger>
-            </Dialog>
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-lg px-12"
+              onClick={() => {
+                const element = document.querySelector('footer');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Начать проект
+            </Button>
           </div>
         </div>
       </section>

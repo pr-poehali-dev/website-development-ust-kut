@@ -1,14 +1,10 @@
-import { useState } from 'react';
 import { useTilt } from '@/hooks/useTilt';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import Icon from '@/components/ui/icon';
-import { useToast } from '@/hooks/use-toast';
+
 import { useNavigate } from 'react-router-dom';
 
 import MobileHint from '@/components/MobileHint';
@@ -151,13 +147,16 @@ function SEOContent() {
               <p className="text-xl text-muted-foreground">
                 Комплексное SEO-продвижение в Яндекс и Google для роста трафика и увеличения продаж
               </p>
-              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button size="lg" className="gradient-button button-hover-effect text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30">
-                    Получить аудит сайта
-                  </Button>
-                </DialogTrigger>
-              </Dialog>
+              <Button 
+                size="lg" 
+                className="gradient-button button-hover-effect text-base sm:text-lg px-6 sm:px-8 shadow-lg shadow-[hsl(var(--gradient-start))]/30"
+                onClick={() => {
+                  const element = document.querySelector('footer');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Получить аудит сайта
+              </Button>
             </div>
             <div className="relative animate-scale-in">
               <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--gradient-start))] via-[hsl(var(--gradient-mid-1))] to-[hsl(var(--gradient-mid-2))] opacity-20 blur-3xl rounded-2xl animate-glow"></div>
@@ -302,13 +301,16 @@ function SEOContent() {
                         </li>
                       ))}
                     </ul>
-                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                      <DialogTrigger asChild>
-                        <Button className="w-full" variant={plan.popular ? 'default' : 'outline'}>
-                          Выбрать тариф
-                        </Button>
-                      </DialogTrigger>
-                    </Dialog>
+                    <Button 
+                      className="w-full" 
+                      variant={plan.popular ? 'default' : 'outline'}
+                      onClick={() => {
+                        const element = document.querySelector('footer');
+                        if (element) element.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      Выбрать тариф
+                    </Button>
                   </CardContent>
                 </Card>
                 </div>
@@ -413,13 +415,16 @@ function SEOContent() {
             <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
               Проанализируем ваш сайт и подготовим рекомендации по продвижению
             </p>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-12">
-                  Заказать аудит
-                </Button>
-              </DialogTrigger>
-            </Dialog>
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-lg px-12"
+              onClick={() => {
+                const element = document.querySelector('footer');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Заказать аудит
+            </Button>
           </div>
         </div>
       </section>

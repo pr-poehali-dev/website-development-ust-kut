@@ -1,14 +1,10 @@
-import { useState } from 'react';
 import { useTilt } from '@/hooks/useTilt';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
-import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 
 import MobileHint from '@/components/MobileHint';
@@ -136,13 +132,16 @@ function MarketingContent() {
               <p className="text-base sm:text-lg md:text-xl text-foreground/70">
                 Комплексное продвижение в digital: контекстная реклама, SMM, email-маркетинг и таргет
               </p>
-              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8">
-                    Запустить рекламу
-                  </Button>
-                </DialogTrigger>
-              </Dialog>
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8"
+                onClick={() => {
+                  const element = document.querySelector('footer');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Запустить рекламу
+              </Button>
             </div>
             <div className="relative animate-scale-in">
               <img 
@@ -418,13 +417,16 @@ function MarketingContent() {
                         </li>
                       ))}
                     </ul>
-                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                      <DialogTrigger asChild>
-                        <Button className="w-full" variant={plan.popular ? 'default' : 'outline'}>
-                          Выбрать тариф
-                        </Button>
-                      </DialogTrigger>
-                    </Dialog>
+                    <Button 
+                      className="w-full" 
+                      variant={plan.popular ? 'default' : 'outline'}
+                      onClick={() => {
+                        const element = document.querySelector('footer');
+                        if (element) element.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      Выбрать тариф
+                    </Button>
                   </CardContent>
                 </Card>
               ))}
@@ -440,13 +442,16 @@ function MarketingContent() {
             <p className="text-base sm:text-lg md:text-xl text-foreground/70 mb-6 sm:mb-8">
               Запустим первую рекламную кампанию за 3 дня и покажем результат
             </p>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-8 sm:px-12">
-                  Запустить рекламу
-                </Button>
-              </DialogTrigger>
-            </Dialog>
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-8 sm:px-12"
+              onClick={() => {
+                const element = document.querySelector('footer');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Запустить рекламу
+            </Button>
           </div>
         </div>
       </section>
