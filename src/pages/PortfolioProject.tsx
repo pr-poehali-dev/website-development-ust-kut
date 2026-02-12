@@ -11,6 +11,7 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 
 import MobileHint from '@/components/MobileHint';
+import UniversalHeader from '@/components/UniversalHeader';
 import Footer from '@/components/home/Footer';
 import ParticlesBackground from '@/components/ParticlesBackground';
 
@@ -183,7 +184,6 @@ export default function PortfolioProject() {
 function ProjectContent() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
 
   const resultTiltRefs = [
@@ -245,46 +245,7 @@ function ProjectContent() {
   const nextProject = projectsData[nextSlug];
   const prevProject = projectsData[prevSlug];
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    
-    try {
-      const response = await fetch('https://functions.poehali.dev/facfc1c0-72cc-4f8e-8c21-113d5964b377', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'request',
-          name: formData.get('name'),
-          phone: formData.get('phone'),
-          email: formData.get('email'),
-          message: `Интересует проект: ${project?.title}`
-        })
-      });
-      
-      const result = await response.json();
-      
-      if (response.ok) {
-        toast({
-          title: 'Заявка отправлена!',
-          description: 'Мы свяжемся с вами в ближайшее время.',
-        });
-        setIsDialogOpen(false);
-      } else {
-        toast({
-          title: 'Ошибка',
-          description: result.error || 'Не удалось отправить заявку',
-          variant: 'destructive'
-        });
-      }
-    } catch (error) {
-      toast({
-        title: 'Ошибка',
-        description: 'Проблема с подключением к серверу',
-        variant: 'destructive'
-      });
-    }
-  };
+
 
   if (!project) {
     return (
@@ -299,52 +260,7 @@ function ProjectContent() {
 
   return (
     <div className="min-h-screen bg-background">
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
-          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            <img src="https://cdn.poehali.dev/projects/9197360f-80fb-4765-9577-d256b27f806c/bucket/119321e0-95b2-4cb8-a386-b4f1f1833d05.png" alt="Элегия" className="h-10 sm:h-12 md:h-14" />
-          </div>
-          <div className="flex items-center gap-2 sm:gap-4">
-            <Button variant="ghost" onClick={() => navigate('/portfolio')} size="sm" className="hidden sm:flex">
-              <Icon name="ArrowLeft" className="mr-2" size={18} />
-              К портфолио
-            </Button>
-            <Button variant="ghost" onClick={() => navigate('/portfolio')} size="icon" className="sm:hidden">
-              <Icon name="ArrowLeft" size={20} />
-            </Button>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button className="bg-primary hover:bg-primary/90" size="sm">Обсудить</Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md">
-                <DialogHeader>
-                  <DialogTitle>Обсудить похожий проект</DialogTitle>
-                  <DialogDescription>
-                    Заполните форму, и мы свяжемся с вами для обсуждения деталей
-                  </DialogDescription>
-                </DialogHeader>
-                <form onSubmit={handleFormSubmit} className="space-y-4">
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Ваше имя</label>
-                    <Input name="name" required placeholder="Иван Иванов" />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Телефон</label>
-                    <Input name="phone" required type="tel" placeholder="+7 (999) 123-45-67" />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Email</label>
-                    <Input name="email" required type="email" placeholder="ivan@example.com" />
-                  </div>
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                    Отправить заявку
-                  </Button>
-                </form>
-              </DialogContent>
-            </Dialog>
-          </div>
-        </div>
-      </nav>
+      <UniversalHeader />
 
       <section className="pt-32 pb-12 px-4">
         <div className="container mx-auto max-w-5xl">

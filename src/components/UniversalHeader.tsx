@@ -1,29 +1,36 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 
-interface PageNavProps {
-  currentPage?: string;
+interface UniversalHeaderProps {
+  showHomeLinks?: boolean;
+  onHomeNavClick?: (targetId: string) => void;
 }
 
-export default function PageNav({ currentPage }: PageNavProps) {
+export default function UniversalHeader({ showHomeLinks = false, onHomeNavClick }: UniversalHeaderProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const { toast } = useToast();
 
-  const menuItems = [
-    { name: 'Главная', path: '/', icon: 'Home' },
+  const services = [
     { name: 'Разработка сайтов', path: '/development', icon: 'Code' },
     { name: 'SEO-продвижение', path: '/seo', icon: 'TrendingUp' },
     { name: 'Веб-дизайн', path: '/design', icon: 'Palette' },
     { name: 'Цифровой маркетинг', path: '/marketing', icon: 'Megaphone' },
-    { name: 'Маркетплейсы', path: '/marketplaces', icon: 'ShoppingBag' },
+    { name: 'Вывод на маркетплейсы', path: '/marketplaces', icon: 'ShoppingBag' }
+  ];
+
+  const menuItems = [
+    { name: 'Главная', path: '/', icon: 'Home' },
+    ...services,
     { name: 'Портфолио', path: '/portfolio', icon: 'Briefcase' },
     { name: 'Блог', path: '/blog', icon: 'BookOpen' }
   ];
@@ -47,11 +54,17 @@ export default function PageNav({ currentPage }: PageNavProps) {
       const result = await response.json();
       
       if (response.ok) {
+        if (typeof window !== 'undefined' && window.ym) {
+          window.ym(106521597, 'reachGoal', 'contact_form');
+        }
+        
         toast({
-          title: 'Заявка отправлена!',
+          title: '✅ Заявка отправлена!',
           description: 'Мы свяжемся с вами в ближайшее время.',
+          className: 'border-green-500 bg-green-50 text-green-900',
         });
         setIsDialogOpen(false);
+        (e.target as HTMLFormElement).reset();
       } else {
         toast({
           title: 'Ошибка',
@@ -68,6 +81,21 @@ export default function PageNav({ currentPage }: PageNavProps) {
     }
   };
 
+  const handleHomeLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    if (location.pathname === '/' && onHomeNavClick) {
+      onHomeNavClick(targetId);
+    } else {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.querySelector(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
@@ -80,13 +108,48 @@ export default function PageNav({ currentPage }: PageNavProps) {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost" onClick={() => navigate('/')} size="sm">
-            На главную
-          </Button>
+        <div className="hidden md:flex items-center gap-6">
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-muted-foreground hover:text-foreground transition-all cursor-pointer flex items-center gap-1">
+              Услуги
+              <Icon name="ChevronDown" size={16} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-56">
+              {services.map((service) => (
+                <DropdownMenuItem 
+                  key={service.path}
+                  onClick={() => navigate(service.path)}
+                  className="cursor-pointer"
+                >
+                  <Icon name={service.icon} size={16} className="mr-2" />
+                  {service.name}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          
+          <span onClick={() => navigate('/portfolio')} className="text-muted-foreground hover:text-foreground transition-all cursor-pointer">
+            Портфолио
+          </span>
+
+          {showHomeLinks && (
+            <>
+              <a href="#calculator" onClick={(e) => handleHomeLinkClick(e, '#calculator')} className="text-muted-foreground hover:text-foreground transition-all cursor-pointer">
+                Калькулятор
+              </a>
+              <a href="#reviews" onClick={(e) => handleHomeLinkClick(e, '#reviews')} className="text-muted-foreground hover:text-foreground transition-all cursor-pointer">
+                Отзывы
+              </a>
+            </>
+          )}
+
+          <span onClick={() => navigate('/blog')} className="text-muted-foreground hover:text-foreground transition-all cursor-pointer">
+            Блог
+          </span>
+
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-primary hover:bg-primary/90" size="sm">
+              <Button className="bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-mid-1))] hover:opacity-90 transition-opacity shadow-lg shadow-[hsl(var(--gradient-start))]/20">
                 Связаться
               </Button>
             </DialogTrigger>
@@ -173,7 +236,7 @@ export default function PageNav({ currentPage }: PageNavProps) {
                   {menuItems.map((item) => (
                     <SheetClose key={item.path} asChild>
                       <Button
-                        variant={currentPage === item.path ? "default" : "ghost"}
+                        variant={location.pathname === item.path ? "default" : "ghost"}
                         className="w-full justify-start"
                         onClick={() => {
                           navigate(item.path);
@@ -186,6 +249,37 @@ export default function PageNav({ currentPage }: PageNavProps) {
                     </SheetClose>
                   ))}
                 </div>
+
+                {showHomeLinks && location.pathname === '/' && (
+                  <div className="flex flex-col gap-2 border-t border-border pt-4">
+                    <SheetClose asChild>
+                      <Button
+                        variant="ghost"
+                        className="w-full justify-start"
+                        onClick={() => {
+                          onHomeNavClick?.('#calculator');
+                          setMobileMenuOpen(false);
+                        }}
+                      >
+                        <Icon name="Calculator" size={18} className="mr-3" />
+                        Калькулятор
+                      </Button>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Button
+                        variant="ghost"
+                        className="w-full justify-start"
+                        onClick={() => {
+                          onHomeNavClick?.('#reviews');
+                          setMobileMenuOpen(false);
+                        }}
+                      >
+                        <Icon name="Star" size={18} className="mr-3" />
+                        Отзывы
+                      </Button>
+                    </SheetClose>
+                  </div>
+                )}
               </div>
             </SheetContent>
           </Sheet>

@@ -12,7 +12,7 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import MobileHint from '@/components/MobileHint';
-import Header from '@/components/home/Header';
+import UniversalHeader from '@/components/UniversalHeader';
 import HeroSection from '@/components/home/HeroSection';
 import ServicesSection from '@/components/home/ServicesSection';
 import TelegramPosts from '@/components/home/TelegramPosts';
@@ -25,8 +25,6 @@ export default function Index() {
     features: [5],
     design: [5]
   });
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
   const portfolioRef = useScrollReveal();
@@ -146,58 +144,10 @@ export default function Index() {
     return basePrice + pagePrice + featurePrice + designPrice;
   };
 
-  const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
+  const handleHomeNavClick = (targetId: string) => {
     const element = document.querySelector(targetId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setMobileMenuOpen(false);
-    }
-  };
-
-  const handleFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    
-    try {
-      const response = await fetch('https://functions.poehali.dev/facfc1c0-72cc-4f8e-8c21-113d5964b377', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'request',
-          name: formData.get('name'),
-          phone: formData.get('phone'),
-          email: formData.get('email')
-        })
-      });
-      
-      const result = await response.json();
-      
-      if (response.ok) {
-        // Отправка цели в Яндекс.Метрику
-        if (typeof window !== 'undefined' && window.ym) {
-          window.ym(106521597, 'reachGoal', 'header_request');
-        }
-        
-        toast({
-          title: '🚀 Заявка успешно отправлена!',
-          description: 'Спасибо! Мы свяжемся с вами в ближайшее время.',
-          className: 'border-green-500 bg-green-50 text-green-900',
-        });
-        setIsDialogOpen(false);
-      } else {
-        toast({
-          title: 'Ошибка',
-          description: result.error || 'Не удалось отправить заявку',
-          variant: 'destructive'
-        });
-      }
-    } catch (error) {
-      toast({
-        title: 'Ошибка',
-        description: 'Проблема с подключением к серверу',
-        variant: 'destructive'
-      });
     }
   };
 
@@ -273,16 +223,9 @@ export default function Index() {
       <div className="min-h-screen bg-background">
         <MobileHint />
         
-        <Header
-          isDialogOpen={isDialogOpen}
-          setIsDialogOpen={setIsDialogOpen}
-          mobileMenuOpen={mobileMenuOpen}
-          setMobileMenuOpen={setMobileMenuOpen}
-          smoothScroll={smoothScroll}
-          handleFormSubmit={handleFormSubmit}
-        />
+        <UniversalHeader showHomeLinks={true} onHomeNavClick={handleHomeNavClick} />
 
-        <HeroSection smoothScroll={smoothScroll} />
+        <HeroSection smoothScroll={handleHomeNavClick} />
 
         <ServicesSection />
 
